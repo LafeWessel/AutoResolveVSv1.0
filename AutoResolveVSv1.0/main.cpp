@@ -6,16 +6,18 @@
 */
 
 
-#include <string>
+
 #include <algorithm>
 #include <cmath>
 
 #include <array>
 #include <vector>
+#include <string>
 
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 
 #include <chrono>
 #include <random>
@@ -58,7 +60,7 @@ Order of Variables in Units file:
 All variables are comma-separated, so there must be no extraneous commas.
 *
 *
-*
+*Equipment and Units files must be put in the same directory as the .exe that is generated when the project is built.
 */
 
 
@@ -68,13 +70,9 @@ All variables are comma-separated, so there must be no extraneous commas.
 /*
 TODO Section:
 
-TODO-There might be a memory leak or some other error that causes the program to exit after having calculated only some of the battles
-
 TODO-COMMENT EVERYTHING
 
 TODO-Find new way to output at the end of a battle that captures more data
-
-TODO-Remove initialization within loops
 
 TODO-Refactor, especially the classes
 
@@ -87,6 +85,14 @@ TODO-Add way for the autoresolve bonuses of the units to be changed when soldier
 TODO-Refactor parts of the battleTest functions into separate functions
 
 TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
+
+TODO-CSVRow can't find the files for reading
+
+TODO-Maybe move the equipment and unit pages to Excel
+
+TODO-findFollower() throwing 'access violation reading location' error
+
+TODO-Move classes into headers and separate class pages
 
 */
 
@@ -115,9 +121,12 @@ public:
 		while (getline(lineStream, cell, ','))
 		{
 			m_data.push_back(cell);
+			//cout << "Read: " << cell << endl;
 		}
+		// This checks for a trailing comma with no data after it
 		if (!lineStream && cell.empty())
 		{
+			// If there was a trailing comma then add an empty element
 			m_data.push_back("");
 		}
 	}
@@ -707,13 +716,33 @@ vector<Unit> Roster::getUnitsOfType(unitType& type) //gets all of the units of a
 void Roster::buildRoster() //Reads units in from the 'units' file and adds them to the roster if they match the roster's faction
 {
 	//Makes sure that the faction is acceptable before continuing
-	if (fact != faction::beladimir && fact != faction::lerastir && fact != faction::menoriad && fact != faction::rebel)
+	//if (fact != faction::beladimir && fact != faction::lerastir && fact != faction::menoriad && fact != faction::rebel)
+	if((int)fact == NULL)
 	{
 		cout << "No faction selected for roster building." << endl;
 		return;
 	}
 	if (debug) { cout << "Faction selected: " << fact << endl; }
-	ifstream file("units");
+
+	ifstream file ("units.txt");
+	//file.open("units");
+	if (debug) { cout << "units tried.txt" << endl; }
+	if (!file)
+	{
+		//file.open("units.csv");
+		ifstream file ("units.csv");
+		if (debug) { cout << "units.csv tried" << endl; }
+	}
+	else if (!file)
+	{
+		//file.open("units.txt");
+		ifstream file ("units");
+		if (debug) { cout << "units tried" << endl; }
+	}
+	else if (!file)
+	{
+		throw invalid_argument("Units file not found.");
+	}
 	CSVRow row;
 	factionUnits = {};
 
@@ -722,6 +751,8 @@ void Roster::buildRoster() //Reads units in from the 'units' file and adds them 
 	string SoldiersPerU;
 	faction Faction;
 	unitType UnitType;
+	Unit unitRead{};
+	if (debug) { cout << "Beginning to read from file." << endl; }
 
 	//Reads the equipment file and puts equipment in the correct vectors then initializes the treasure
 	while (file >> row)
@@ -732,7 +763,6 @@ void Roster::buildRoster() //Reads units in from the 'units' file and adds them 
 		UnitType = intToUnitType(stoi(row[2]));
 		if (debug) { cout << "intToUnitType(stoi(row[2])) : " << UnitType << endl; }
 
-		Unit unitRead{};
 		unitRead.setName(row[1]);
 		if (debug) { cout << "unitRead Name set to : " << row[1] << endl; }
 		unitRead.setARBonus(stoi(row[3]));
@@ -755,6 +785,7 @@ void Roster::buildRoster() //Reads units in from the 'units' file and adds them 
 			if (debug) { cout << unitRead.getName() << " was not pushed." << endl; }
 		}
 	}
+	if (factionUnits.size() < 1) { throw invalid_argument("factionUnits not initialized with any elements"); }
 	return;
 }
 
@@ -841,12 +872,11 @@ public:
 	};
 
 	//Subtracts 1 from the array so that it doesn't run off the end of the array of equipment
-	Equipment findArmor() { return armor[randomNumber(armor.size()) - 1]; };
+	Equipment findArmor() { return armor[randomNumber(armor.size()) - 1]; };//
 	Equipment findWeapon() { return weapon[randomNumber(weapon.size()) - 1]; };
 	Equipment findTrinket() { return trinket[randomNumber(trinket.size()) - 1]; };
 	Equipment findBanner() { return banner[randomNumber(banner.size()) - 1]; };
 	Equipment findDragonEq() { return dragon[randomNumber(dragon.size()) - 1]; };
-	//This subtracts 2 from the length of the array because the last item is the empty/null equipment
 	Equipment findFollower() { return follower[randomNumber(follower.size()) - 1]; };
 
 	Equipment findTreasure(int bonus); //Used at the end of battles to determine loot results
@@ -904,7 +934,25 @@ Treasure::Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<E
 void Treasure::initializeTreasure()
 {
 	if (debug) { cout << "initializeTreasure() called." << endl; }
-	ifstream file("equipment");
+	ifstream file("equipment.txt");
+	//file.open("equipment");
+	if (debug) { cout << "equipment.txt tried" << endl; }
+	if (!file)
+	{
+		//file.open("equipment.csv");
+		ifstream file("equipment.csv");
+		if (debug) { cout << "equipment.csv tried" << endl; }
+	}
+	else if(!file)
+	{
+		//file.open("equipment.txt");
+		ifstream file("equipment");
+		if (debug) { cout << "equipment tried" << endl; }
+	}
+	else if (!file)
+	{
+		throw invalid_argument("Equipment file not found.");
+	}
 	CSVRow row;
 	string theEquipType;
 	string theName;
@@ -924,6 +972,7 @@ void Treasure::initializeTreasure()
 	while (file >> row)
 	{
 
+		
 		theEquipType = row[0];
 		if (debug) { cout << "Equipment Type set to: " << row[0] << endl; }
 		theName = row[1];
@@ -977,11 +1026,18 @@ void Treasure::initializeTreasure()
 		}
 	}
 	armor = armorI;
+	if (armor.size() <1) { throw invalid_argument("Armor vector has no elements"); }
 	weapon = weaponsI;
+	if (weapon.size() <1) { throw invalid_argument("Weapon vector has no elements"); }
 	trinket = trinketsI;
+	if (trinket.size() <1) { throw invalid_argument("Trinket vector has no elements"); }
 	banner = bannersI;
+	if (banner.size() <1) { throw invalid_argument("Banner vector has no elements"); }
 	follower = followersI;
+	if (follower.size() <1) { throw invalid_argument("Follower vector has no elements"); }
 	dragon = dragonsI;
+	if (dragon.size() <1) { throw invalid_argument("Dragon vector has no elements"); }
+
 	if (debug) { cout << " intitializeTreasure() finished" << endl; }
 	return;
 }
@@ -1089,9 +1145,9 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 	treasure.setDebugBool(debug);
 	treasure.initializeTreasure();
 	vector<Equipment> rewards = {};
-	switch ((int)type)
+	switch (type)
 	{
-	case(1):
+	case(monsterType::Minotaur):
 		if (debug)
 		{
 			Equipment reward = treasure.findWeapon();
@@ -1103,7 +1159,7 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 			rewards.push_back(treasure.findWeapon());
 		}
 		break;
-	case(2):
+	case(monsterType::Hobgoblin):
 		if (debug)
 		{
 			Equipment reward = treasure.findWeapon();
@@ -1119,7 +1175,7 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 			rewards.push_back(treasure.findArmor());
 		}
 		break;
-	case(3):
+	case(monsterType::Troll):
 		if (debug)
 		{
 			Equipment reward = treasure.findWeapon();
@@ -1135,7 +1191,7 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 			rewards.push_back(treasure.findTrinket());
 		}
 		break;
-	case(4):
+	case(monsterType::Giant):
 		if (debug)
 		{
 			Equipment reward = treasure.findWeapon();
@@ -1155,7 +1211,7 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 			rewards.push_back(treasure.findArmor());
 		}
 		break;
-	case(5):
+	case(monsterType::Demon):
 		if (debug)
 		{
 			Equipment reward = treasure.findBanner();
@@ -1171,7 +1227,7 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 			rewards.push_back(treasure.findBanner());
 		}
 		break;
-	case(6):
+	case(monsterType::Dragon):
 		if (debug)
 		{
 			Equipment reward = treasure.findDragonEq();
@@ -1463,12 +1519,12 @@ void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end
 
 		if (attackerUnits[i].getSoldiersPerUnit() == 0)
 		{
-			cout << assignedSoldierCasualties << " " << attackerUnits[i].getName() << " completely destroyed." << endl;
+			if (debug) { cout << assignedSoldierCasualties << " " << attackerUnits[i].getName() << " completely destroyed." << endl; }
 			assignedUnitCasualties++;
 		}
 		else
 		{
-			cout << assignedSoldierCasualties + cas << " " << attackerUnits[i].getName() << " lost " << cas << " soldiers." << endl;
+			if (debug) { cout << assignedSoldierCasualties + cas << " " << attackerUnits[i].getName() << " lost " << cas << " soldiers." << endl; }
 		}
 		assignedSoldierCasualties += cas;
 
@@ -1541,12 +1597,12 @@ void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end
 
 		if (defenderUnits[i].getSoldiersPerUnit() == 0)
 		{
-			cout << assignedSoldierCasualties << " " << defenderUnits[i].getName() << " completely destroyed." << endl;
+			if (debug) { cout << assignedSoldierCasualties << " " << defenderUnits[i].getName() << " completely destroyed." << endl; }
 			assignedUnitCasualties++;
 		}
 		else
 		{
-			cout << assignedSoldierCasualties + cas << " " << defenderUnits[i].getName() << " lost " << cas << " soldiers." << endl;
+			if (debug) { cout << assignedSoldierCasualties + cas << " " << defenderUnits[i].getName() << " lost " << cas << " soldiers." << endl; }
 		}
 		assignedSoldierCasualties += cas;
 
@@ -1795,7 +1851,6 @@ class RaidBattle : public Battle
 {
 private:
 	townStats townLevel;
-
 
 public:
 
@@ -2458,7 +2513,7 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 //Called on program start. At the moment, it only predicts the results from each kind of battle.
 int main()
 {
-	bool debug = true;
+	bool debug = false;
 	if (debug) { cout << "Program started" << endl; }
 
 	//initializes seed for random number generation
@@ -2476,21 +2531,23 @@ int main()
 	if (debug) { cout << "Naval battle initialized void" << endl; }
 	MonsterBattle monster{};
 	if (debug) { cout << "Monster battle initialized void" << endl; }
-	int tests = 100;
+	int tests = 10;
 	if (debug) { cout << "Tests set to: " << tests << endl; }
 
-	//battleTest(tests, normal, debug);
+	battleTest(tests, normal, debug);
 	if (debug) { cout << "Tested Normal battle" << endl; }
-	//battleTest(tests,siege, debug);
+	battleTest(tests,siege, debug);
 	if (debug) { cout << "Tested Siege battle" << endl; }
-	//battleTest(tests,raid, debug);
+	battleTest(tests,raid, debug);
 	if (debug) { cout << "Tested Raid battle" << endl; }
-	//battleTest(tests, naval, debug);
+	battleTest(tests, naval, debug);
 	if (debug) { cout << "Tested Naval battle" << endl; }
 	battleTest(tests, monster, debug);
 	if (debug) { cout << "Tested Monster battle" << endl; }
 
 	if (debug) { cout << "Program finished" << endl; }
 
+	//This just keeps the console window open
+	cin.get();
 	return 0;
 }
