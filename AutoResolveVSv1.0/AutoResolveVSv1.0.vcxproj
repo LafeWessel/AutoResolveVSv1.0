@@ -115,11 +115,57 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="CSVRow.cpp" />
+    <ClCompile Include="defenses.cpp" />
+    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="faction.cpp" />
+    <ClCompile Include="General.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterBattle.cpp" />
+    <ClCompile Include="monsterType.cpp" />
+    <ClCompile Include="NavalBattle.cpp" />
+    <ClCompile Include="NormalBattle.cpp" />
+    <ClCompile Include="outcome.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="playerType.cpp" />
+    <ClCompile Include="RaidBattle.cpp" />
+    <ClCompile Include="Roster.cpp" />
+    <ClCompile Include="SiegeBattle.cpp" />
+    <ClCompile Include="townStats.cpp" />
+    <ClCompile Include="Treasure.cpp" />
+    <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="unitType.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="equipment.txt" />
-    <Text Include="units.txt" />
+    <Text Include="..\Debug\equipment.txt" />
+    <Text Include="..\Debug\units.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Battle.h" />
+    <ClInclude Include="CSVRow.h" />
+    <ClInclude Include="defenses.h" />
+    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="faction.h" />
+    <ClInclude Include="General.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterBattle.h" />
+    <ClInclude Include="monsterType.h" />
+    <ClInclude Include="NavalBattle.h" />
+    <ClInclude Include="NormalBattle.h" />
+    <ClInclude Include="outcome.h" />
+    <ClInclude Include="outputOperators.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="playerType.h" />
+    <ClInclude Include="RaidBattle.h" />
+    <ClInclude Include="randomCalculation.h" />
+    <ClInclude Include="Roster.h" />
+    <ClInclude Include="SiegeBattle.h" />
+    <ClInclude Include="townStats.h" />
+    <ClInclude Include="Treasure.h" />
+    <ClInclude Include="Unit.h" />
+    <ClInclude Include="unitType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

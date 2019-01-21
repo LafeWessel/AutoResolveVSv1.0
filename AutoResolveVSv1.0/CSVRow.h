@@ -1,0 +1,22 @@
+#pragma once
+#include "outputOperators.h"
+
+#include <vector>
+#include <string>
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+//This class is setup to read a line from a CSV file, split
+//the line by commas, and put each string into a vector of strings
+class CSVRow
+{
+private:
+	vector<string> m_data;
+public:
+	~CSVRow();
+	string const& operator[](size_t index) const;
+	size_t size() const;
+	void readNextRow(istream& str);
+};
+

@@ -18,9 +18,143 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="playerType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monsterType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CSVRow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="faction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="outcome.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="defenses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unitType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="townStats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Treasure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="General.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Roster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterBattle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SiegeBattle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RaidBattle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NavalBattle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBattle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="equipment.txt" />
-    <Text Include="units.txt" />
+    <Text Include="..\Debug\equipment.txt" />
+    <Text Include="..\Debug\units.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="playerType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monsterType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSVRow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="faction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="outcome.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="defenses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unitType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="townStats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Treasure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="General.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Roster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterBattle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SiegeBattle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RaidBattle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NavalBattle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBattle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="randomCalculation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="outputOperators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
