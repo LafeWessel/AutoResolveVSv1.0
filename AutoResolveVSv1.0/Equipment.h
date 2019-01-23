@@ -48,3 +48,12 @@ public:
 	void setCValue(int CValI) { coinValue = CValI; };
 	void setDebugBool(bool debugI) { debug = debugI; }
 };
+
+ostream& operator<<(ostream& os, Equipment& eqpt) //output operator for Equipment class
+{
+	return os << eqpt.getName() << endl
+		<< "Effect: " << eqpt.getEffect() << endl
+		<< "Range: " << eqpt.getRange() << endl
+		<< "EquipType: " << eqpt.getEqType() << endl
+		<< "Coin Value: " << eqpt.getCValue() << endl;
+}

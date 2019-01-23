@@ -153,8 +153,5 @@
     <ClInclude Include="randomCalculation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="outputOperators.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

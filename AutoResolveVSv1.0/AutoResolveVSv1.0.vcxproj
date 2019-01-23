@@ -155,7 +155,6 @@
     <ClInclude Include="NavalBattle.h" />
     <ClInclude Include="NormalBattle.h" />
     <ClInclude Include="outcome.h" />
-    <ClInclude Include="outputOperators.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="playerType.h" />
     <ClInclude Include="RaidBattle.h" />

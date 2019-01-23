@@ -168,3 +168,4 @@ Equipment Treasure::findTreasure(int bonus) //Used to determine battle loot resu
 	}
 	if (debug) { cout << " findTreasure() finished" << endl; }
 }
+

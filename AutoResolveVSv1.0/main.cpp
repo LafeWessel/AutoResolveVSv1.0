@@ -105,6 +105,10 @@ TODO-Add enum class for equipment type
 
 TODO-Remove unnecessary includes from class header files.
 
+TODO-Move prediction functions to their own header file.
+
+TODO-Maybe move operator functions to relevant header files.
+
 */
 
 
