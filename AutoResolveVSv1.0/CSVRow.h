@@ -18,5 +18,8 @@ public:
 	string const& operator[](size_t index) const;
 	size_t size() const;
 	void readNextRow(istream& str);
-	
+	//friend istream& operator>>(istream& str, CSVRow& data);
+
 };
+
+istream& operator>>(istream& str, CSVRow& data);

@@ -2,6 +2,7 @@
 #include "CSVRow.h"
 #include "Equipment.h"
 #include "randomCalculation.h"
+#include "CSVDataReader.h"
 #include <algorithm>
 #include <cmath>
 
@@ -25,6 +26,8 @@ private:
 	vector<Equipment> follower;
 	vector<Equipment> dragon;
 	bool debug;
+
+	void sortEquipment(vector<Equipment> toSort);
 
 public:
 	~Treasure();
@@ -72,3 +75,4 @@ public:
 
 	void initializeTreasure(); //This grabs all the data from the file containing the equipment
 };
+

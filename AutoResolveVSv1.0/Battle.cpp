@@ -6,8 +6,8 @@ Battle::~Battle()
 
 Battle::Battle() //void initializer
 {
-	attacker = Player{};
-	defender = Player{};
+	attacker = Player();
+	defender = Player();
 	defender.setPlayerType(playerType::defender);
 	result = outcome::Draw;
 	output = true;

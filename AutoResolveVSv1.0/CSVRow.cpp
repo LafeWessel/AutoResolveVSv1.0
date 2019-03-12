@@ -34,9 +34,6 @@ string const& CSVRow::operator[](size_t index) const
 	return m_data[index];
 }
 
-//This function allows you to just do "file >> row" to read a
-//row from a file and uses the CSVRow class to split it into a
-//vector of strings
 istream& operator>>(istream& str, CSVRow& data)
 {
 	data.readNextRow(str);

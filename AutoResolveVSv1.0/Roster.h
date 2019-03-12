@@ -3,8 +3,10 @@
 #include "faction.h"
 #include "Unit.h"
 #include "unitType.h"
+#include "CSVDataReader.h"
 #include <algorithm>
 #include <cmath>
+
 
 #include <array>
 #include <vector>
@@ -39,5 +41,5 @@ public:
 	Unit getUnitAtIndex(int index) { return factionUnits[index]; };
 
 	void buildRoster();
-
 };
+
