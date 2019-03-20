@@ -161,7 +161,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="playerType.h" />
     <ClInclude Include="RaidBattle.h" />
-    <ClInclude Include="randomCalculation.h" />
     <ClInclude Include="Roster.h" />
     <ClInclude Include="SiegeBattle.h" />
     <ClInclude Include="townStats.h" />

@@ -1,6 +1,93 @@
 #include "CSVDataReader.h"
 
+//Used when reading in from the units document
+faction intToFaction(int input)
+{
+	switch (input)
+	{
+	case 1:
+		return faction::rebel;
+		break;
+	case 2:
+		return faction::beladimir;
+		break;
+	case 3:
+		return faction::lerastir;
+		break;
+	case 4:
+		return faction::menoriad;
+		break;
+	default:
+		cerr << "invalid integer input." << endl;
+	}
+	return faction::rebel;
+}
 
+ostream& operator<<(ostream& os, faction& fact) //This outputs an integer as its corresponding faction name.
+{
+	switch (fact)
+	{
+	case(faction::rebel):
+		return os << "Rebel";
+		break;
+	case(faction::beladimir):
+		return os << "Beladimir";
+		break;
+	case(faction::lerastir):
+		return os << "Lerastir";
+		break;
+	case(faction::menoriad):
+		return os << "Menoriad";
+		break;
+	default:
+		return os << " No valid faction chosen " << endl;
+	}
+}
+
+
+
+
+
+
+
+//Used when reading in from the units document
+unitType intToUnitType(int input)
+{
+	switch (input)
+	{
+	case 1:
+		return unitType::Melee;
+		break;
+	case 2:
+		return unitType::Cavalry;
+		break;
+	case 3:
+		return unitType::Ranged;
+		break;
+	default:
+		cerr << "invalid integer input." << endl;
+	}
+	return unitType::Melee;
+}
+
+ostream& operator<<(ostream& os, unitType& type) //output formation for outcome class
+{
+	switch (type)
+	{
+	case(unitType::Melee):
+		return os << "Melee";
+		break;
+	case(unitType::Cavalry):
+		return os << "Cavalry";
+		break;
+	case(unitType::Ranged):
+		return os << "Ranged";
+		break;
+
+	default:
+		return os << " No valid unitType chosen " << endl;
+	}
+}
 
 
 CSVDataReader::CSVDataReader()
@@ -144,3 +231,4 @@ vector<Unit> CSVDataReader::readUnits(faction& fact)
 	}
 	return readUnits;
 }
+

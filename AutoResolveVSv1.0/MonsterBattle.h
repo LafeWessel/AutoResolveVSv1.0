@@ -3,7 +3,6 @@
 #include "outcome.h"
 #include "Player.h"
 #include "Treasure.h"
-#include "randomCalculation.h"
 #include <algorithm>
 #include <cmath>
 
@@ -47,3 +46,4 @@ public:
 	void setOutput(bool outputI) { output = outputI; };
 	void setDebugBool(bool debugI) { debug = debugI; };
 };
+

@@ -31,3 +31,4 @@ public:
 
 	void setTownLevel(int townLevelI) { townLevel = townLevelI; };
 };
+

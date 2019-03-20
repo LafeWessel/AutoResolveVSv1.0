@@ -8,12 +8,16 @@
 #include <array>
 #include <vector>
 #include <string>
+#include <chrono>
+#include <random>
 
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
 using namespace std;
+
+
 
 class Battle // siege, raid, normal and naval battles inherit from this class
 {
@@ -24,6 +28,7 @@ protected:
 	outcome result;
 	bool output;
 	bool debug;
+
 
 public:
 	~Battle();
@@ -49,6 +54,6 @@ public:
 	float battleCalculate(); //Calculates the battle, is almost always supplemented by other calculations in inherited classes
 };
 
-//usually 10 times between 1 and 10 (10,10) for battles
+
 
 

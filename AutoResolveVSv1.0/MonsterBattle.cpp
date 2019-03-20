@@ -1,5 +1,95 @@
 #include "MonsterBattle.h"
 
+
+
+int randomNumberMonster(int range) //Returns a random number between 1 and the given range
+{
+	typedef std::chrono::high_resolution_clock myclock;
+	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
+
+	int random = 0;
+	if (range == 0)
+	{
+		return 0;
+	}
+	uniform_int_distribution<int> dRange(1, abs(range));
+	random = dRange(generator);
+	return random;
+}
+
+//usually 10 times between 1 and 10 (10,10) for battles
+int calculateBattleRandomsMonster(int randomRolls, int randomRange) //Is used to calculate X number of times between 1 and Y
+{
+	int totalRand = 0;
+	for (int i = 0; i < randomRolls; i++)
+	{
+		totalRand += randomNumberMonster(randomRange);
+	}
+	return totalRand;
+}
+
+outcome determineOutcomeMonster(float endingTotal) //This determines the kind of outcome that occurs when a given battle result is passed in
+{
+	//All results are in relation to the attacker.
+	//Victory
+	if (endingTotal > 2)
+	{
+		if (endingTotal >= 20)
+		{
+			return outcome::Decisive_Victory;
+		}
+		else if (endingTotal >= 10)
+		{
+			return outcome::Heroic_Victory;
+		}
+		else
+		{
+			return outcome::Close_Victory;
+		}
+	}
+	//Defeat
+	else if (endingTotal < -2)
+	{
+		if (endingTotal <= -20)
+		{
+			return outcome::Crushing_Defeat;
+		}
+		else if (endingTotal <= -10)
+		{
+			return outcome::Valiant_Defeat;
+		}
+		else
+		{
+			return outcome::Close_Defeat;
+		}
+	}
+	//Draw
+	else
+	{
+		return outcome::Draw;
+	}
+}
+
+//Gives the given state of a general at the end of a battle, range 0-2 for each state
+string outputGenStateMonster(int state)
+{
+	switch (state)
+	{
+	case(0):
+		return "Unharmed";
+		break;
+	case(1):
+		return "Wounded for 3 turns";
+		break;
+	case(2):
+		return "Slain";
+		break;
+	default:
+		return " Invalid int passed";
+	}
+}
+
+
 MonsterBattle::~MonsterBattle()
 {
 }
@@ -27,10 +117,10 @@ void MonsterBattle::monsterOutput(vector<int>& totalCasualties) //Outputs inform
 	if (debug) { cout << "Calling battleOutput, MonsterBattle::monsterOutput" << endl; }
 	if (output)
 	{
-		cout << result << endl
+		cout << (int)result << endl
 			<< "Attacker Soldier Cas: " << totalCasualties[0] << endl
 			<< "Attacker Unit Cas: " << totalCasualties[1] << endl
-			<< "Attacker General is " << outputGenState(totalCasualties[2]) << endl;
+			<< "Attacker General is " << outputGenStateMonster(totalCasualties[2]) << endl;
 		if ((int)result < 4)
 		{
 			cout << "Coins gained: " << monster.getCoinReward() << endl;
@@ -48,7 +138,7 @@ void MonsterBattle::monsterCasualties(vector<int>& attackerCasVec) //Calculates 
 	int attSoldierTotal = attacker.getCavalry() + attacker.getMelee() + attacker.getRanged();
 	if (debug) { cout << "Attacking soldier total:" << attSoldierTotal << " MonsterBattle::monsterCasualties" << endl; }
 	//Calculates the soldier and unit casualties
-	attSoldierCasualties = calculateBattleRandoms(((int)result + 1), attSoldierTotal / 10);
+	attSoldierCasualties = calculateBattleRandomsMonster(((int)result + 1), attSoldierTotal / 10);
 	if (debug) { cout << "Attacking soldier casualties:" << attSoldierCasualties << " MonsterBattle::monsterCasualties" << endl; }
 	int attUnitCasualties = attSoldierCasualties / 7 - 1;
 	if (attSoldierCasualties < 0)
@@ -59,11 +149,11 @@ void MonsterBattle::monsterCasualties(vector<int>& attackerCasVec) //Calculates 
 
 	//Determines if the general is wounded or killed
 	if (debug) { cout << "Attacking soldier total:" << attSoldierTotal << " MonsterBattle::monsterCasualties" << endl; }
-	if (randomNumber(10) < 2)
+	if (randomNumberMonster(10) < 2)
 	{
 		attGenWound = 1;
 		if (debug) { cout << "General State set to 1(Wounded) MonsterBattle::monsterCasualties" << endl; }
-		if (randomNumber(10) < 2)
+		if (randomNumberMonster(10) < 2)
 		{
 			attGenWound = 2;
 			if (debug) { cout << "General State set to 2(Slain) MonsterBattle::monsterCasualties" << endl; }
@@ -91,9 +181,9 @@ void MonsterBattle::calculateMonster()
 
 
 	//Adds random values to randomize the battle outcome more
-	attTotal += calculateBattleRandoms(10, 10);
+	attTotal += calculateBattleRandomsMonster(10, 10);
 	if (debug) { cout << "attacker sum with randoms:" << attTotal << " MonsterBattle::calculateMonster" << endl; }
-	monTotal += calculateBattleRandoms(10, 10);
+	monTotal += calculateBattleRandomsMonster(10, 10);
 	if (debug) { cout << "monster sum with randoms:" << monTotal << " MonsterBattle::calculateMonster" << endl; }
 
 	//Adds rank and autoresolve bonuses from general and monster
@@ -105,8 +195,8 @@ void MonsterBattle::calculateMonster()
 	if (debug) { cout << "monster sum with monster autobonus: " << monTotal << " MonsterBattle::calculateMonster" << endl; }
 
 	//Determines outcome and casualties then calls output function
-	result = determineOutcome(attTotal - monTotal);
-	if (debug) { cout << "Outcome returned from determineOutcome:" << result << " MonsterBattle::calculateMonster" << endl; }
+	result = determineOutcomeMonster(attTotal - monTotal);
+	if (debug) { cout << "Outcome returned from determineOutcome:" << (int)result << " MonsterBattle::calculateMonster" << endl; }
 	vector<int> casualty{};
 	monsterCasualties(casualty);
 	if (debug) { cout << "monsterCasualties called MonsterBattle::calculateMonster" << endl; }

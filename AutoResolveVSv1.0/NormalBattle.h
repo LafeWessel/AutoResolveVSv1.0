@@ -25,3 +25,4 @@ public:
 	void calculateNormal();
 	//needs no specific getters and setters
 };
+

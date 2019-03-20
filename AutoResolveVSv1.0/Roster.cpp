@@ -19,7 +19,7 @@ Roster::Roster(vector<Unit> unitsI, faction factI) //initializer
 
 vector<Unit> Roster::getUnitsOfType(unitType& type) //gets all of the units of a specific type
 {
-	if (debug) { cout << "Roster::getUnitsOfType called for unitType: " << type << endl; }
+	if (debug) { cout << "Roster::getUnitsOfType called for unitType: " << (int)type << endl; }
 	vector<Unit> unitsI = {};
 	for (int i = 0; i < factionUnits.size(); i++)
 	{

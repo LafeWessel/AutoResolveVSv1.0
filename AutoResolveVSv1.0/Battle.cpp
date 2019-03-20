@@ -1,5 +1,101 @@
 #include "Battle.h"
 
+typedef std::chrono::high_resolution_clock myclock;
+std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
+
+//Gives the given state of a general at the end of a battle, range 0-2 for each state
+string outputGenState(int state)
+{
+	switch (state)
+	{
+	case(0):
+		return "Unharmed";
+		break;
+	case(1):
+		return "Wounded for 3 turns";
+		break;
+	case(2):
+		return "Slain";
+		break;
+	default:
+		return " Invalid int passed";
+	}
+}
+
+ostream& operator<<(ostream& os, outcome& end) //Output formation for outcome class
+{
+	switch (end)
+	{
+	case(outcome::Decisive_Victory):
+		return os << "Decisive Victory";
+		break;
+	case(outcome::Heroic_Victory):
+		return os << "Heroic Victory";
+		break;
+	case(outcome::Close_Victory):
+		return os << "Close Victory";
+		break;
+	case(outcome::Draw):
+		return os << "Draw";
+		break;
+	case(outcome::Close_Defeat):
+		return os << "Close Defeat";
+		break;
+	case(outcome::Valiant_Defeat):
+		return os << "Valiant Defeat";
+		break;
+	case(outcome::Crushing_Defeat):
+		return os << "Crushing Defeat";
+		break;
+	default:
+		return os << " No valid outcome chosen " << endl;
+	}
+}
+
+int randomNumberBattle(int range) //Returns a random number between 1 and the given range
+{
+	int random = 0;
+	if (range == 0)
+	{
+		return 0;
+	}
+	uniform_int_distribution<int> dRange(1, abs(range));
+	random = dRange(generator);
+	return random;
+}
+
+ostream& operator<<(ostream& os, Equipment& eqpt) //output operator for Equipment class
+{
+	return os << eqpt.getName() << endl
+		<< "Effect: " << eqpt.getEffect() << endl
+		<< "Range: " << eqpt.getRange() << endl
+		<< "EquipType: " << eqpt.getEqType() << endl
+		<< "Coin Value: " << eqpt.getCValue() << endl;
+}
+
+//usually 10 times between 1 and 10 (10,10) for battles
+int calculateBattleRandoms(int randomRolls, int randomRange) //Is used to calculate X number of times between 1 and Y
+{
+	int totalRand = 0;
+	for (int i = 0; i < randomRolls; i++)
+	{
+		totalRand += randomNumberBattle(randomRange);
+	}
+	return totalRand;
+}
+
+//Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
+int randomNumberCas(int range)
+{
+
+	if (range == 0)
+	{
+		return 0;
+	}
+	uniform_int_distribution<int> dRange(0, abs(range));
+	return dRange(generator);
+}
+
 Battle::~Battle()
 {
 }
@@ -325,22 +421,22 @@ void Battle::CalculateCas(vector<vector<int>>& totalCasualties) //calculates the
 	if (debug) { cout << "defender unit casualty total: " << defUnitCasualties << " Battle::CalculateCas" << endl; }
 
 	//Determines whether or not either of the generals are wounded/killed
-	if (randomNumber(10) < 2)
+	if (randomNumberBattle(10) < 2)
 	{
 		attGenWound = 1;
 		if (debug) { cout << "attacker General state set to 1(Wounded) Battle::CalculateCas" << endl; }
-		if (randomNumber(10) < 2)
+		if (randomNumberBattle(10) < 2)
 		{
 			attGenWound = 2;
 			if (debug) { cout << "attacker General state set to 2(Slain) Battle::CalculateCas" << endl; }
 		}
 	}
 	else { if (debug) { cout << "attacker General unharmed" << endl; } }
-	if (randomNumber(10) < 2)
+	if (randomNumberBattle(10) < 2)
 	{
 		defGenWound = 1;
 		if (debug) { cout << "defender General state set to 1(Wounded) Battle::CalculateCas" << endl; }
-		if (randomNumber(10) < 2)
+		if (randomNumberBattle(10) < 2)
 		{
 			defGenWound = 2;
 			if (debug) { cout << "defender General state set to 2(Slain) Battle::CalculateCas" << endl; }

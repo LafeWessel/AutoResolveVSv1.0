@@ -17,6 +17,8 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <chrono>
+#include <random>
 
 #include "Battle.h"
 #include "CSVRow.h"
@@ -39,7 +41,6 @@
 #include "Treasure.h"
 #include "Unit.h"
 #include "unitType.h"
-#include "randomCalculation.h"
 
 using namespace std;
 
@@ -110,7 +111,49 @@ TODO-Maybe move operator functions to relevant header files.
 
 */
 
+//Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
+int randomNumberInt(int range)
+{
+	typedef std::chrono::high_resolution_clock myclock;
+	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
 
+	if (range == 0)
+	{
+		return 0;
+	}
+	uniform_int_distribution<int> dRange(0, abs(range));
+	return dRange(generator);
+}
+
+void outputIntAsOutcome(int choice) //This outputs an integer as its corresponding outcome enum class name.
+{
+	switch (choice)
+	{
+	case(1):
+		cout << "Decisive Victory";
+		break;
+	case(2):
+		cout << "Heroic Victory";
+		break;
+	case(3):
+		cout << "Close Victory";
+		break;
+	case(4):
+		cout << "Draw";
+		break;
+	case(5):
+		cout << "Close Defeat";
+		break;
+	case(6):
+		cout << "Valiant Defeat";
+		break;
+	case(7):
+		cout << "Crushing Defeat";
+		break;
+	default:
+		cerr << " No valid outcome chosen " << endl;
+	}
+}
 
 int inputCheck(int toCheck, int highestPoint, int lowestPoint) //Checks integer input between 2 given bounds and clamps them
 {
@@ -199,7 +242,7 @@ void testSetup(Battle& battle, bool debug)
 	int randomIndex;
 	for (int i = 1; i < 20; i++)
 	{
-		randomIndex = randomNumberCas(size - 1);
+		randomIndex = randomNumberInt(size - 1);
 		if (debug) { cout << "randomIndex generated: " << randomIndex << endl; }
 		read = beladimirRoster.getUnitAtIndex(randomIndex);
 		if (debug) { cout << "Unit grabbed: " << read.getName() << endl; }
@@ -404,7 +447,7 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 	int randomIndex;
 	for (int i = 1; i < 20; i++)
 	{
-		randomIndex = randomNumberCas(size - 1);
+		randomIndex = randomNumberInt(size - 1);
 		if (debug) { cout << "randomIndex generated: " << randomIndex << endl; }
 		read = beladimirRoster.getUnitAtIndex(randomIndex);
 		if (debug) { cout << "Unit grabbed: " << read.getName() << endl; }
@@ -458,11 +501,6 @@ int main()
 {
 	bool debug = false;
 	if (debug) { cout << "Program started" << endl; }
-
-	//initializes seed for random number generation
-	myseed = myclock::now().time_since_epoch().count();
-	generator.seed(myseed);
-	if (debug) { cout << "Time-based seed for random numbers initialized" << endl; }
 
 	NormalBattle normal{};
 	if (debug) { cout << "Normal battle initialized void" << endl; }

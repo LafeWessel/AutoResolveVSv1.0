@@ -49,21 +49,3 @@ public:
 	void setDebugBool(bool debugI) { debug = debugI; }
 
 };
-//Gives the given state of a general at the end of a battle, range 0-2 for each state
-string outputGenState(int state)
-{
-	switch (state)
-	{
-	case(0):
-		return "Unharmed";
-		break;
-	case(1):
-		return "Wounded for 3 turns";
-		break;
-	case(2):
-		return "Slain";
-		break;
-	default:
-		return " Invalid int passed";
-	}
-}

@@ -40,3 +40,4 @@ public:
 	void setSiegeTowers(int siegeTowersI) { siegeTowers = siegeTowersI; };
 	void setTownLevel(int townLevelI) { townLevel = townLevelI; };
 };
+

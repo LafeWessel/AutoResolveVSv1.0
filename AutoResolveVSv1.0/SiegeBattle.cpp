@@ -1,5 +1,45 @@
 #include "SiegeBattle.h"
-
+outcome determineOutcomeSiege(float endingTotal) //This determines the kind of outcome that occurs when a given battle result is passed in
+{
+	//All results are in relation to the attacker.
+	//Victory
+	if (endingTotal > 2)
+	{
+		if (endingTotal >= 20)
+		{
+			return outcome::Decisive_Victory;
+		}
+		else if (endingTotal >= 10)
+		{
+			return outcome::Heroic_Victory;
+		}
+		else
+		{
+			return outcome::Close_Victory;
+		}
+	}
+	//Defeat
+	else if (endingTotal < -2)
+	{
+		if (endingTotal <= -20)
+		{
+			return outcome::Crushing_Defeat;
+		}
+		else if (endingTotal <= -10)
+		{
+			return outcome::Valiant_Defeat;
+		}
+		else
+		{
+			return outcome::Close_Defeat;
+		}
+	}
+	//Draw
+	else
+	{
+		return outcome::Draw;
+	}
+}
 SiegeBattle::~SiegeBattle()
 {
 }
@@ -42,8 +82,8 @@ void SiegeBattle::calculateSiege() //combines base Battle calculation with the e
 	if (debug) { cout << "Overall total + siegeTowers(" << siegeTowers << ") * 4 SiegeBattle::calculateSiege" << endl; }
 
 	//Determines the outcome and calculates the casualties
-	result = determineOutcome(overallTot);
-	if (debug) { cout << "Outcome returned from determineOutcome:" << result << " SiegeBattle::calculateSiege" << endl; }
+	result = determineOutcomeSiege(overallTot);
+	if (debug) { cout << "Outcome returned from determineOutcome:" << (int)result << " SiegeBattle::calculateSiege" << endl; }
 	vector<vector<int>> totalCasualties = {};
 	CalculateCas(totalCasualties);
 	if (debug) { cout << "CalculateCas called SiegeBattle::calculateSiege" << endl; }

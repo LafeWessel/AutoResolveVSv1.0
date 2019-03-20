@@ -153,9 +153,6 @@
     <ClInclude Include="NormalBattle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="randomCalculation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="operators.h">
       <Filter>Header Files</Filter>
     </ClInclude>

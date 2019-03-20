@@ -32,3 +32,4 @@ public:
 	void setAttackerShips(int attShipsI) { attackerShips = attShipsI; };
 	void setDefenderShips(int defShipsI) { defenderShips = defShipsI; };
 };
+

@@ -1,5 +1,45 @@
 #include "RaidBattle.h"
-
+outcome determineOutcomeRaid(float endingTotal) //This determines the kind of outcome that occurs when a given battle result is passed in
+{
+	//All results are in relation to the attacker.
+	//Victory
+	if (endingTotal > 2)
+	{
+		if (endingTotal >= 20)
+		{
+			return outcome::Decisive_Victory;
+		}
+		else if (endingTotal >= 10)
+		{
+			return outcome::Heroic_Victory;
+		}
+		else
+		{
+			return outcome::Close_Victory;
+		}
+	}
+	//Defeat
+	else if (endingTotal < -2)
+	{
+		if (endingTotal <= -20)
+		{
+			return outcome::Crushing_Defeat;
+		}
+		else if (endingTotal <= -10)
+		{
+			return outcome::Valiant_Defeat;
+		}
+		else
+		{
+			return outcome::Close_Defeat;
+		}
+	}
+	//Draw
+	else
+	{
+		return outcome::Draw;
+	}
+}
 RaidBattle::~RaidBattle()
 {
 }
@@ -28,8 +68,8 @@ void RaidBattle::calculateRaid() //combines base Battle calculation with the ext
 	if (debug) { cout << "Overall total - (townLevel(" << townLevel.getLevel() << ") * 10) -10 RaidBattle::calculateRaid" << endl; }
 
 	//Finds outcome and gets casualties
-	result = determineOutcome(overallTot);
-	if (debug) { cout << "Outcome returned from determineOutcome:" << result << " RaidBattle::calculateRaid" << endl; }
+	result = determineOutcomeRaid(overallTot);
+	if (debug) { cout << "Outcome returned from determineOutcome:" << (int)result << " RaidBattle::calculateRaid" << endl; }
 	vector<vector<int>> totalCasualties = {};
 	CalculateCas(totalCasualties);
 	if (debug) { cout << "CalculateCas called RaidBattle::calculateRaid" << endl; }

@@ -1,5 +1,45 @@
 #include "NormalBattle.h"
-
+outcome determineOutcomeNormal(float endingTotal) //This determines the kind of outcome that occurs when a given battle result is passed in
+{
+	//All results are in relation to the attacker.
+	//Victory
+	if (endingTotal > 2)
+	{
+		if (endingTotal >= 20)
+		{
+			return outcome::Decisive_Victory;
+		}
+		else if (endingTotal >= 10)
+		{
+			return outcome::Heroic_Victory;
+		}
+		else
+		{
+			return outcome::Close_Victory;
+		}
+	}
+	//Defeat
+	else if (endingTotal < -2)
+	{
+		if (endingTotal <= -20)
+		{
+			return outcome::Crushing_Defeat;
+		}
+		else if (endingTotal <= -10)
+		{
+			return outcome::Valiant_Defeat;
+		}
+		else
+		{
+			return outcome::Close_Defeat;
+		}
+	}
+	//Draw
+	else
+	{
+		return outcome::Draw;
+	}
+}
 NormalBattle::~NormalBattle()
 {
 }
@@ -25,8 +65,8 @@ void NormalBattle::calculateNormal() //Uses base battle calculations and output
 	if (debug) { cout << "Overall total returned from battleCalculate NormalBattle::calculateNormal" << endl; }
 
 	//Finds result and determines casualties
-	result = determineOutcome(overallTot);
-	if (debug) { cout << "Outcome returned from determineOutcome:" << result << " NormalBattle::calculateNormal" << endl; }
+	result = determineOutcomeNormal(overallTot);
+	if (debug) { cout << "Outcome returned from determineOutcome:" << (int)result << " NormalBattle::calculateNormal" << endl; }
 	vector<vector<int>> totalCasualties = {};
 	CalculateCas(totalCasualties);
 	if (debug) { cout << "CalculateCas called NormalBattle::calculateNormal" << endl; }

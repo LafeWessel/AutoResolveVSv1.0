@@ -1,7 +1,6 @@
 #pragma once
 #include "CSVRow.h"
 #include "Equipment.h"
-#include "randomCalculation.h"
 #include "CSVDataReader.h"
 #include <algorithm>
 #include <cmath>
@@ -9,6 +8,8 @@
 #include <array>
 #include <vector>
 #include <string>
+#include <chrono>
+#include <random>
 
 #include <fstream>
 #include <iostream>
@@ -40,12 +41,12 @@ public:
 	};
 
 	//Subtracts 1 from the array so that it doesn't run off the end of the array of equipment
-	Equipment findArmor() { return armor[randomNumber(armor.size()) - 1]; };
-	Equipment findWeapon() { return weapon[randomNumber(weapon.size()) - 1]; };
-	Equipment findTrinket() { return trinket[randomNumber(trinket.size()) - 1]; };
-	Equipment findBanner() { return banner[randomNumber(banner.size()) - 1]; };
-	Equipment findDragonEq() { return dragon[randomNumber(dragon.size()) - 1]; };
-	Equipment findFollower() { return follower[randomNumber(follower.size()) - 1]; };
+	Equipment findArmor();
+	Equipment findWeapon();
+	Equipment findTrinket();
+	Equipment findBanner();
+	Equipment findDragonEq();
+	Equipment findFollower();
 
 	Equipment findTreasure(int bonus); //Used at the end of battles to determine loot results
 

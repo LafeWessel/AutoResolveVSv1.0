@@ -1,5 +1,21 @@
 #include "Treasure.h"
 
+
+int randomNumberTreasure(int range) //Returns a random number between 1 and the given range
+{
+	
+	typedef std::chrono::high_resolution_clock myclock;
+	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
+	int random = 0;
+	if (range == 0)
+	{
+		return 0;
+	}
+	uniform_int_distribution<int> dRange(1, abs(range));
+	random = dRange(generator);
+	return random;
+}
+
 Treasure::~Treasure()
 {
 }
@@ -27,6 +43,36 @@ Treasure::Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<E
 	debug = false;
 }
 
+Equipment Treasure::findArmor()
+{
+	return armor[randomNumberTreasure(armor.size() - 1)];
+}
+
+Equipment Treasure::findBanner()
+{
+	return banner[randomNumberTreasure(banner.size() - 1)];
+}
+
+Equipment Treasure::findFollower()
+{
+	return follower[randomNumberTreasure(follower.size() - 1)];
+}
+
+Equipment Treasure::findDragonEq()
+{
+	return dragon[randomNumberTreasure(dragon.size() - 1)];
+}
+
+Equipment Treasure::findTrinket()
+{
+	return trinket[randomNumberTreasure(trinket.size() - 1)];
+}
+
+Equipment Treasure::findWeapon()
+{
+	return weapon[randomNumberTreasure(weapon.size() - 1)];
+}
+
 void Treasure::initializeTreasure()
 {
 	if (debug) { cout << "initializeTreasure() called." << endl; }
@@ -41,9 +87,9 @@ void Treasure::initializeTreasure()
 Equipment Treasure::findTreasure(int bonus) //Used to determine battle loot results
 {
 	if (debug) { cout << " findTreasure() called" << endl; }
-	if ((randomNumber(8) + bonus) >= 5)
+	if ((randomNumberTreasure(8) + bonus) >= 5)
 	{
-		switch (randomNumber(5))
+		switch (randomNumberTreasure(5))
 		{
 		case(1):
 			if (debug) { cout << " findArmor() returned" << endl; }
