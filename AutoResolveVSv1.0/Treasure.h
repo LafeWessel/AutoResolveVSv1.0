@@ -11,10 +11,10 @@
 #include <chrono>
 #include <random>
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
+//#include <fstream>
+//#include <iostream>
+//#include <sstream>
+//#include <stdexcept>
 using namespace std;
 class Treasure //This keeps all the equipment to allow for finding of specific equipment and battle loot calculation
 {

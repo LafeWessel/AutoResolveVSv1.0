@@ -40,6 +40,7 @@ outcome determineOutcomeSiege(float endingTotal) //This determines the kind of o
 		return outcome::Draw;
 	}
 }
+
 SiegeBattle::~SiegeBattle()
 {
 }

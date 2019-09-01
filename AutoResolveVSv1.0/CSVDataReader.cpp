@@ -44,12 +44,6 @@ ostream& operator<<(ostream& os, faction& fact) //This outputs an integer as its
 	}
 }
 
-
-
-
-
-
-
 //Used when reading in from the units document
 unitType intToUnitType(int input)
 {
@@ -99,6 +93,15 @@ CSVDataReader::~CSVDataReader()
 {
 }
 
+//Order of variables in Equipment file :
+//1. Type : A(Armor), W(Weapon), T(Trinket), B(Banner), F(Follower) (string / char)
+//2. Name(string)
+//3. Effect(s) (string)
+//4. Coin Value(int)
+//5. Index Value(int)
+//6. Autoresolve Bonus(int)
+//7. Range(int)
+
 vector<Equipment> CSVDataReader::readEquipment()
 {
 	vector<Equipment> readEquip{};
@@ -131,7 +134,7 @@ vector<Equipment> CSVDataReader::readEquipment()
 	string theAutoBonus;
 	string theRange;
 
-	//Reads the equipment file and puts equipment in the correct vectors then initializes the treasure
+	//Reads the equipment file and puts equipment's values in the correct vectors then initializes the treasure
 	while (file >> row)
 	{
 		if (debug) { cout << "Starting to read." << endl; }
@@ -164,6 +167,13 @@ vector<Equipment> CSVDataReader::readEquipment()
 	return readEquip;
 }
 
+//Order of Variables in Units file :
+//1. Faction : 1, 2, 3 or 4, follows the enum class defined below(int)
+//2. Name(string)
+//3. Type : Melee(1), Cavalry(2) or Ranged(3) (int)
+//4. Autoresolve Bonus(int)
+//5. Soldiers in each unit(int)
+//All variables are comma - separated, so there must be no extraneous commas.
 vector<Unit> CSVDataReader::readUnits(faction& fact)
 {
 	if (debug) { cout << "Faction selected: " << fact << endl; }
@@ -213,6 +223,8 @@ vector<Unit> CSVDataReader::readUnits(faction& fact)
 		if (debug) { cout << "unitRead ARBonus set to : " << stoi(row[3]) << endl; }
 		unitRead.setSoldiersPerUnit(stoi(row[4]));
 		if (debug) { cout << "unitRead soldiersPerUnit set to : " << stoi(row[4]) << endl; }
+		unitRead.setCurrentSoldiers(stoi(row[4]));
+		if (debug) { cout << "unitRead currentSoldiers set to : " << stoi(row[4]) << endl; }
 		unitRead.setFaction(Faction);
 		if (debug) { cout << "unitRead Faction set to : " << Faction << endl; }
 		unitRead.setUnitType(UnitType);

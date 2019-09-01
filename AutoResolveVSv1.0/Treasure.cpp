@@ -32,7 +32,8 @@ Treasure::Treasure() //void initializer
 }
 
 //initializer
-Treasure::Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI, vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI)
+Treasure::Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI,
+	vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI)
 {
 	armor = armorI;
 	weapon = weaponI;
@@ -128,29 +129,41 @@ void Treasure::sortEquipment(vector<Equipment> toSort)
 {
 	for (int i = 0; i < toSort.size(); i++)
 	{
-		if (toSort[i].getEqType() == "Armor")
+		string equipmentType = toSort[i].getEqType();
+		cout << equipmentType << endl;
+		if (equipmentType == "Armor")
 		{
+			if (debug) { cout << "EquipmentType == Armor"; }
 			armor.push_back(toSort[i]);
 		}
-		else if (toSort[i].getEqType() == "Trinket")
+		else if (equipmentType == "Trinket")
 		{
+			if (debug) { cout << "EquipmentType == Trinket"; }
 			trinket.push_back(toSort[i]);
 		}
-		else if (toSort[i].getEqType() == "Banner")
+		else if (equipmentType == "Banner")
 		{
+			if (debug) { cout << "EquipmentType == Banner"; }
 			banner.push_back(toSort[i]);
 		}
-		else if (toSort[i].getEqType() == "Weapon")
+		else if (equipmentType == "Weapon")
 		{
+			if (debug) { cout << "EquipmentType == Weapon"; }
 			weapon.push_back(toSort[i]);
 		}
-		else if (toSort[i].getEqType() == "Follower")
+		else if (equipmentType == "Follower")
 		{
+			if (debug) { cout << "EquipmentType == Follower"; }
 			follower.push_back(toSort[i]);
+		}
+		else if (equipmentType == "Dragon")
+		{
+			if (debug) { cout << "EquipmentType == Dragon"; }
+			dragon.push_back(toSort[i]);
 		}
 		else
 		{
-			cerr << "no armor type found" << endl;
+			cerr << "no armor type found, "<< equipmentType <<" returned" << endl;
 		}
 	}
 }

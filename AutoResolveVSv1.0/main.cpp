@@ -95,8 +95,6 @@ TODO-implement playerType enum class
 
 TODO-Write test functions
 
-TODO-Add way for the autoresolve bonuses of the units to be changed when soldiers are lost from a unit
-
 TODO-Refactor parts of the battleTest functions into separate functions
 
 TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
@@ -282,6 +280,7 @@ void battleTest(int tests, NormalBattle& battle, bool debug)
 		if (debug) { cout << "Attacker units in vector: " << battle.getAttacker().getPlayerUnits().size() << endl; }
 		if (debug) { cout << "Defender units in vector: " << battle.getDefender().getPlayerUnits().size() << endl; }
 		predictionOutput(resultsRaw);
+		
 	}
 	else
 	{
@@ -294,6 +293,7 @@ void battleTest(int tests, NormalBattle& battle, bool debug)
 			norm.calculateNormal();
 			resultsRaw.push_back((int)norm.getEnding());
 			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Normal Battle results:" << endl;
 		predictionOutput(resultsRaw);
@@ -339,6 +339,7 @@ void battleTest(int tests, SiegeBattle& battle, bool debug)
 			norm.calculateSiege();
 			resultsRaw.push_back((int)norm.getEnding());
 			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Siege Battle results:" << endl;
 		predictionOutput(resultsRaw);
@@ -377,6 +378,7 @@ void battleTest(int tests, RaidBattle& battle, bool debug)
 			norm.calculateRaid();
 			resultsRaw.push_back((int)norm.getEnding());
 			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Raid Battle results:" << endl;
 		predictionOutput(resultsRaw);
@@ -416,6 +418,7 @@ void battleTest(int tests, NavalBattle& battle, bool debug)
 			norm.calculateNaval();
 			resultsRaw.push_back((int)norm.getEnding());
 			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Naval Battle results:" << endl;
 		predictionOutput(resultsRaw);
@@ -488,6 +491,7 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 			norm.calculateMonster();
 			resultsRaw.push_back((int)norm.getEnding());
 			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Monster Battle results:" << endl;
 		predictionOutput(resultsRaw);
@@ -496,10 +500,10 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 }
 
 
-//Called on program start. At the moment, it only predicts the results from each kind of battle.
+//Called on program start. At the moment, it only calculates the results from each kind of battle.
 int main()
 {
-	bool debug = false;
+	bool debug = true;
 	if (debug) { cout << "Program started" << endl; }
 
 	NormalBattle normal{};
@@ -512,7 +516,7 @@ int main()
 	if (debug) { cout << "Naval battle initialized void" << endl; }
 	MonsterBattle monster{};
 	if (debug) { cout << "Monster battle initialized void" << endl; }
-	int tests = 10;
+	int tests = 1;
 	if (debug) { cout << "Tests set to: " << tests << endl; }
 
 	battleTest(tests, normal, debug);

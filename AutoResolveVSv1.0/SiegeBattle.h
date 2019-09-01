@@ -1,6 +1,7 @@
 #pragma once
 #include "Battle.h"
 #include "townStats.h"
+#include "Player.h"
 #include <algorithm>
 #include <cmath>
 

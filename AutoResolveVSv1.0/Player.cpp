@@ -8,7 +8,7 @@ Player::Player() //void initializer
 	Melee = 0;
 	Cavalry = 0;
 	Ranged = 0;
-	general = General{};
+	general = General();
 	AdvCombatDeck = false;
 	Fact = faction::rebel;
 	debug = false;

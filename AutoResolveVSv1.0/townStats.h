@@ -3,20 +3,20 @@
 #include <algorithm>
 #include <cmath>
 
-#include <array>
-#include <vector>
-#include <string>
+//#include <array>
+//#include <vector>
+//#include <string>
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
+//#include <fstream>
+//#include <iostream>
+//#include <sstream>
+//#include <stdexcept>
 using namespace std;
 class townStats //Is used in raid and siege battles to keep data on the town
 {
 private:
 	int level;
-	int supplies; //These are used more in Raid battles and can be sold during campaigns
+	int supplies; //These are used more in Raid battles and can be used during campaigns
 	defenses townDefense;
 	bool debug;
 

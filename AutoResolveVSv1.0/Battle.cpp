@@ -186,32 +186,33 @@ void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end
 	while (assignedSoldierCasualties <= totalCasualties[0][0])
 	{
 		//This makes the iterator skip units that have already lost all their soldiers.
-		while (attackerUnits[i].getSoldiersPerUnit() == 0)
+		while (attackerUnits[i].getCurrentSoldiers() == 0)
 		{
 			i++;
 		}
 		//Determines the amount of soldiers lost
-		//If the unit casualties is maxed out, it makes sure that the unit loses 1 less than it's total number of soldiers at max; 0 if there is 1 soldier only
+		//If the unit casualties is maxed out, it makes sure that the unit loses 1 less than it's total number of soldiers at max; 
+		//0 if there is 1 soldier only
 		if (assignedUnitCasualties >= totalCasualties[0][1])
 		{
-			if (attackerUnits[i].getSoldiersPerUnit() == 1)
+			if (attackerUnits[i].getCurrentSoldiers() == 1)
 			{
 				cas = 0;
 			}
 			else
 			{
-				cas = randomNumberCas(attackerUnits[i].getSoldiersPerUnit() - 1);
+				cas = randomNumberCas(attackerUnits[i].getCurrentSoldiers() - 1);
 			}
 		}
 		else
 		{
-			cas = randomNumberCas(attackerUnits[i].getSoldiersPerUnit());
+			cas = randomNumberCas(attackerUnits[i].getCurrentSoldiers());
 		}
 
 		//Subtracts the casualties from the amount of soldiers in the unit and declares if they have fully perished
-		attackerUnits[i].setSoldiersPerUnit(attackerUnits[i].getSoldiersPerUnit() - cas);
+		attackerUnits[i].setCurrentSoldiers(attackerUnits[i].getCurrentSoldiers() - cas);
 
-		if (attackerUnits[i].getSoldiersPerUnit() == 0)
+		if (attackerUnits[i].getCurrentSoldiers() == 0)
 		{
 			if (debug) { cout << assignedSoldierCasualties << " " << attackerUnits[i].getName() << " completely destroyed." << endl; }
 			assignedUnitCasualties++;
@@ -241,7 +242,7 @@ void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end
 	vector<Unit> attackerUnitsWithCasualties = {};
 	for (int i = 0; i < attackerUnits.size() - 1; i++)
 	{
-		if (attackerUnits[i].getSoldiersPerUnit() > 0)
+		if (attackerUnits[i].getCurrentSoldiers() > 0)
 		{
 			attackerUnitsWithCasualties.push_back(attackerUnits[i]);
 		}
@@ -264,7 +265,7 @@ void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end
 	while (assignedSoldierCasualties <= totalCasualties[1][0])
 	{
 		//This makes the iterator skip units that have already lost all their soldiers.
-		while (defenderUnits[i].getSoldiersPerUnit() == 0)
+		while (defenderUnits[i].getCurrentSoldiers() == 0)
 		{
 			i++;
 		}
@@ -272,24 +273,24 @@ void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end
 		//If the unit casualties is maxed out, it makes sure that the unit loses 1 less than it's total number of soldiers at max; 0 if there is 1 soldier only
 		if (assignedUnitCasualties >= totalCasualties[1][1])
 		{
-			if (defenderUnits[i].getSoldiersPerUnit() == 1)
+			if (defenderUnits[i].getCurrentSoldiers() == 1)
 			{
 				cas = 0;
 			}
 			else
 			{
-				cas = randomNumberCas(defenderUnits[i].getSoldiersPerUnit() - 1);
+				cas = randomNumberCas(defenderUnits[i].getCurrentSoldiers() - 1);
 			}
 		}
 		else
 		{
-			cas = randomNumberCas(defenderUnits[i].getSoldiersPerUnit());
+			cas = randomNumberCas(defenderUnits[i].getCurrentSoldiers());
 		}
 
 		//Subtracts the casualties from the amount of soldiers in the unit and declares if they have fully perished
-		defenderUnits[i].setSoldiersPerUnit(defenderUnits[i].getSoldiersPerUnit() - cas);
+		defenderUnits[i].setCurrentSoldiers(defenderUnits[i].getCurrentSoldiers() - cas);
 
-		if (defenderUnits[i].getSoldiersPerUnit() == 0)
+		if (defenderUnits[i].getCurrentSoldiers() == 0)
 		{
 			if (debug) { cout << assignedSoldierCasualties << " " << defenderUnits[i].getName() << " completely destroyed." << endl; }
 			assignedUnitCasualties++;
@@ -319,7 +320,7 @@ void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end
 	vector<Unit> defenderUnitsWithCasualties = {};
 	for (int i = 0; i < defenderUnits.size() - 1; i++)
 	{
-		if (defenderUnits[i].getSoldiersPerUnit() > 0)
+		if (defenderUnits[i].getCurrentSoldiers() > 0)
 		{
 			defenderUnitsWithCasualties.push_back(defenderUnits[i]);
 		}
@@ -384,11 +385,11 @@ void Battle::CalculateCas(vector<vector<int>>& totalCasualties) //calculates the
 	//Totals the amount of soldiers in the armies
 	for (int i = 0; i < attacker.getPlayerUnits().size(); i++) //TODO redo how this gets the total soldiers; make it be a class fn and not have to loop here
 	{
-		attSoldierTotal += attacker.getPlayerUnits()[i].getSoldiersPerUnit();
+		attSoldierTotal += attacker.getPlayerUnits()[i].getCurrentSoldiers();
 	}
 	for (int i = 0; i < defender.getPlayerUnits().size(); i++)
 	{
-		defSoldierTotal += defender.getPlayerUnits()[i].getSoldiersPerUnit();
+		defSoldierTotal += defender.getPlayerUnits()[i].getCurrentSoldiers();
 	}
 
 	if (debug) { cout << "attacker soldier total: " << attSoldierTotal << " Battle::CalculateCas" << endl; }

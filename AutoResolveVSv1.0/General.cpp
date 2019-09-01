@@ -8,11 +8,11 @@ General::General() //void initializer
 {
 	rank = 1;
 	AutoResEqBonus = 0;
-	armor = Equipment{};
-	weapon = Equipment{};
-	trinket = Equipment{};
-	banner = Equipment{};
-	follower = Equipment{};
+	armor = Equipment();
+	weapon = Equipment();
+	trinket = Equipment();
+	banner = Equipment();
+	follower = Equipment();
 	debug = false;
 }
 
