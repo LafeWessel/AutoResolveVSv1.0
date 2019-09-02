@@ -18,6 +18,7 @@ private:
 
 public:
 	CSVDataReader();
+	CSVDataReader(bool debugI);
 	~CSVDataReader();	
 	
 	vector<Equipment> readEquipment();

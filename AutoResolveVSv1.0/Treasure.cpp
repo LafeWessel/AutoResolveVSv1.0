@@ -78,8 +78,12 @@ void Treasure::initializeTreasure()
 {
 	if (debug) { cout << "initializeTreasure() called." << endl; }
 
-	CSVDataReader reader;
+	CSVDataReader reader(debug);
+	if (debug) { cout << "CSVDataReader initialized" << endl; }
+
 	vector<Equipment> allEquipment = reader.readEquipment();
+	if (debug) { cout << "All equipment read" << endl; }
+
 	sortEquipment(allEquipment);
 	if (debug) { cout << " intitializeTreasure() finished" << endl; }
 	return;
@@ -129,41 +133,29 @@ void Treasure::sortEquipment(vector<Equipment> toSort)
 {
 	for (int i = 0; i < toSort.size(); i++)
 	{
-		string equipmentType = toSort[i].getEqType();
-		cout << equipmentType << endl;
-		if (equipmentType == "Armor")
+		switch (toSort[i].getEqType())
 		{
-			if (debug) { cout << "EquipmentType == Armor"; }
+		case (equipmentType::armor):
 			armor.push_back(toSort[i]);
-		}
-		else if (equipmentType == "Trinket")
-		{
-			if (debug) { cout << "EquipmentType == Trinket"; }
-			trinket.push_back(toSort[i]);
-		}
-		else if (equipmentType == "Banner")
-		{
-			if (debug) { cout << "EquipmentType == Banner"; }
-			banner.push_back(toSort[i]);
-		}
-		else if (equipmentType == "Weapon")
-		{
-			if (debug) { cout << "EquipmentType == Weapon"; }
+			break;
+		case (equipmentType::weapon):
 			weapon.push_back(toSort[i]);
-		}
-		else if (equipmentType == "Follower")
-		{
-			if (debug) { cout << "EquipmentType == Follower"; }
+			break;
+		case (equipmentType::trinket):
+			trinket.push_back(toSort[i]);
+			break;
+		case (equipmentType::banner):
+			banner.push_back(toSort[i]);
+			break;
+		case (equipmentType::follower):
 			follower.push_back(toSort[i]);
-		}
-		else if (equipmentType == "Dragon")
-		{
-			if (debug) { cout << "EquipmentType == Dragon"; }
+			break;
+		case (equipmentType::dragon):
 			dragon.push_back(toSort[i]);
-		}
-		else
-		{
-			cerr << "no armor type found, "<< equipmentType <<" returned" << endl;
+			break;
+		default:
+			cerr << "no armor type found, " << endl;
+			break;
 		}
 	}
 }

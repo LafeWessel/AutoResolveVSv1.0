@@ -120,6 +120,7 @@
     <ClCompile Include="CSVRow.cpp" />
     <ClCompile Include="defenses.cpp" />
     <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="equipmentType.cpp" />
     <ClCompile Include="faction.cpp" />
     <ClCompile Include="General.cpp" />
     <ClCompile Include="main.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="CSVRow.h" />
     <ClInclude Include="defenses.h" />
     <ClInclude Include="Equipment.h" />
+    <ClInclude Include="equipmentType.h" />
     <ClInclude Include="faction.h" />
     <ClInclude Include="General.h" />
     <ClInclude Include="Monster.h" />

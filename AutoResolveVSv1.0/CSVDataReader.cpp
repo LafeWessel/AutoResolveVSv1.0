@@ -44,6 +44,24 @@ ostream& operator<<(ostream& os, faction& fact) //This outputs an integer as its
 	}
 }
 
+equipmentType stringToEquipType(string& nameI) //converts a string to an equipmentType
+{
+	vector<string> names = { "Null","Armor","Weapon","Trinket","Banner","Dragon","Follower" };
+	vector<equipmentType> types = { equipmentType::null,equipmentType::armor,equipmentType::weapon,
+		equipmentType::trinket,equipmentType::banner,equipmentType::dragon,equipmentType::follower };
+
+	for (int i = 0; i < names.size(); i++) //Tests the input string against a list of the equipmentTypes
+	{
+		if (nameI == names[i])
+		{
+			return types[i];
+		}
+	}
+	cerr << "no equipmentType was discernable from " << nameI << endl;
+	return equipmentType::null;
+
+}
+
 //Used when reading in from the units document
 unitType intToUnitType(int input)
 {
@@ -88,6 +106,10 @@ CSVDataReader::CSVDataReader()
 {
 }
 
+CSVDataReader::CSVDataReader(bool debugI)
+{
+	debug = debugI;
+}
 
 CSVDataReader::~CSVDataReader()
 {
@@ -104,7 +126,11 @@ CSVDataReader::~CSVDataReader()
 
 vector<Equipment> CSVDataReader::readEquipment()
 {
+	if (debug) { cout << "readEquipment() called." << endl; }
+
 	vector<Equipment> readEquip{};
+	if (debug) { cout << "empty equipment vector initialized" << endl; }
+
 	ifstream file("equipment.txt");
 	//file.open("equipment");
 	if (debug) { cout << "equipment.txt tried" << endl; }
@@ -154,7 +180,7 @@ vector<Equipment> CSVDataReader::readEquipment()
 		theRange = row[6];
 		if (debug) { cout << "Range set to: " << row[6] << endl; }
 
-		Equipment inputEquip(theName, stoi(theAutoBonus), stoi(theIndexNumber), stoi(theRange), theEquipType, theEffect, stoi(theCoinValue));
+		Equipment inputEquip(theName, stoi(theAutoBonus), stoi(theIndexNumber), stoi(theRange), stringToEquipType(theEquipType), theEffect, stoi(theCoinValue));
 		readEquip.push_back(inputEquip);
 	}
 

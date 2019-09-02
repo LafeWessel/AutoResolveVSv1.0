@@ -85,27 +85,33 @@ All variables are comma-separated, so there must be no extraneous commas.
 /*
 TODO Section:
 
+High Priority:
+
 TODO-COMMENT EVERYTHING
 
+TODO-Rework Treasure so that it is not constantly reinitialized
+
+TODO-implement playerType enum class
+
+TODO-Add enum class for equipment type
+
+TODO-Create Prediction Class
+
+Low Priority:
 TODO-Find new way to output at the end of a battle that captures more data
 
 TODO-Refactor, especially the classes
 
-TODO-implement playerType enum class
-
-TODO-Write test functions
+TODO-Create testing
 
 TODO-Refactor parts of the battleTest functions into separate functions
 
-TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
-
-TODO-Add enum class for equipment type
-
 TODO-Remove unnecessary includes from class header files.
 
-TODO-Move prediction functions to their own header file.
+TODO-Put initializeTreasure() in Treasure initializer
 
-TODO-Maybe move operator functions to relevant header files.
+**Possibly Fixed**
+TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
 
 */
 

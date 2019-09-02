@@ -36,7 +36,7 @@ public:
 	Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI, vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI);
 	//The last item in the follower array is the empty/null equipment
 	Equipment noTreasure(){
-		Equipment empty{ "No Treasure",0,0,0,"","",0 };
+		Equipment empty{ "No Treasure",0,0,0,equipmentType::null,"",0 };
 		return empty;
 	};
 

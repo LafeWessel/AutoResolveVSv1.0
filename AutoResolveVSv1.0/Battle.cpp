@@ -22,6 +22,36 @@ string outputGenState(int state)
 	}
 }
 
+ostream& operator<<(ostream& os, equipmentType& end) //Output formation for equipmentType class
+{
+	switch (end)
+	{
+	case(equipmentType::weapon):
+		return os << "Weapon";
+		break;
+	case(equipmentType::armor):
+		return os << "Armor";
+		break;
+	case(equipmentType::trinket):
+		return os << "Trinket";
+		break;
+	case(equipmentType::banner):
+		return os << "Banner";
+		break;
+	case(equipmentType::dragon):
+		return os << "Dragon";
+		break;
+	case(equipmentType::follower):
+		return os << "Follower";
+		break;
+	case(equipmentType::null):
+		return os << "null";
+		break;
+	default:
+		return os << " No valid equipmentType chosen " << endl;
+	}
+}
+
 ostream& operator<<(ostream& os, outcome& end) //Output formation for outcome class
 {
 	switch (end)

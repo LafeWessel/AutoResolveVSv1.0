@@ -2,17 +2,17 @@
 #include "Battle.h"
 #include "townStats.h"
 #include "Player.h"
-#include <algorithm>
-#include <cmath>
+//#include <algorithm>
+//#include <cmath>
 
-#include <array>
-#include <vector>
-#include <string>
+//#include <array>
+//#include <vector>
+//#include <string>
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
+//#include <fstream>
+//#include <iostream>
+//#include <sstream>
+//#include <stdexcept>
 using namespace std;
 class SiegeBattle : public Battle
 {

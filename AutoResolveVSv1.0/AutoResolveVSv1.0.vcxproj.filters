@@ -84,6 +84,9 @@
     <ClCompile Include="CSVDataReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="equipmentType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Debug\equipment.txt" />
@@ -157,6 +160,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CSVDataReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="equipmentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
