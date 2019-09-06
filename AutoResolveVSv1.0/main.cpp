@@ -93,8 +93,6 @@ TODO-Rework Treasure so that it is not constantly reinitialized
 
 TODO-implement playerType enum class
 
-TODO-Add enum class for equipment type
-
 TODO-Create Prediction Class
 
 Low Priority:
@@ -108,7 +106,7 @@ TODO-Refactor parts of the battleTest functions into separate functions
 
 TODO-Remove unnecessary includes from class header files.
 
-TODO-Put initializeTreasure() in Treasure initializer
+TODO-Create a recursive auto-balancing feature to determine what is an equal distribution of power.
 
 **Possibly Fixed**
 TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
@@ -120,7 +118,7 @@ int randomNumberInt(int range)
 {
 	typedef std::chrono::high_resolution_clock myclock;
 	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
-
+	
 	if (range == 0)
 	{
 		return 0;
@@ -213,7 +211,7 @@ void predictionOutput(vector<int> rawResults)
 	}
 	else
 	{
-		cout << "Win - loss ratio: " << (victory / loss) << endl;
+		cout << "Win - loss ratio: " << abs(victory / loss) << endl;
 	}
 	return;
 }
@@ -527,9 +525,9 @@ int main()
 
 	battleTest(tests, normal, debug);
 	if (debug) { cout << "Tested Normal battle" << endl; }
-	battleTest(tests,siege, debug);
+	battleTest(tests, siege, debug);
 	if (debug) { cout << "Tested Siege battle" << endl; }
-	battleTest(tests,raid, debug);
+	battleTest(tests, raid, debug);
 	if (debug) { cout << "Tested Raid battle" << endl; }
 	battleTest(tests, naval, debug);
 	if (debug) { cout << "Tested Naval battle" << endl; }
@@ -538,7 +536,7 @@ int main()
 
 	if (debug) { cout << "Program finished" << endl; }
 
-	//This just keeps the console window open
+	//This keeps the console window open
 	cin.get();
 	return 0;
 }

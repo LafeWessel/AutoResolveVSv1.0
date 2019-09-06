@@ -37,7 +37,7 @@ private:
 public:
 	~Player();
 	Player();
-	Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI);
+	Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI, playerType type);
 
 	vector<Unit>& getPlayerUnits() { return playerUnits; };
 	int getMelee() { return Melee; };

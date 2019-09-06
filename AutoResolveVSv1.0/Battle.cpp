@@ -117,7 +117,6 @@ int calculateBattleRandoms(int randomRolls, int randomRange) //Is used to calcul
 //Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
 int randomNumberCas(int range)
 {
-
 	if (range == 0)
 	{
 		return 0;

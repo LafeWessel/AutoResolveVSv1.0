@@ -17,7 +17,7 @@ Player::Player() //void initializer
 }
 
 //initializer
-Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI)
+Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI, playerType type)
 {
 	setupUnitAutoresolveBonuses();
 	//automatically adds reinforcements onto the total melee, cavalry and ranged soldiers the class has
@@ -29,7 +29,7 @@ Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCo
 	Fact = FactI;
 	debug = false;
 	Reinforcements = ReinforceI;
-	player = playerType::attacker;
+	player = type;
 }
 
 void Player::setPlayerUnits(vector<Unit> unitsI)
