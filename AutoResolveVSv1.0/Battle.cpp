@@ -189,6 +189,13 @@ void Battle::treasureResults()
 	return;
 }
 
+//totalCasualties vector value guide
+//[0][x] = Attacker's values
+//[1][x] = Defender's values
+//[x][0] = # of soldiers that are casualties
+//[x][1] = # of units completely destroyed
+//[x][2] = # of Upgrades received
+//[x][3] = state of general's health
 void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end output
 {
 	treasureResults();

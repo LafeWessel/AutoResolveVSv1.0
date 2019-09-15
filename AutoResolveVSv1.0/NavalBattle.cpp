@@ -72,8 +72,9 @@ void NavalBattle::navalOutput(vector<vector<int>> totalCasualties) //uses base B
 		cout << "Attacker Ship Cas: " << totalCasualties[0][1] - 1 << endl;
 		cout << "Defender Ship Cas " << totalCasualties[1][1] - 1 << endl;
 	}
-	this->attackerShips = totalCasualties[0][1] - 1;
-	this->defenderShips = totalCasualties[1][1] - 1;
+	//Subtracts one from the amount of ships sunk for balancing reasons
+	this->attackerShips -= totalCasualties[0][1] - 1;
+	this->defenderShips -= totalCasualties[1][1] - 1;
 	if (debug) { cout << "NavalBattle::navalOutput finished" << endl; }
 	return;
 }
