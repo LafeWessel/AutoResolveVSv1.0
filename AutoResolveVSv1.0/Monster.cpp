@@ -1,4 +1,6 @@
 #include "Monster.h"
+extern Treasure treasure;
+
 
 Monster::~Monster()
 {
@@ -37,10 +39,10 @@ Monster::Monster(monsterType typeI) //initializer
 vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gained for killing a monster, based on info elsewhere
 {
 	if (debug) { cout << "getEquipRewards called" << endl; }
-	Treasure treasure{};
+	//Treasure treasure{};
 	if (debug) { cout << "treasure initialized" << endl; }
-	treasure.setDebugBool(debug);
-	treasure.initializeTreasure();
+	//treasure.setDebugBool(debug);
+	//treasure.initializeTreasure();
 	vector<Equipment> rewards = {};
 	switch (type)
 	{

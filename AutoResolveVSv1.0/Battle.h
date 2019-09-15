@@ -50,7 +50,7 @@ public:
 
 	void treasureResults(); //Determines whether or not loot is found at the end of a battle.
 	void CalculateCas(vector<vector<int>>& totalCasualties); //Determines the amount of casualties at the end of a battle
-	void battleOutput(vector<vector<int>> totalCasualties); //Output at battle, normally supplemented by other output in inherited classes
+	void battleOutput(vector<vector<int>>& totalCasualties); //Output at battle, normally supplemented by other output in inherited classes
 	float battleCalculate(); //Calculates the battle, is almost always supplemented by other calculations in inherited classes
 };
 

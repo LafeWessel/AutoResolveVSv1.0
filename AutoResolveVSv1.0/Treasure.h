@@ -50,12 +50,12 @@ public:
 
 	Equipment findTreasure(int bonus); //Used at the end of battles to determine loot results
 
-	Equipment getArmorAtIndex(int index) { return armor[index - 1]; };
-	Equipment getWeaponAtIndex(int index) { return weapon[index - 1]; };
-	Equipment getTrinketAtIndex(int index) { return trinket[index - 1]; };
-	Equipment getBannerAtIndex(int index) { return banner[index - 1]; };
-	Equipment getFollowerAtIndex(int index) { return follower[index - 1]; };
-	Equipment getDragonAtIndex(int index) { return dragon[index - 1]; };
+	Equipment getArmorAtIndex(int index) { return armor[(double)index - 1]; };
+	Equipment getWeaponAtIndex(int index) { return weapon[(double)index - 1]; };
+	Equipment getTrinketAtIndex(int index) { return trinket[(double)index - 1]; };
+	Equipment getBannerAtIndex(int index) { return banner[(double)index - 1]; };
+	Equipment getFollowerAtIndex(int index) { return follower[(double)index - 1]; };
+	Equipment getDragonAtIndex(int index) { return dragon[(double)index - 1]; };
 
 	vector<Equipment> getArmorVector() { return armor; };
 	vector<Equipment> getWeaponVector() { return weapon; };

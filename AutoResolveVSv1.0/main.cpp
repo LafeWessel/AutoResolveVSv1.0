@@ -89,8 +89,6 @@ High Priority:
 
 TODO-COMMENT EVERYTHING
 
-TODO-Rework Treasure so that it is not constantly reinitialized
-
 TODO-implement playerType enum class
 
 TODO-Create Prediction Class
@@ -112,6 +110,9 @@ TODO-Create a recursive auto-balancing feature to determine what is an equal dis
 TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
 
 */
+
+//Initializes Treasure as global class
+Treasure treasure{};
 
 //Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
 int randomNumberInt(int range)
@@ -219,12 +220,12 @@ void predictionOutput(vector<int> rawResults)
 void testSetup(Battle& battle, bool debug)
 {
 	if (debug) { cout << "test setup called" << endl; }
-	Treasure stuff{};
-	stuff.setDebugBool(debug);
-	stuff.initializeTreasure();
+	//Treasure treasure{};
+	//treasure.setDebugBool(debug);
+	//treasure.initializeTreasure();
 	if (debug) { cout << "Treasure initialized" << endl; }
 
-	General attackerGen{ 10,stuff.findArmor(),stuff.findWeapon(),stuff.findTrinket(),stuff.findFollower(),stuff.findFollower() };
+	General attackerGen{ 10,treasure.findArmor(),treasure.findWeapon(),treasure.findTrinket(),treasure.findFollower(),treasure.findFollower() };
 	attackerGen.setDebugBool(debug);
 	if (debug) { cout << "General initialized" << endl; }
 
@@ -432,13 +433,13 @@ void battleTest(int tests, NavalBattle& battle, bool debug)
 
 void battleTest(int tests, MonsterBattle& battle, bool debug)
 {
-	Treasure stuff{};
-	stuff.setDebugBool(debug);
-	stuff.initializeTreasure();
+	//Treasure treasure{};
+	//treasure.setDebugBool(debug);
+	//treasure.initializeTreasure();
 
 	Equipment equip{};
 	equip.setDebugBool(debug);
-	equip = stuff.findArmor();
+	equip = treasure.findArmor();
 	General attackerGen{ 10,equip,equip,equip,equip,equip };
 	attackerGen.setDebugBool(debug);
 	faction attFac = faction::beladimir;
@@ -508,6 +509,7 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 int main()
 {
 	bool debug = true;
+	treasure.setDebugBool(debug);
 	if (debug) { cout << "Program started" << endl; }
 
 	NormalBattle normal{};

@@ -1,4 +1,5 @@
 #include "Battle.h"
+extern Treasure treasure;
 
 typedef std::chrono::high_resolution_clock myclock;
 std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
@@ -152,21 +153,21 @@ Battle::Battle(Player attackerI, Player defenderI) // initializer
 void Battle::treasureResults()
 {
 	//Initializes and fills a treasure class
-	Treasure loot{};
-	loot.setDebugBool(debug);
-	loot.initializeTreasure();
+	//Treasure loot{};
+	//loot.setDebugBool(debug);
+	//loot.initializeTreasure();
 	if (debug) { cout << "Treasure initialized. Battle::treasureResults" << endl; }
 
 	//Goes to where any bonus for finding loot at the end of a battle should be and sets the bonus to it.
 	int bonus = attacker.getGeneral().getFollower().getABonus();
 
 	//Looks for equipment and outputs what is returned
-	Equipment foundAtt = loot.findTreasure(bonus);
+	Equipment foundAtt = treasure.findTreasure(bonus);
 	if (output)
 	{
 		cout << foundAtt.getName() << " was found by the attacking army." << endl;
 		//This outputs the stats of the equipment if it isn't the empty equipment
-		if (foundAtt.getName() != loot.noTreasure().getName())
+		if (foundAtt.getName() != treasure.noTreasure().getName())
 		{
 			cout << foundAtt << endl;
 		}
@@ -175,12 +176,12 @@ void Battle::treasureResults()
 	//Then does the same as above for the defending Player.
 	bonus = defender.getGeneral().getFollower().getABonus();
 
-	Equipment foundDef = loot.findTreasure(bonus);
+	Equipment foundDef = treasure.findTreasure(bonus);
 	if (output)
 	{
 		cout << foundDef.getName() << " was found by the defending army." << endl;
 		//This outputs the stats of the equipment if it isn't the empty equipment
-		if (foundDef.getName() != loot.noTreasure().getName())
+		if (foundDef.getName() != treasure.noTreasure().getName())
 		{
 			cout << foundDef << endl;
 		}
@@ -196,7 +197,7 @@ void Battle::treasureResults()
 //[x][1] = # of units completely destroyed
 //[x][2] = # of Upgrades received
 //[x][3] = state of general's health
-void Battle::battleOutput(vector<vector<int>> totalCasualties) //Base battle-end output
+void Battle::battleOutput(vector<vector<int>>& totalCasualties) //Base battle-end output
 {
 	treasureResults();
 	if (output)
@@ -398,11 +399,11 @@ float Battle::battleCalculate() //contains the base calculations needed for batt
 	if (debug) { cout << "defender sum with general autobonus: " << defTotal << " Battle::battleCalculate" << endl; }
 
 	//Adds R-P-S stuff to attacker, but not defender so the difference isn't added twice
-	attTotal += (attacker.getCavalry() - defender.getRanged()) * 1.5;
+	attTotal += ((double)attacker.getCavalry() - (double)defender.getRanged()) * 1.5;
 	if (debug) { cout << "attacker sum with cav-ran RPS:" << attTotal << " Battle::battleCalculate" << endl; }
-	attTotal += (attacker.getMelee() - defender.getCavalry()) * 1.5;
+	attTotal += ((double)attacker.getMelee() - (double)defender.getCavalry()) * 1.5;
 	if (debug) { cout << "attacker sum with mel-cav RPS:" << attTotal << " Battle::battleCalculate" << endl; }
-	attTotal += (attacker.getRanged() - defender.getMelee()) * 1.5;
+	attTotal += ((double)attacker.getRanged() - (double)defender.getMelee()) * 1.5;
 	if (debug) { cout << "attacker sum with ran-mel RPS:" << attTotal << " Battle::battleCalculate" << endl; }
 
 	if (debug) { cout << "Battle::battleCalculate finished, returned: " << attTotal - defTotal << endl; }
