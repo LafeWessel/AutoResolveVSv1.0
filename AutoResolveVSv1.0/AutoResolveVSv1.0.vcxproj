@@ -132,6 +132,7 @@
     <ClCompile Include="outcome.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="playerType.cpp" />
+    <ClCompile Include="Prediction.cpp" />
     <ClCompile Include="RaidBattle.cpp" />
     <ClCompile Include="Roster.cpp" />
     <ClCompile Include="SiegeBattle.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="outcome.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="playerType.h" />
+    <ClInclude Include="Prediction.h" />
     <ClInclude Include="RaidBattle.h" />
     <ClInclude Include="Roster.h" />
     <ClInclude Include="SiegeBattle.h" />

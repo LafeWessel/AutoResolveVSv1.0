@@ -87,6 +87,9 @@
     <ClCompile Include="equipmentType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Prediction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Debug\equipment.txt" />
@@ -163,6 +166,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="equipmentType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prediction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -89,7 +89,7 @@ High Priority:
 
 TODO-COMMENT EVERYTHING
 
-TODO-implement playerType enum class
+TODO-implement playerType enum class; currently in place, but does nothing
 
 TODO-Create Prediction Class
 
@@ -106,12 +106,14 @@ TODO-Remove unnecessary includes from class header files.
 
 TODO-Create a recursive auto-balancing feature to determine what is an equal distribution of power.
 
-**Possibly Fixed**
+TODO-Learn and implement Qt GUI
+
+***Possibly Fixed***
 TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
 
 */
 
-//Initializes Treasure as global class
+//Initializes Treasure as global class, requires adding of Treasure.h to headers and extern Treasure treasure; to cpp files
 Treasure treasure{};
 
 //Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
@@ -198,7 +200,12 @@ void predictionOutput(vector<int> rawResults)
 
 	//Makes some floats that are used in statistics output below
 	float success = (processedResults[0] + processedResults[1] + processedResults[2]);
-	float total = (processedResults[0] + processedResults[1] + processedResults[2] + processedResults[3] + processedResults[4] + processedResults[5] + processedResults[6]);
+	float total = 0.0;
+	for (int i = 0; i < 7; i++)
+	{
+		total += processedResults[i];
+	}
+	//float total = (processedResults[0] + processedResults[1] + processedResults[2] + processedResults[3] + processedResults[4] + processedResults[5] + processedResults[6]);
 	float victory = success / total;
 	float draw = processedResults[3] / total;
 	float loss = (1 - (draw + victory));
