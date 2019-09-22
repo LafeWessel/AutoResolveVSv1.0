@@ -91,16 +91,13 @@ TODO-COMMENT EVERYTHING
 
 TODO-implement playerType enum class; currently in place, but does nothing
 
-TODO-Create Prediction Class
-
 Low Priority:
+
 TODO-Find new way to output at the end of a battle that captures more data
 
-TODO-Refactor, especially the classes
+TODO-Refactor
 
 TODO-Create testing
-
-TODO-Refactor parts of the battleTest functions into separate functions
 
 TODO-Remove unnecessary includes from class header files.
 
@@ -224,6 +221,7 @@ void predictionOutput(vector<int> rawResults)
 	return;
 }
 
+//Creates and fills all the classes needed for a battle. Is called by the battleTest functions
 void testSetup(Battle& battle, bool debug)
 {
 	if (debug) { cout << "test setup called" << endl; }
