@@ -93,6 +93,8 @@ TODO-implement playerType enum class; currently in place, but does nothing
 
 Low Priority:
 
+TODO-Make sure pass-by-reference is used correctly
+
 TODO-Find new way to output at the end of a battle that captures more data
 
 TODO-Refactor
