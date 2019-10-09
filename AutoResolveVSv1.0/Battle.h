@@ -42,11 +42,11 @@ public:
 	bool getOutputBool() { return output; }
 	bool getDebugBool() { return debug; }
 
-	void setAttacker(Player attackerI) { attacker = attackerI; };
-	void setDefender(Player defenderI) { defender = defenderI; };
-	void setOutcome(outcome resultI) { result = resultI; };
-	void setOutput(bool outputI) { output = outputI; };
-	void setDebug(bool debugI) { debug = debugI; };
+	void setAttacker(Player& attackerI) { attacker = attackerI; };
+	void setDefender(Player& defenderI) { defender = defenderI; };
+	void setOutcome(outcome& resultI) { result = resultI; };
+	void setOutput(bool& outputI) { output = outputI; };
+	void setDebug(bool& debugI) { debug = debugI; };
 
 	void treasureResults(); //Determines whether or not loot is found at the end of a battle.
 	void CalculateCas(vector<vector<int>>& totalCasualties); //Determines the amount of casualties at the end of a battle

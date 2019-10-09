@@ -95,15 +95,9 @@ Low Priority:
 
 TODO-Make sure pass-by-reference is used correctly
 
-TODO-Find new way to output at the end of a battle that captures more data
+TODO-Find new ways to output at the end of a battle that capture more data
 
-TODO-Refactor
-
-TODO-Create testing
-
-TODO-Remove unnecessary includes from class header files.
-
-TODO-Create a recursive auto-balancing feature to determine what is an equal distribution of power.
+TODO-Create a recursive auto-balancing feature to determine what is an equal distribution of power -> AI
 
 TODO-Learn and implement Qt GUI
 
@@ -515,37 +509,62 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 //Called on program start. At the moment, it only calculates the results from each kind of battle.
 int main()
 {
-	bool debug = true;
+	bool debug = false;
+	char toDebug = 'a';
+
+
+	while (toDebug != 'y' && toDebug != 'n')
+	{
+		cout << "Would you like to debug? (y/n)" << endl;
+		cin >> toDebug;
+		cin.get();
+	//	cout << toDebug <<  endl;
+	}
+	if (toDebug == 'y')
+	{
+		debug = true;
+	}
+	
 	treasure.setDebugBool(debug);
 	if (debug) { cout << "Program started" << endl; }
 
 	NormalBattle normal{};
 	if (debug) { cout << "Normal battle initialized void" << endl; }
+
 	SiegeBattle siege{};
 	if (debug) { cout << "Siege battle initialized void" << endl; }
+
 	RaidBattle raid{};
 	if (debug) { cout << "Raid battle initialized void" << endl; }
+
 	NavalBattle naval{};
 	if (debug) { cout << "Naval battle initialized void" << endl; }
+
 	MonsterBattle monster{};
 	if (debug) { cout << "Monster battle initialized void" << endl; }
+
 	int tests = 1;
 	if (debug) { cout << "Tests set to: " << tests << endl; }
 
 	battleTest(tests, normal, debug);
 	if (debug) { cout << "Tested Normal battle" << endl; }
+	cin.get();
 	battleTest(tests, siege, debug);
 	if (debug) { cout << "Tested Siege battle" << endl; }
+	cin.get();
 	battleTest(tests, raid, debug);
 	if (debug) { cout << "Tested Raid battle" << endl; }
+	cin.get();
 	battleTest(tests, naval, debug);
 	if (debug) { cout << "Tested Naval battle" << endl; }
+	cin.get();
 	battleTest(tests, monster, debug);
 	if (debug) { cout << "Tested Monster battle" << endl; }
-
+	cin.get();
 	if (debug) { cout << "Program finished" << endl; }
+	cin.get();
 
 	//This keeps the console window open
-	cin.get();
+	
 	return 0;
 }

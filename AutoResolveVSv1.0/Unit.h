@@ -29,7 +29,7 @@ public:
 	Unit();
 	Unit(string nameI, int autoResBonusI, int soldiersPerUnitI, int currentSoldiersI, faction factI, unitType typeI);
 
-	string getName() { return name; };
+	string& getName() { return name; };
 	int getARBonus() { return autoResBonus * (currentSoldiers/soldiersPerUnit); };
 	int getSoldiersPerUnit() { return soldiersPerUnit; };
 	int getCurrentSoldiers() { return currentSoldiers; };
