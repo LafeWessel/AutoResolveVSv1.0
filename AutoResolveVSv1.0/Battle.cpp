@@ -272,7 +272,7 @@ void Battle::battleOutput(vector<vector<int>>& totalCasualties) //Base battle-en
 	if (output)
 	{
 		cout << "Attacker Soldier Casualties: " << assignedSoldierCasualties << endl;
-		cout << "Attacker Upgrades: " << assignedUnitCasualties << endl;
+		cout << "Attacker Unit Casualties: " << assignedUnitCasualties << endl;
 		cout << "Attacker General is " << outputGenState(totalCasualties[0][3]) << endl;
 	}
 

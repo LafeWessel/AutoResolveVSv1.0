@@ -34,7 +34,7 @@ public:
 	int getRams() { return rams; };
 	int getCatapults() { return catapults; };
 	int getSiegeTowers() { return siegeTowers; };
-	townStats& getTownStats() { return townLevel; };
+	townStats getTownStats() { return townLevel; };
 
 	void setRams(int ramsI) { rams = ramsI; };
 	void setCatapults(int catapultsI) { catapults = catapultsI; };

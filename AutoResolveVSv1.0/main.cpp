@@ -5,8 +5,6 @@
 *   Author: Lafe Wessel
 */
 
-
-
 #include <algorithm>
 #include <cmath>
 
@@ -27,7 +25,9 @@
 #include "faction.h"
 #include "General.h"
 #include "Monster.h"
-#include "MonsterBattle.h"
+#include "MonsterBattle.h
+
+
 #include "monsterType.h"
 #include "NavalBattle.h"
 #include "NormalBattle.h"
@@ -43,9 +43,6 @@
 #include "unitType.h"
 
 using namespace std;
-
-
-
 
 /*General Notes
 *
@@ -78,14 +75,16 @@ All variables are comma-separated, so there must be no extraneous commas.
 *This seems to a bit temperamental, so I have them copied into 5 separate areas of the program to ensure it works
 */
 
-
-
-
-
 /*
 TODO Section:
 
 High Priority:
+
+TODO-Reevaluate pass-by-reference usage
+
+TODO-Change Treasure from global to created in main then passed by reference into other classes to be used
+
+TODO-Casualty assignment does not seem to work
 
 TODO-COMMENT EVERYTHING
 
@@ -106,7 +105,7 @@ TODO-Find error related to when a follower is looked for from treasureResults(),
 
 */
 
-//Initializes Treasure as global class, requires adding of Treasure.h to headers and extern Treasure treasure; to cpp files
+//Initializes Treasure as global class, requires adding of Treasure.h to headers and 'extern Treasure treasure;' to cpp files
 Treasure treasure{};
 
 //Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
