@@ -35,7 +35,7 @@ public:
 	int getABonus() { return autoBonus; };
 	int getIndex() { return number; };
 	int getRange() { return range; };
-	equipmentType& getEqType() { return EquipType; };
+	equipmentType getEqType() { return EquipType; };
 	string getEffect() { return effect; };
 	int getCValue() { return coinValue; };
 	bool getDebug() { return debug; }

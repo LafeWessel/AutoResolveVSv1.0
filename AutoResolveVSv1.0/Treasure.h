@@ -66,12 +66,12 @@ public:
 	vector<Equipment> getFollowerVector() { return follower; };
 	vector<Equipment> getDragonVector() { return dragon; };
 
-	void setArmorVector(vector<Equipment>& equipVectorI) { armor = equipVectorI; };
-	void setWeaponVector(vector<Equipment>& equipVectorI) { weapon = equipVectorI; };
-	void setTrinketVector(vector<Equipment>& equipVectorI) { trinket = equipVectorI; };
-	void setBannerVector(vector<Equipment>& equipVectorI) { banner = equipVectorI; };
-	void setFollowerVector(vector<Equipment>& equipVectorI) { follower = equipVectorI; };
-	void setDragonVector(vector<Equipment>& equipVectorI) { dragon = equipVectorI; };
+	void setArmorVector(vector<Equipment> equipVectorI) { armor = equipVectorI; };
+	void setWeaponVector(vector<Equipment> equipVectorI) { weapon = equipVectorI; };
+	void setTrinketVector(vector<Equipment> equipVectorI) { trinket = equipVectorI; };
+	void setBannerVector(vector<Equipment> equipVectorI) { banner = equipVectorI; };
+	void setFollowerVector(vector<Equipment> equipVectorI) { follower = equipVectorI; };
+	void setDragonVector(vector<Equipment> equipVectorI) { dragon = equipVectorI; };
 
 	bool getDebug() { return debug; }
 	void setDebugBool(bool debugI) { debug = debugI; }

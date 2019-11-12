@@ -33,8 +33,8 @@ public:
 	int getARBonus() { return autoResBonus * (currentSoldiers/soldiersPerUnit); };
 	int getSoldiersPerUnit() { return soldiersPerUnit; };
 	int getCurrentSoldiers() { return currentSoldiers; };
-	faction& getFaction() { return fact; };
-	unitType& getUnitType() { return type; };
+	faction getFaction() { return fact; };
+	unitType getUnitType() { return type; };
 
 	void setName(string nameI) { name = nameI; };
 	void setARBonus(int ARBonusI) { autoResBonus = ARBonusI; };

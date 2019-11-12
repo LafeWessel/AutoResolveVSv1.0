@@ -1,5 +1,4 @@
 #include "Battle.h"
-extern Treasure treasure;
 
 typedef std::chrono::high_resolution_clock myclock;
 std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
@@ -23,9 +22,10 @@ string outputGenState(int state)
 	}
 }
 
-ostream& operator<<(ostream& os, equipmentType& end) //Output formation for equipmentType class
+/*
+ostream& operator<<(ostream& os, equipmentType& type) //Output formation for equipmentType class
 {
-	switch (end)
+	switch (type)
 	{
 	case(equipmentType::weapon):
 		return os << "Weapon";
@@ -52,6 +52,7 @@ ostream& operator<<(ostream& os, equipmentType& end) //Output formation for equi
 		return os << " No valid equipmentType chosen " << endl;
 	}
 }
+*/
 
 ostream& operator<<(ostream& os, outcome& end) //Output formation for outcome class
 {
@@ -95,12 +96,42 @@ int randomNumberBattle(int range) //Returns a random number between 1 and the gi
 	return random;
 }
 
+string equipmentTypeToString(equipmentType type)
+{
+	switch (type)
+	{
+	case(equipmentType::weapon):
+		return "Weapon";
+		break;
+	case(equipmentType::armor):
+		return "Armor";
+		break;
+	case(equipmentType::trinket):
+		return "Trinket";
+		break;
+	case(equipmentType::banner):
+		return "Banner";
+		break;
+	case(equipmentType::dragon):
+		return "Dragon";
+		break;
+	case(equipmentType::follower):
+		return "Follower";
+		break;
+	case(equipmentType::null):
+		return "null";
+		break;
+	default:
+		return " No valid equipmentType chosen ";
+	}
+}
+
 ostream& operator<<(ostream& os, Equipment& eqpt) //output operator for Equipment class
 {
 	return os << eqpt.getName() << endl
 		<< "Effect: " << eqpt.getEffect() << endl
 		<< "Range: " << eqpt.getRange() << endl
-		<< "EquipType: " << eqpt.getEqType() << endl
+		<< "EquipType: " << equipmentTypeToString(eqpt.getEqType()) << endl
 		<< "Coin Value: " << eqpt.getCValue() << endl;
 }
 
@@ -128,22 +159,25 @@ int randomNumberCas(int range)
 
 Battle::~Battle()
 {
+	
 }
 
 Battle::Battle() //void initializer
 {
 	attacker = Player();
 	defender = Player();
+	treasure = Treasure();
 	defender.setPlayerType(playerType::defender);
 	result = outcome::Draw;
 	output = true;
 	debug = false;
 }
 
-Battle::Battle(Player attackerI, Player defenderI) // initializer
+Battle::Battle(Player attackerI, Player defenderI, Treasure& treasureI) // initializer
 {
 	attacker = attackerI;
 	defender = defenderI;
+	treasure = treasureI;
 	defender.setPlayerType(playerType::defender);
 	result = outcome::Draw;
 	output = true;
@@ -152,11 +186,6 @@ Battle::Battle(Player attackerI, Player defenderI) // initializer
 
 void Battle::treasureResults()
 {
-	//Initializes and fills a treasure class
-	//Treasure loot{};
-	//loot.setDebugBool(debug);
-	//loot.initializeTreasure();
-	if (debug) { cout << "Treasure initialized. Battle::treasureResults" << endl; }
 
 	//Goes to where any bonus for finding loot at the end of a battle should be and sets the bonus to it.
 	int bonus = attacker.getGeneral().getFollower().getABonus();

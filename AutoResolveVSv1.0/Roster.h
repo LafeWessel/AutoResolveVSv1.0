@@ -29,8 +29,8 @@ public:
 	Roster();
 	Roster(vector<Unit> unitsI, faction factI);
 
-	vector<Unit>& getUnits() { return factionUnits; };
-	faction& getFaction() { return fact; };
+	vector<Unit> getUnits() { return factionUnits; };
+	faction getFaction() { return fact; };
 	bool getDebugBool() { return debug; };
 	int getNumberOfUnits() { return factionUnits.size(); };
 

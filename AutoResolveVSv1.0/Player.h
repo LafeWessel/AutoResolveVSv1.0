@@ -39,17 +39,17 @@ public:
 	Player();
 	Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI, playerType type);
 
-	vector<Unit>& getPlayerUnits() { return playerUnits; };
+	vector<Unit> getPlayerUnits() { return playerUnits; };
 	int getMelee() { return Melee; };
 	int getCavalry() { return Cavalry; };
 	int getRanged() { return Ranged; };
-	General& getGeneral() { return general; };
+	General getGeneral() { return general; };
 	bool getAdvComDeck() { return AdvCombatDeck; };
-	faction& getFaction() { return Fact; };
+	faction getFaction() { return Fact; };
 	bool getDebug() { return debug; }
-	Unit& getUnitAtIndex(int index) { return playerUnits[index]; };
+	Unit getUnitAtIndex(int index) { return playerUnits[index]; };
 	int getNumberOfUnits() { return playerUnits.size(); };
-	playerType& getPlayerType() { return player; };
+	playerType getPlayerType() { return player; };
 
 	void setPlayerUnits(vector<Unit> unitsI);
 	void setMelee(int meleeI) { Melee = meleeI; };
@@ -62,7 +62,4 @@ public:
 	void setReinforcements(int ReinforceI);
 	void setUnitAtIndex(int index, Unit unitI) { playerUnits[index] = unitI; };
 	void setPlayerType(playerType playerI) { player = playerI; };
-
-
-
 };

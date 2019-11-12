@@ -27,7 +27,7 @@ public:
 	void raidOutput(vector<vector<int>> totalCasualties, int suppGained);
 	void calculateRaid();
 
-	townStats& getTownStats() { return townLevel; };
+	townStats getTownStats() { return townLevel; };
 
 	void setTownLevel(int townLevelI) { townLevel = townLevelI; };
 };

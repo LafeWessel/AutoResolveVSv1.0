@@ -19,6 +19,7 @@ using namespace std;
 class MonsterBattle //This is the only type of battle that does NOT inherit from the Battle class
 {
 private:
+	Treasure treasure;
 	Player attacker;
 	Monster monster;
 	outcome result;
@@ -35,9 +36,9 @@ public:
 	void calculateMonster(); //Calculates the outcome and calls Casualty and output functions
 
 	int getEnding() { return (int)result; };
-	Player& getPlayer() { return attacker; };
-	Monster& getMonster() { return monster; };
-	outcome& getOutcome() { return result; };
+	Player getPlayer() { return attacker; };
+	Monster getMonster() { return monster; };
+	outcome getOutcome() { return result; };
 	bool getOutputBool() { return output; };
 	bool getDebugBool() { return debug; };
 

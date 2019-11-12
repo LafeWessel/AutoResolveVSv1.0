@@ -29,7 +29,6 @@ Treasure::Treasure() //void initializer
 	follower = {};
 	dragon = {};
 	debug = false;
-	initializeTreasure();
 }
 
 //initializer

@@ -1,5 +1,4 @@
 #include "Monster.h"
-extern Treasure treasure;
 
 
 Monster::~Monster()
@@ -8,41 +7,24 @@ Monster::~Monster()
 
 Monster::Monster() //void initializer
 {
+	treasure = Treasure();
 	type = monsterType::Empty;
 	coinReward = 0;
 	autoResValue = 0;
 	debug = false;
 }
 
-Monster::Monster(monsterType typeI) //initializer
+Monster::Monster(monsterType typeI, Treasure& treasureI) //initializer
 {
 	type = typeI;
-
-	//These set the coin rewards; they are based on values I made elsewhere
-	if ((int)typeI < 5)
-	{
-		coinReward = ((int)typeI + 1) * 100;
-	}
-	else if ((int)typeI < 6)
-	{
-		coinReward = ((int)typeI + 2) * 100;
-	}
-	else
-	{
-		coinReward = ((int)typeI + 1) * 200;
-	}
-
-	autoResValue = ((int)typeI * 10) + 10;
+	treasure = treasureI;
+	setValuesFromMonsterType();
 	debug = false;
 }
 
 vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gained for killing a monster, based on info elsewhere
 {
 	if (debug) { cout << "getEquipRewards called" << endl; }
-	//Treasure treasure{};
-	if (debug) { cout << "treasure initialized" << endl; }
-	//treasure.setDebugBool(debug);
-	//treasure.initializeTreasure();
 	vector<Equipment> rewards = {};
 	switch (type)
 	{
@@ -142,4 +124,23 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 		cerr << "Something went wrong" << endl;
 	}
 	return rewards;
+}
+
+void Monster::setValuesFromMonsterType()
+{
+	//These set the coin rewards; they are based on values I made elsewhere
+	if ((int)type < 5)
+	{
+		coinReward = ((int)type + 1) * 100;
+	}
+	else if ((int)type < 6)
+	{
+		coinReward = ((int)type + 2) * 100;
+	}
+	else
+	{
+		coinReward = ((int)type + 1) * 200;
+	}
+
+	autoResValue = ((int)type * 10) + 10;
 }

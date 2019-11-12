@@ -32,11 +32,11 @@ public:
 	int getRank() { return rank; };
 
 	int getARBonus() { return AutoResEqBonus; };
-	Equipment& getArmor() { return armor; };
-	Equipment& getWeapon() { return weapon; };
-	Equipment& getTrinket() { return trinket; };
-	Equipment& getBanner() { return banner; };
-	Equipment& getFollower() { return follower; };
+	Equipment getArmor() { return armor; };
+	Equipment getWeapon() { return weapon; };
+	Equipment getTrinket() { return trinket; };
+	Equipment getBanner() { return banner; };
+	Equipment getFollower() { return follower; };
 	bool getDebug() { return debug; }
 
 	void setRank(int rankI) { rank = rankI; };

@@ -23,6 +23,7 @@ class Battle // siege, raid, normal and naval battles inherit from this class
 {
 
 protected:
+	Treasure treasure;
 	Player attacker;
 	Player defender;
 	outcome result;
@@ -33,20 +34,20 @@ protected:
 public:
 	~Battle();
 	Battle();
-	Battle(Player attackerI, Player defenderI);
+	Battle(Player attackerI, Player defenderI, Treasure& treasureI);
 
-	Player& getAttacker() { return attacker; };
-	Player& getDefender() { return defender; };
-	outcome& getOutcome() { return result; };
+	Player getAttacker() { return attacker; };
+	Player getDefender() { return defender; };
+	outcome getOutcome() { return result; };
 	int getEnding() { return (int)result; };
-	bool getOutputBool() { return output; }
-	bool getDebugBool() { return debug; }
+	bool getOutputBool() { return output; };
+	bool getDebugBool() { return debug; };
 
-	void setAttacker(Player& attackerI) { attacker = attackerI; };
-	void setDefender(Player& defenderI) { defender = defenderI; };
-	void setOutcome(outcome& resultI) { result = resultI; };
-	void setOutput(bool& outputI) { output = outputI; };
-	void setDebug(bool& debugI) { debug = debugI; };
+	void setAttacker(Player attackerI) { attacker = attackerI; };
+	void setDefender(Player defenderI) { defender = defenderI; };
+	void setOutcome(outcome resultI) { result = resultI; };
+	void setOutput(bool outputI) { output = outputI; };
+	void setDebug(bool debugI) { debug = debugI; };
 
 	void treasureResults(); //Determines whether or not loot is found at the end of a battle.
 	void CalculateCas(vector<vector<int>>& totalCasualties); //Determines the amount of casualties at the end of a battle

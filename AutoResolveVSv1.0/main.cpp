@@ -25,7 +25,7 @@
 #include "faction.h"
 #include "General.h"
 #include "Monster.h"
-#include "MonsterBattle.h
+#include "MonsterBattle.h"
 
 
 #include "monsterType.h"
@@ -104,9 +104,6 @@ TODO-Learn and implement Qt GUI
 TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
 
 */
-
-//Initializes Treasure as global class, requires adding of Treasure.h to headers and 'extern Treasure treasure;' to cpp files
-Treasure treasure{};
 
 //Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
 int randomNumberInt(int range)
@@ -217,13 +214,9 @@ void predictionOutput(vector<int> rawResults)
 }
 
 //Creates and fills all the classes needed for a battle. Is called by the battleTest functions
-void testSetup(Battle& battle, bool debug)
+void testSetup(Battle battle, bool debug, Treasure& treasure)
 {
 	if (debug) { cout << "test setup called" << endl; }
-	//Treasure treasure{};
-	//treasure.setDebugBool(debug);
-	//treasure.initializeTreasure();
-	if (debug) { cout << "Treasure initialized" << endl; }
 
 	General attackerGen{ 10,treasure.findArmor(),treasure.findWeapon(),treasure.findTrinket(),treasure.findFollower(),treasure.findFollower() };
 	attackerGen.setDebugBool(debug);
@@ -268,9 +261,9 @@ void testSetup(Battle& battle, bool debug)
 
 //These 5 functions below are overloaded. They create a vector of results from creating and calculating battles with basic information
 //that is then sent to predictionOutput()
-void battleTest(int tests, NormalBattle& battle, bool debug)
+void battleTest(int tests, NormalBattle battle, bool debug, Treasure& treasure)
 {
-	testSetup(battle, debug);
+	testSetup(battle, debug, treasure);
 	vector<int> resultsRaw{};
 
 	if (debug) { cout << "tests to do: " << tests << endl; }
@@ -284,12 +277,10 @@ void battleTest(int tests, NormalBattle& battle, bool debug)
 		cout << "Normal Battle results:" << endl;
 		if (debug) { cout << "Attacker units in vector: " << battle.getAttacker().getPlayerUnits().size() << endl; }
 		if (debug) { cout << "Defender units in vector: " << battle.getDefender().getPlayerUnits().size() << endl; }
-		predictionOutput(resultsRaw);
-		
+		predictionOutput(resultsRaw);	
 	}
 	else
 	{
-
 		for (int i = 0; i < tests; i++)
 		{
 			NormalBattle norm = battle;
@@ -306,9 +297,9 @@ void battleTest(int tests, NormalBattle& battle, bool debug)
 	return;
 }
 
-void battleTest(int tests, SiegeBattle& battle, bool debug)
+void battleTest(int tests, SiegeBattle battle, bool debug, Treasure& treasure)
 {
-	testSetup(battle, debug);
+	testSetup(battle, debug, treasure);
 
 	battle.setCatapults(5);
 	if (debug) { cout << "Catapults set to 5 " << endl; }
@@ -352,9 +343,9 @@ void battleTest(int tests, SiegeBattle& battle, bool debug)
 	return;
 }
 
-void battleTest(int tests, RaidBattle& battle, bool debug)
+void battleTest(int tests, RaidBattle battle, bool debug, Treasure& treasure)
 {
-	testSetup(battle, debug);
+	testSetup(battle, debug, treasure);
 	battle.setTownLevel(5);
 	if (debug) { cout << "town level set to 5 " << endl; }
 	vector<int> resultsRaw{};
@@ -392,9 +383,9 @@ void battleTest(int tests, RaidBattle& battle, bool debug)
 
 }
 
-void battleTest(int tests, NavalBattle& battle, bool debug)
+void battleTest(int tests, NavalBattle battle, bool debug, Treasure& treasure)
 {
-	testSetup(battle, debug);
+	testSetup(battle, debug, treasure);
 	battle.setAttackerShips(10);
 	battle.setDefenderShips(10);
 	vector<int> resultsRaw{};
@@ -431,11 +422,8 @@ void battleTest(int tests, NavalBattle& battle, bool debug)
 	return;
 }
 
-void battleTest(int tests, MonsterBattle& battle, bool debug)
+void battleTest(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
 {
-	//Treasure treasure{};
-	//treasure.setDebugBool(debug);
-	//treasure.initializeTreasure();
 
 	Equipment equip{};
 	equip.setDebugBool(debug);
@@ -469,8 +457,11 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 	attacker.setReinforcements(10);
 	attacker.setPlayerUnits(units);
 
+	Monster monster = {};
+	monster.setMonsterType(monsterType::Dragon);
+
 	battle.setPlayer(attacker);
-	battle.setMonster(monsterType::Dragon);
+	battle.setMonster(monster);
 	vector<int> resultsRaw{};
 
 	if (debug) { cout << "tests to do: " << tests << endl; }
@@ -509,8 +500,7 @@ void battleTest(int tests, MonsterBattle& battle, bool debug)
 int main()
 {
 	bool debug = false;
-	char toDebug = 'a';
-
+	char toDebug = 'a';//Placeholder character
 
 	while (toDebug != 'y' && toDebug != 'n')
 	{
@@ -523,7 +513,10 @@ int main()
 	{
 		debug = true;
 	}
-	
+
+	Treasure treasure{};
+	treasure.initializeTreasure();
+
 	treasure.setDebugBool(debug);
 	if (debug) { cout << "Program started" << endl; }
 
@@ -545,19 +538,19 @@ int main()
 	int tests = 1;
 	if (debug) { cout << "Tests set to: " << tests << endl; }
 
-	battleTest(tests, normal, debug);
+	battleTest(tests, normal, debug, treasure);
 	if (debug) { cout << "Tested Normal battle" << endl; }
 	cin.get();
-	battleTest(tests, siege, debug);
+	battleTest(tests, siege, debug, treasure);
 	if (debug) { cout << "Tested Siege battle" << endl; }
 	cin.get();
-	battleTest(tests, raid, debug);
+	battleTest(tests, raid, debug, treasure);
 	if (debug) { cout << "Tested Raid battle" << endl; }
 	cin.get();
-	battleTest(tests, naval, debug);
+	battleTest(tests, naval, debug, treasure);
 	if (debug) { cout << "Tested Naval battle" << endl; }
 	cin.get();
-	battleTest(tests, monster, debug);
+	battleTest(tests, monster, debug, treasure);
 	if (debug) { cout << "Tested Monster battle" << endl; }
 	cin.get();
 	if (debug) { cout << "Program finished" << endl; }
