@@ -28,12 +28,13 @@ private:
 	vector<Equipment> dragon;
 	bool debug;
 
-	void sortEquipment(vector<Equipment> toSort);
+	void sortEquipment(vector<Equipment>& toSort);
 
 public:
 	~Treasure();
 	Treasure();
-	Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI, vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI);
+	Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI, 
+		vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI, bool debugI);
 	//The last item in the follower array is the empty/null equipment
 	Equipment noTreasure(){
 		Equipment empty{ "No Treasure",0,0,0,equipmentType::null,"",0 };
@@ -51,13 +52,15 @@ public:
 	Equipment findFollower();
 
 	Equipment findTreasure(int bonus); //Used at the end of battles to determine loot results
-
+	
+	/*
 	Equipment getArmorAtIndex(int index) { return armor[(double)index - 1]; };
 	Equipment getWeaponAtIndex(int index) { return weapon[(double)index - 1]; };
 	Equipment getTrinketAtIndex(int index) { return trinket[(double)index - 1]; };
 	Equipment getBannerAtIndex(int index) { return banner[(double)index - 1]; };
 	Equipment getFollowerAtIndex(int index) { return follower[(double)index - 1]; };
 	Equipment getDragonAtIndex(int index) { return dragon[(double)index - 1]; };
+	*/
 
 	vector<Equipment> getArmorVector() { return armor; };
 	vector<Equipment> getWeaponVector() { return weapon; };
@@ -74,7 +77,7 @@ public:
 	void setDragonVector(vector<Equipment> equipVectorI) { dragon = equipVectorI; };
 
 	bool getDebug() { return debug; }
-	void setDebugBool(bool debugI) { debug = debugI; }
+	void setDebug(bool debugI) { debug = debugI; }
 
 	void initializeTreasure(); //This grabs all the data from the file containing the equipment
 };

@@ -1,18 +1,23 @@
 #include "Treasure.h"
 
 
-int randomNumberTreasure(int range) //Returns a random number between 1 and the given range
+int randomNumberTreasure(int range) //Returns a random number between 0 and the given range-1
 {
-	
+	bool debug = true;
+
+	if (debug) { cout << range << " passed into random" << endl; }
 	typedef std::chrono::high_resolution_clock myclock;
 	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
-	int random = 0;
+	unsigned int random = 0;
 	if (range == 0)
 	{
+		if (debug) { cout << "Random range = 0" << endl; }
 		return 0;
 	}
-	uniform_int_distribution<int> dRange(1, abs(range));
+
+	uniform_int_distribution<int> dRange(0, (abs(range)-1));
 	random = dRange(generator);
+	if (debug) { cout << "Random returning: " << random << endl; }
 	return random;
 }
 
@@ -33,7 +38,7 @@ Treasure::Treasure() //void initializer
 
 //initializer
 Treasure::Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI,
-	vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI)
+	vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI, bool debugI)
 {
 	armor = armorI;
 	weapon = weaponI;
@@ -41,37 +46,55 @@ Treasure::Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<E
 	banner = bannerI;
 	follower = followerI;
 	dragon = dragonI;
-	debug = false;
+	debug = debugI;
 }
 
 Equipment Treasure::findArmor()
 {
-	return armor[randomNumberTreasure(armor.size() - 1)];
+	if (debug) { cout << "armor size: " << banner.size() << endl; }
+	int selection = randomNumberTreasure(armor.size());
+	if (debug) { cout << "selection: " << selection << endl; }
+	return armor[selection];
 }
 
 Equipment Treasure::findBanner()
 {
-	return banner[randomNumberTreasure(banner.size() - 1)];
+	if (debug) { cout << "banner size: " << banner.size() << endl; }
+	int selection = randomNumberTreasure(banner.size());
+	if (debug) { cout << "selection: " << selection << endl; }
+	return banner[selection];
 }
 
 Equipment Treasure::findFollower()
 {
-	return follower[randomNumberTreasure(follower.size() - 1)];
+	if (debug) { cout << "follower size: " << follower.size() << endl; }
+	int selection = randomNumberTreasure(follower.size());
+	if (debug) { cout << "selection: " << selection << endl; }
+	return follower[selection];
 }
 
 Equipment Treasure::findDragonEq()
 {
-	return dragon[randomNumberTreasure(dragon.size() - 1)];
+	if (debug) { cout << "dragon size: " << dragon.size() << endl; }
+	int selection = randomNumberTreasure(dragon.size());
+	if (debug) { cout << "selection: " << selection << endl; }
+	return dragon[selection];
 }
 
 Equipment Treasure::findTrinket()
 {
-	return trinket[randomNumberTreasure(trinket.size() - 1)];
+	if (debug) { cout << "trinket size: " << trinket.size() << endl; }
+	int selection = randomNumberTreasure(trinket.size());
+	if (debug) { cout << "selection: " << selection << endl; }
+	return trinket[selection];
 }
 
 Equipment Treasure::findWeapon()
 {
-	return weapon[randomNumberTreasure(weapon.size() - 1)];
+	if (debug) { cout << "weapon size: " << weapon.size() << endl; }
+	int selection = randomNumberTreasure(weapon.size());
+	if (debug) { cout << "selection: " << selection << endl; }
+	return weapon[selection];
 }
 
 void Treasure::initializeTreasure()
@@ -92,9 +115,11 @@ void Treasure::initializeTreasure()
 Equipment Treasure::findTreasure(int bonus) //Used to determine battle loot results
 {
 	if (debug) { cout << " findTreasure() called" << endl; }
-	if ((randomNumberTreasure(8) + bonus) >= 5)
+	int total = randomNumberTreasure(8) + bonus+1;
+	if (debug) { cout << "random + bonus = " << total << endl; }
+	if ( total >= 5)
 	{
-		switch (randomNumberTreasure(5))
+		switch (randomNumberTreasure(5)+1)
 		{
 		case(1):
 			if (debug) { cout << " findArmor() returned" << endl; }
@@ -129,33 +154,50 @@ Equipment Treasure::findTreasure(int bonus) //Used to determine battle loot resu
 	if (debug) { cout << " findTreasure() finished" << endl; }
 }
 
-void Treasure::sortEquipment(vector<Equipment> toSort)
+void Treasure::sortEquipment(vector<Equipment>& toSort)
 {
+	if (debug) { cout << "sortEquipment called" << endl; }
+	if (debug) { cout << "sorting " << toSort.size() << " elements" << endl; }
 	for (int i = 0; i < toSort.size(); i++)
 	{
 		switch (toSort[i].getEqType())
 		{
 		case (equipmentType::armor):
+			if (debug) { cout << toSort[i].getName() << " added to the armor vector" << endl; }
 			armor.push_back(toSort[i]);
 			break;
 		case (equipmentType::weapon):
+			if (debug) { cout << toSort[i].getName() << " added to the weapon vector" << endl; }
 			weapon.push_back(toSort[i]);
 			break;
 		case (equipmentType::trinket):
+			if (debug) { cout << toSort[i].getName() << " added to the trinket vector" << endl; }
 			trinket.push_back(toSort[i]);
 			break;
 		case (equipmentType::banner):
+			if (debug) { cout << toSort[i].getName() << " added to the banner vector" << endl; }
 			banner.push_back(toSort[i]);
 			break;
 		case (equipmentType::follower):
+			if (debug) { cout << toSort[i].getName() << " added to the follower vector" << endl; }
 			follower.push_back(toSort[i]);
 			break;
 		case (equipmentType::dragon):
+			if (debug) { cout << toSort[i].getName() << " added to the dragon vector" << endl; }
 			dragon.push_back(toSort[i]);
 			break;
 		default:
 			cerr << "no armor type found, " << endl;
 			break;
 		}
+	}
+	if(debug)
+	{ 
+		cout << "Armor size: " << armor.size() << endl
+			<< "Weapon size: " << weapon.size() << endl
+			<< "Trinket size: " << trinket.size() << endl
+			<< "Banner size: " << banner.size() << endl
+			<< "Follower size: " << follower.size() << endl
+			<< "Dragon size: " << dragon.size() << endl;
 	}
 }

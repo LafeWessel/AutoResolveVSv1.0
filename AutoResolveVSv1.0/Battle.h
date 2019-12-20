@@ -23,7 +23,7 @@ class Battle // siege, raid, normal and naval battles inherit from this class
 {
 
 protected:
-	Treasure treasure;
+	Treasure *treasure;
 	Player attacker;
 	Player defender;
 	outcome result;
@@ -34,7 +34,7 @@ protected:
 public:
 	~Battle();
 	Battle();
-	Battle(Player attackerI, Player defenderI, Treasure& treasureI);
+	Battle(Player attackerI, Player defenderI);
 
 	Player getAttacker() { return attacker; };
 	Player getDefender() { return defender; };
@@ -47,7 +47,14 @@ public:
 	void setDefender(Player defenderI) { defender = defenderI; };
 	void setOutcome(outcome resultI) { result = resultI; };
 	void setOutput(bool outputI) { output = outputI; };
-	void setDebug(bool debugI) { debug = debugI; };
+	void setDebug(bool debugI) { 
+		debug = debugI; 
+		treasure->setDebug(debugI); 
+	};
+	void setTreasure(Treasure& treasureI) {
+		treasure = &treasureI;
+		treasure->setDebug(treasureI.getDebug());
+	};
 
 	void treasureResults(); //Determines whether or not loot is found at the end of a battle.
 	void CalculateCas(vector<vector<int>>& totalCasualties); //Determines the amount of casualties at the end of a battle

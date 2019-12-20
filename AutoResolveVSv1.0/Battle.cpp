@@ -166,18 +166,18 @@ Battle::Battle() //void initializer
 {
 	attacker = Player();
 	defender = Player();
-	treasure = Treasure();
+	treasure = &Treasure();
 	defender.setPlayerType(playerType::defender);
 	result = outcome::Draw;
 	output = true;
 	debug = false;
 }
 
-Battle::Battle(Player attackerI, Player defenderI, Treasure& treasureI) // initializer
+Battle::Battle(Player attackerI, Player defenderI) // initializer
 {
 	attacker = attackerI;
 	defender = defenderI;
-	treasure = treasureI;
+	treasure = &Treasure();
 	defender.setPlayerType(playerType::defender);
 	result = outcome::Draw;
 	output = true;
@@ -186,31 +186,37 @@ Battle::Battle(Player attackerI, Player defenderI, Treasure& treasureI) // initi
 
 void Battle::treasureResults()
 {
-
+	if (debug) { cout << "treasureResults called" << endl; }
+	if (debug) { cout << "treasureResults for attacker" << endl; }
 	//Goes to where any bonus for finding loot at the end of a battle should be and sets the bonus to it.
 	int bonus = attacker.getGeneral().getFollower().getABonus();
 
+	if (debug) { cout << "attacker bonus is: " << bonus << endl; }
 	//Looks for equipment and outputs what is returned
-	Equipment foundAtt = treasure.findTreasure(bonus);
+	Equipment foundAtt = treasure->findTreasure(bonus);
+	if (debug) { cout << foundAtt.getName() << " returned from findTreasure" << endl; }
 	if (output)
 	{
 		cout << foundAtt.getName() << " was found by the attacking army." << endl;
 		//This outputs the stats of the equipment if it isn't the empty equipment
-		if (foundAtt.getName() != treasure.noTreasure().getName())
+		if (foundAtt.getName() != treasure->noTreasure().getName())
 		{
 			cout << foundAtt << endl;
 		}
 	}
 
+	if (debug) { cout << "treasureResults for defender" << endl; }
 	//Then does the same as above for the defending Player.
 	bonus = defender.getGeneral().getFollower().getABonus();
 
-	Equipment foundDef = treasure.findTreasure(bonus);
+	if (debug) { cout << "defender bonus is: " << bonus << endl; }
+	Equipment foundDef = treasure->findTreasure(bonus);
+	if (debug) { cout << foundDef.getName() << " returned from findTreasure" << endl; }
 	if (output)
 	{
 		cout << foundDef.getName() << " was found by the defending army." << endl;
 		//This outputs the stats of the equipment if it isn't the empty equipment
-		if (foundDef.getName() != treasure.noTreasure().getName())
+		if (foundDef.getName() != treasure->noTreasure().getName())
 		{
 			cout << foundDef << endl;
 		}
@@ -228,6 +234,7 @@ void Battle::treasureResults()
 //[x][3] = state of general's health
 void Battle::battleOutput(vector<vector<int>>& totalCasualties) //Base battle-end output
 {
+	if (debug) { cout << "battleOutput called, calling treasureResults" << endl; }
 	treasureResults();
 	if (output)
 	{
@@ -240,9 +247,10 @@ void Battle::battleOutput(vector<vector<int>>& totalCasualties) //Base battle-en
 	//Determines attacker casualty distribution
 	vector<Unit> attackerUnits = {};
 
-	for (int i = 0; i < attacker.getNumberOfUnits() - 1; i++)
+	for (int i = 0; i < attacker.getNumberOfUnits(); i++)
 	{
 		attackerUnits.push_back(attacker.getUnitAtIndex(i));
+		if (debug) { cout << "attackerUnits[" << i << "] pushed " << attacker.getUnitAtIndex(i).getName() << endl; }
 	}
 
 	int assignedSoldierCasualties = 0;
@@ -306,7 +314,7 @@ void Battle::battleOutput(vector<vector<int>>& totalCasualties) //Base battle-en
 	}
 
 	vector<Unit> attackerUnitsWithCasualties = {};
-	for (int i = 0; i < attackerUnits.size() - 1; i++)
+	for (int i = 0; i < attackerUnits.size(); i++)
 	{
 		if (attackerUnits[i].getCurrentSoldiers() > 0)
 		{
@@ -400,21 +408,25 @@ void Battle::battleOutput(vector<vector<int>>& totalCasualties) //Base battle-en
 
 float Battle::battleCalculate() //contains the base calculations needed for battles
 {
+
+	if (debug) { cout << "battleCalculate called" << endl; }
 	//Comparing these at the end will determine victory/draw/defeat in relation to the attacker
 	//The defTotal is subtracted from the attTotal, thus a positive result is a victory for the attacker,
 	//and the opposite for a negative result
 	float attTotal = 0;
 	float defTotal = 0;
 	//Adds units + portions of reinforcements
-	attTotal += attacker.getCavalry() + attacker.getMelee() + attacker.getRanged();
+	attTotal = attacker.getCavalry() + attacker.getMelee() + attacker.getRanged();
 	if (debug) { cout << "attacker unit sum:" << attTotal << " Battle::battleCalculate" << endl; }
-	defTotal += defender.getCavalry() + defender.getMelee() + defender.getRanged();
+	defTotal = defender.getCavalry() + defender.getMelee() + defender.getRanged();
 	if (debug) { cout << "defender unit sum:" << defTotal << " Battle::battleCalculate" << endl; }
 
 	//Adds random values to randomize the battle outcome more
-	attTotal += calculateBattleRandoms(10, 10) / 6;
+	attTotal += calculateBattleRandoms(10, 10);
+	attTotal /= 6;
 	if (debug) { cout << "attacker sum with randoms:" << attTotal << " Battle::battleCalculate" << endl; }
-	defTotal += calculateBattleRandoms(10, 10) / 6;
+	defTotal += calculateBattleRandoms(10, 10);
+	defTotal /= 6;
 	if (debug) { cout << "defender sum with randoms:" << defTotal << " Battle::battleCalculate" << endl; }
 
 	//Adds rank and autoresolve bonuses from generals
@@ -441,6 +453,7 @@ float Battle::battleCalculate() //contains the base calculations needed for batt
 
 void Battle::CalculateCas(vector<vector<int>>& totalCasualties) //calculates the casualties from a battle and returns in a specific format
 {
+	if (debug) { cout << "CalculateCas called" << endl; }
 	int attSoldierCasualties = 0;
 	int defSoldierCasualties = 0;
 

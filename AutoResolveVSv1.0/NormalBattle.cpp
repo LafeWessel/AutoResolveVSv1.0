@@ -1,5 +1,6 @@
 #include "NormalBattle.h"
-outcome determineOutcomeNormal(float endingTotal) //This determines the kind of outcome that occurs when a given battle result is passed in
+//This determines the kind of outcome that occurs when a given battle result is passed in
+outcome determineOutcomeNormal(float endingTotal) 
 {
 	//All results are in relation to the attacker.
 	//Victory
@@ -34,7 +35,7 @@ outcome determineOutcomeNormal(float endingTotal) //This determines the kind of 
 			return outcome::Close_Defeat;
 		}
 	}
-	//Draw
+	//Draw, range -1 - 1
 	else
 	{
 		return outcome::Draw;
@@ -62,7 +63,7 @@ void NormalBattle::calculateNormal() //Uses base battle calculations and output
 {
 	if (debug) { cout << "Calling battleCalculate, NormalBattle::calculateNormal" << endl; }
 	float overallTot = battleCalculate();
-	if (debug) { cout << "Overall total returned from battleCalculate NormalBattle::calculateNormal" << endl; }
+	if (debug) { cout << "Overall total: " << overallTot << " returned from battleCalculate NormalBattle::calculateNormal" << endl; }
 
 	//Finds result and determines casualties
 	result = determineOutcomeNormal(overallTot);

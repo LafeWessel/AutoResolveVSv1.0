@@ -55,7 +55,7 @@ public:
 	void setMelee(int meleeI) { Melee = meleeI; };
 	void setCavalry(int cavalryI) { Cavalry = cavalryI; };
 	void setRanged(int rangedI) { Ranged = rangedI; };
-	void setGeneralG(General generalI) { general = generalI; };
+	void setGeneral(General generalI) { general = generalI; };
 	void setAdvCombatDeck(bool advComDeckI) { AdvCombatDeck = advComDeckI; };
 	void setFaction(faction factionI) { Fact = factionI; };
 	void setDebugBool(bool debugI) { debug = debugI; }

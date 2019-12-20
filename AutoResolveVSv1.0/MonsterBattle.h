@@ -40,12 +40,12 @@ public:
 	Monster getMonster() { return monster; };
 	outcome getOutcome() { return result; };
 	bool getOutputBool() { return output; };
-	bool getDebugBool() { return debug; };
+	bool getDebug() { return debug; };
 
 	void setPlayer(Player playerI) { attacker = playerI; };
 	void setMonster(Monster monsterI) { monster = monsterI; };
 	void setOutcome(outcome resultI) { result = resultI; };
 	void setOutput(bool outputI) { output = outputI; };
-	void setDebugBool(bool debugI) { debug = debugI; };
+	void setDebug(bool debugI) { debug = debugI; };
 };
 
