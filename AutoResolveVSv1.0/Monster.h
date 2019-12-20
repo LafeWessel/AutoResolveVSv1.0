@@ -36,8 +36,7 @@ public:
 	void setCoinReward(int coinRewardI) { coinReward = coinRewardI; };
 	void setAutoResValue(int autoResValI) { autoResValue = autoResValI; };
 	void setDebugBool(bool debugI) { debug = debugI; }
-	void setMonsterType(monsterType monTypeI) 
-	{ 
+	void setMonsterType(monsterType monTypeI) { 
 		type = monTypeI; 
 		setValuesFromMonsterType();
 	};

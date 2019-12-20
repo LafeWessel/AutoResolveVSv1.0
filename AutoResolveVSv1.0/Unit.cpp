@@ -12,6 +12,7 @@ Unit::Unit()
 	currentSoldiers = 1;
 	fact = faction::rebel;
 	type = unitType::Melee;
+	debug = false;
 }
 
 Unit::Unit(string nameI, int autoResBonusI, int soldiersPerUnitI, int currentSoldiersI, faction factI, unitType typeI)
@@ -22,4 +23,5 @@ Unit::Unit(string nameI, int autoResBonusI, int soldiersPerUnitI, int currentSol
 	currentSoldiers = currentSoldiersI;
 	fact = factI;
 	type = typeI;
+	debug = false;
 }

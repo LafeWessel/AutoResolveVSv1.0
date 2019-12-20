@@ -26,10 +26,22 @@ public:
 	void navalOutput(vector<vector<int>> totalCasualties);
 	void calculateNaval();
 
-	int getAttackerShips() { return attackerShips; };
-	int getDefenderShips() { return defenderShips; };
+	int getAttackerShips() { 
+		if (debug) { cout << "naval attacker ships gotten" << endl; }
+		return attackerShips; 
+	};
+	int getDefenderShips() {
+		if (debug) { cout << "naval defender ships gotten" << endl; }
+		return defenderShips; 
+	};
 
-	void setAttackerShips(int attShipsI) { attackerShips = attShipsI; };
-	void setDefenderShips(int defShipsI) { defenderShips = defShipsI; };
+	void setAttackerShips(int attShipsI) { 
+		if (debug) { cout << "naval attacker ships set" << endl; }
+		attackerShips = attShipsI; 
+	};
+	void setDefenderShips(int defShipsI) { 
+		if (debug) { cout << "naval defender ships set" << endl; }
+		defenderShips = defShipsI; 
+	};
 };
 

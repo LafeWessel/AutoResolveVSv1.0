@@ -29,16 +29,36 @@ public:
 	Roster();
 	Roster(vector<Unit> unitsI, faction factI);
 
-	vector<Unit> getUnits() { return factionUnits; };
-	faction getFaction() { return fact; };
-	bool getDebugBool() { return debug; };
-	int getNumberOfUnits() { return factionUnits.size(); };
+	vector<Unit> getUnits() { 
+		if (debug) { cout << "roster unit vector gotten" << endl; }
+		return factionUnits; 
+	};
+	faction getFaction() { 
+		if (debug) { cout << "roster faction gotten" << endl; }
+		return fact; 
+	};
+	int getNumberOfUnits() { 
+		if (debug) { cout << "roster number of units gotten" << endl; }
+		return factionUnits.size(); 
+	};
 
-	void setUnits(vector<Unit> unitsI) { factionUnits = unitsI; };
-	void setFaction(faction factI) { fact = factI; };
-	void setDebugBool(bool debugI) { debug = debugI; };
+	void setUnits(vector<Unit> unitsI) { 
+		if (debug) { cout << "roster unit vector set" << endl; }
+		factionUnits = unitsI; 
+	};
+	void setFaction(faction factI) { 
+		if (debug) { cout << "roster faction set" << endl; }
+		fact = factI; 
+	};
+	Unit getUnitAtIndex(int index) { 
+		if (debug) { cout << "roster unit at index returned" << endl; }
+		return factionUnits[index]; 
+	};
+
 	vector<Unit> getUnitsOfType(unitType& type);
-	Unit getUnitAtIndex(int index) { return factionUnits[index]; };
+
+	bool getDebug() { return debug; };
+	void setDebug(bool debugI) { debug = debugI; };
 
 	void buildRoster();
 };

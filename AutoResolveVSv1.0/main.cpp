@@ -80,6 +80,8 @@ TODO Section:
 
 High Priority:
 
+TODO-ensure that Unit debug is set
+
 TODO-add print statements to whenever a value is grabbed from a class
 
 TODO-implement 'helper' functions that will print data from classes
@@ -230,7 +232,7 @@ void testSetup(Battle battle, bool debug, Treasure& treasure)
 	if (debug) { cout << "faction set" << endl; }
 
 	Roster beladimirRoster{};
-	beladimirRoster.setDebugBool(debug);
+	beladimirRoster.setDebug(debug);
 	beladimirRoster.setFaction(attFac);
 	beladimirRoster.buildRoster();
 	if (debug) { cout << "Roster built" << endl; }
@@ -249,7 +251,7 @@ void testSetup(Battle battle, bool debug, Treasure& treasure)
 		units.push_back(read);
 	}
 	Player attacker{};
-	attacker.setDebugBool(debug);
+	attacker.setDebug(debug);
 	attacker.setFaction(attFac);
 	attacker.setGeneral(attackerGen);
 	attacker.setAdvCombatDeck(false);
@@ -440,7 +442,7 @@ void battleTest(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
 	attackerGen.setDebugBool(debug);
 	faction attFac = faction::beladimir;
 	Roster beladimirRoster{};
-	beladimirRoster.setDebugBool(debug);
+	beladimirRoster.setDebug(debug);
 	beladimirRoster.setFaction(attFac);
 	beladimirRoster.buildRoster();
 
@@ -458,7 +460,7 @@ void battleTest(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
 		units.push_back(read);
 	}
 	Player attacker{};
-	attacker.setDebugBool(debug);
+	attacker.setDebug(debug);
 	attacker.setFaction(attFac);
 	attacker.setGeneral(attackerGen);
 	attacker.setAdvCombatDeck(false);

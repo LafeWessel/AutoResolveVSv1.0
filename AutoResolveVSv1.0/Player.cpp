@@ -34,13 +34,16 @@ Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCo
 
 void Player::setPlayerUnits(vector<Unit> unitsI)
 {
+	if (debug) { cout << "player player unit vector set" << endl; }
 	playerUnits = unitsI;
+	if (debug) { cout << "player calling setupUnitAutoresolveBonuses" << endl; }
 	setupUnitAutoresolveBonuses();
 	return;
 }
 
 void Player::setReinforcements(int ReinforceI)
 {
+	if (debug) { cout << "player set reinforcements called" << endl; }
 	//Removes any current reinforcements from autoresolve totals before adding the input bonuses
 	Melee -= (Reinforcements * 4);
 	Cavalry -= (Reinforcements * 4);
@@ -54,6 +57,7 @@ void Player::setReinforcements(int ReinforceI)
 
 void Player::setupUnitAutoresolveBonuses()
 {
+	if (debug) { cout << "player setupUnitAutoresolveBonuses called" << endl; }
 	Melee = 0;
 	Cavalry = 0;
 	Ranged = 0;

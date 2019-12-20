@@ -31,14 +31,39 @@ public:
 	void SiegeOutput(vector<vector<int>> totalCasualties);
 	void calculateSiege();
 
-	int getRams() { return rams; };
-	int getCatapults() { return catapults; };
-	int getSiegeTowers() { return siegeTowers; };
-	townStats getTownStats() { return townLevel; };
+	int getRams() { 
+		if (debug) { cout << "siege rams gotten" << endl; }
+		return rams; 
+	};
+	int getCatapults() {
+		if (debug) { cout << "siege catapults gotten" << endl; }
+		return catapults;
+	};
+	int getSiegeTowers() {
+		if (debug) { cout << "siege towers gotten" << endl; }
+		return siegeTowers; 
+	};
+	townStats getTownLevel() {
+		if (debug) { cout << "siege town stats gotten" << endl; }
+		return townLevel; 
+	};
 
-	void setRams(int ramsI) { rams = ramsI; };
-	void setCatapults(int catapultsI) { catapults = catapultsI; };
-	void setSiegeTowers(int siegeTowersI) { siegeTowers = siegeTowersI; };
-	void setTownLevel(int townLevelI) { townLevel = townLevelI; };
+
+	void setRams(int ramsI) {
+		if (debug) { cout << "siege rams set" << endl; }
+		rams = ramsI; 
+	};
+	void setCatapults(int catapultsI) {
+		if (debug) { cout << "siege catapults set" << endl; }
+		catapults = catapultsI; 
+	};
+	void setSiegeTowers(int siegeTowersI) { 
+		if (debug) { cout << "siege towers set" << endl; }
+		siegeTowers = siegeTowersI; 
+	};
+	void setTownLevel(int townLevelI) {
+		if (debug) { cout << "siege town level set" << endl; }
+		townLevel = townLevelI; 
+	};
 };
 

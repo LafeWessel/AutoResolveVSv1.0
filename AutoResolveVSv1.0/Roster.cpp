@@ -35,6 +35,7 @@ vector<Unit> Roster::getUnitsOfType(unitType& type) //gets all of the units of a
 
 void Roster::buildRoster() //Reads units in from the 'units' file and adds them to the roster if they match the roster's faction
 {
+	if (debug) { cout << "roster build roster called" << endl; }
 	CSVDataReader reader;
 	factionUnits = reader.readUnits(fact);
 	if (factionUnits.size() < 1) { throw invalid_argument("factionUnits not initialized with any elements"); }

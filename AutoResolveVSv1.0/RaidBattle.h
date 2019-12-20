@@ -27,8 +27,13 @@ public:
 	void raidOutput(vector<vector<int>> totalCasualties, int suppGained);
 	void calculateRaid();
 
-	townStats getTownStats() { return townLevel; };
+	townStats getTownLevel() { 
+		if (debug) { cout << "raid town stats gotten" << endl; }
+		return townLevel; 	
+	};
 
-	void setTownLevel(int townLevelI) { townLevel = townLevelI; };
+	void setTownLevel(int townLevelI) { 
+		if (debug) { cout << "town level set" << endl; }
+		townLevel = townLevelI; };
 };
 

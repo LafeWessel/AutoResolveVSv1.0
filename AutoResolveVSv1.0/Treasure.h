@@ -62,19 +62,55 @@ public:
 	Equipment getDragonAtIndex(int index) { return dragon[(double)index - 1]; };
 	*/
 
-	vector<Equipment> getArmorVector() { return armor; };
-	vector<Equipment> getWeaponVector() { return weapon; };
-	vector<Equipment> getTrinketVector() { return trinket; };
-	vector<Equipment> getBannerVector() { return banner; };
-	vector<Equipment> getFollowerVector() { return follower; };
-	vector<Equipment> getDragonVector() { return dragon; };
+	vector<Equipment> getArmorVector() {
+		if (debug) { cout << "armor vector gotten" << endl; }
+		return armor;
+	};
+	vector<Equipment> getWeaponVector() { 
+		if (debug) { cout << "weapon vector gotten" << endl; }
+		return weapon;
+	};
+	vector<Equipment> getTrinketVector() {
+		if (debug) { cout << "trinket vector gotten" << endl; }
+		return trinket; 
+	};
+	vector<Equipment> getBannerVector() {
+		if (debug) { cout << "banner vector gotten" << endl; }
+		return banner;
+	};
+	vector<Equipment> getFollowerVector() {
+		if (debug) { cout << "follower vector gotten" << endl; }
+		return follower;
+	};
+	vector<Equipment> getDragonVector() {
+		if (debug) { cout << "dragon vector gotten" << endl; }
+		return dragon;
+	};
 
-	void setArmorVector(vector<Equipment> equipVectorI) { armor = equipVectorI; };
-	void setWeaponVector(vector<Equipment> equipVectorI) { weapon = equipVectorI; };
-	void setTrinketVector(vector<Equipment> equipVectorI) { trinket = equipVectorI; };
-	void setBannerVector(vector<Equipment> equipVectorI) { banner = equipVectorI; };
-	void setFollowerVector(vector<Equipment> equipVectorI) { follower = equipVectorI; };
-	void setDragonVector(vector<Equipment> equipVectorI) { dragon = equipVectorI; };
+	void setArmorVector(vector<Equipment> equipVectorI) { 
+		armor = equipVectorI; 
+		if (debug) { cout << "armor vector set" << endl; }
+	};
+	void setWeaponVector(vector<Equipment> equipVectorI) {
+		weapon = equipVectorI;
+		if (debug) { cout << "weapon vector set" << endl; }
+	};
+	void setTrinketVector(vector<Equipment> equipVectorI) {
+		trinket = equipVectorI;
+		if (debug) { cout << "trinket vector set" << endl; }
+	};
+	void setBannerVector(vector<Equipment> equipVectorI) {
+		banner = equipVectorI;
+		if (debug) { cout << "banner vector set" << endl; }
+	};
+	void setFollowerVector(vector<Equipment> equipVectorI) {
+		follower = equipVectorI;
+		if (debug) { cout << "follower vector set" << endl; }
+	};
+	void setDragonVector(vector<Equipment> equipVectorI) {
+		dragon = equipVectorI;
+		if (debug) { cout << "dragon vector set" << endl; }
+	};
 
 	bool getDebug() { return debug; }
 	void setDebug(bool debugI) { debug = debugI; }
