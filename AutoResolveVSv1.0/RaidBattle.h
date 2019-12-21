@@ -34,6 +34,16 @@ public:
 
 	void setTownLevel(int townLevelI) { 
 		if (debug) { cout << "town level set" << endl; }
-		townLevel = townLevelI; };
+		townLevel = townLevelI; 
+		townLevel.setDebug(debug);
+	};
+
+	void setDebug(bool debugI) {
+		debug = debugI;
+		townLevel.setDebug(debug);
+		treasure->setDebug(debug);
+		attacker.setDebug(debug);
+		defender.setDebug(debug);
+	}
 };
 

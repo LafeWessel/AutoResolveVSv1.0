@@ -35,17 +35,45 @@ public:
 	void monsterCasualties(vector<int>& attackerCasVec); //Calculates the casualties, needs only a 1D vector since there is only 1 Player
 	void calculateMonster(); //Calculates the outcome and calls Casualty and output functions
 
-	int getEnding() { return (int)result; };
-	Player getPlayer() { return attacker; };
-	Monster getMonster() { return monster; };
-	outcome getOutcome() { return result; };
-	bool getOutputBool() { return output; };
-	bool getDebug() { return debug; };
+	int getEnding() { 
+		if (debug) { cout << "monster battle ending gotten" << endl; }
+			return (int)result;
+	};
+	Player getPlayer() { 
+		if (debug) { cout << "monster battle player gotten" << endl; }
+		return attacker; 
+	};
+	Monster getMonster() { 
+		if (debug) { cout << "monster battle monster gotten" << endl; }
+		return monster; 
+	};
+	outcome getOutcome() { 
+		if (debug) { cout << "monster battle outcome gotten" << endl; }
+		return result; 
+	};
 
-	void setPlayer(Player playerI) { attacker = playerI; };
-	void setMonster(Monster monsterI) { monster = monsterI; };
-	void setOutcome(outcome resultI) { result = resultI; };
+	void setPlayer(Player playerI) { 
+		if (debug) { cout << "monster battle player set" << endl; }
+		attacker = playerI;
+		attacker.setDebug(debug);
+	};
+	void setMonster(Monster monsterI) { 
+		if (debug) { cout << "monster battle monster set" << endl; }
+		monster = monsterI;
+		monster.setDebug(debug);
+	};
+	void setOutcome(outcome resultI) { 
+		if (debug) { cout << "monster battle outcome set" << endl; }
+		result = resultI;
+	};
+
+	bool getOutput() { return output; };
+	bool getDebug() { return debug; };
 	void setOutput(bool outputI) { output = outputI; };
-	void setDebug(bool debugI) { debug = debugI; };
+	void setDebug(bool debugI) {	
+		debug = debugI;
+		attacker.setDebug(debug);
+		monster.setDebug(debug);
+	};
 };
 

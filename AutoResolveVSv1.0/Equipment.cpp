@@ -8,7 +8,7 @@ Equipment::Equipment() //void initializer
 {
 	name = "";
 	autoBonus = 0;
-	number = 0;
+	index = 0;
 	range = 0;
 	EquipType = equipmentType::null;
 	effect = "";
@@ -20,7 +20,7 @@ Equipment::Equipment(string nameI, int autoBonusI, int numberI, int rangeI, equi
 {
 	name = nameI;
 	autoBonus = autoBonusI;
-	number = numberI;
+	index = numberI;
 	range = rangeI;
 	EquipType = EquipTypeI;
 	effect = effectI;

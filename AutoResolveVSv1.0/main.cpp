@@ -80,6 +80,8 @@ TODO Section:
 
 High Priority:
 
+TODO-ensure that all classes set the debug values for their component classes
+
 TODO-ensure that Unit debug is set
 
 TODO-add print statements to whenever a value is grabbed from a class
@@ -225,7 +227,7 @@ void testSetup(Battle battle, bool debug, Treasure& treasure)
 	if (debug) { cout << "test setup called" << endl; }
 
 	General attackerGen{ 10,treasure.findArmor(),treasure.findWeapon(),treasure.findTrinket(),treasure.findFollower(),treasure.findFollower() };
-	attackerGen.setDebugBool(debug);
+	attackerGen.setDebug(debug);
 	if (debug) { cout << "General initialized" << endl; }
 
 	faction attFac = faction::beladimir;
@@ -436,10 +438,10 @@ void battleTest(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
 {
 	if (debug) { cout << "battleTest - monster called" << endl; }
 	Equipment equip{};
-	equip.setDebugBool(debug);
+	equip.setDebug(debug);
 	equip = treasure.findArmor();
 	General attackerGen{ 10,equip,equip,equip,equip,equip };
-	attackerGen.setDebugBool(debug);
+	attackerGen.setDebug(debug);
 	faction attFac = faction::beladimir;
 	Roster beladimirRoster{};
 	beladimirRoster.setDebug(debug);

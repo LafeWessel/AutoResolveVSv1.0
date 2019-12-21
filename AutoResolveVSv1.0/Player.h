@@ -57,7 +57,8 @@ public:
 	};
 	General getGeneral() { 
 		if (debug) { cout << "player general gotten" << endl; }
-		return general; };
+		return general; 
+	};
 	bool getAdvComDeck() { 
 		if (debug) { cout << "player advanced combat deck gotten" << endl; }
 		return AdvCombatDeck; 
@@ -102,6 +103,7 @@ public:
 	void setGeneral(General generalI) { 
 		if (debug) { cout << "player general set" << endl; }
 		general = generalI;
+		general.setDebug(debug);
 	};
 	void setAdvCombatDeck(bool advComDeckI) { 
 		if (debug) { cout << "player advanced combat deck set" << endl; }
@@ -114,6 +116,7 @@ public:
 	void setUnitAtIndex(int index, Unit unitI) { 
 		if (debug) { cout << "player unit at index set" << endl; }
 		if (index >= 0 && index < playerUnits.size()) {
+			unitI.setDebug(debug);
 			playerUnits[index] = unitI;
 		}
 		else {
@@ -126,5 +129,11 @@ public:
 	};
 	
 	bool getDebug() { return debug; }
-	void setDebug(bool debugI) { debug = debugI; }
+	void setDebug(bool debugI) { 
+		debug = debugI;
+		general.setDebug(debug);
+		for (int i = 0; i < playerUnits.size(); i++) {
+			playerUnits[i].setDebug(debug);
+		}
+	}
 };

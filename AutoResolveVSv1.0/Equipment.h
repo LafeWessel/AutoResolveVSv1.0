@@ -19,7 +19,7 @@ class Equipment
 private:
 	string name;
 	int autoBonus;
-	int number;
+	int index;
 	int range;
 	equipmentType EquipType;
 	string effect;
@@ -31,22 +31,66 @@ public:
 	Equipment(string nameI, int autoBonusI, int numberI, int rangeI, equipmentType EquipTypeI, string effectI, int coinValueI);
 	Equipment();
 
-	string getName() { return name; };
-	int getABonus() { return autoBonus; };
-	int getIndex() { return number; };
-	int getRange() { return range; };
-	equipmentType getEqType() { return EquipType; };
-	string getEffect() { return effect; };
-	int getCValue() { return coinValue; };
-	bool getDebug() { return debug; }
+	string getName() { 
+		if (debug) { cout << "equipment name gotten" << endl; }
+		return name; 
+	};
+	int getABonus() { 
+		if (debug) { cout << "equipment autoresolve bonus gotten" << endl; }
+		return autoBonus; 
+	};
+	int getIndex() { 
+		if (debug) { cout << "equipment index gotten" << endl; }
+		return index; 
+	};
+	int getRange() { 
+		if (debug) { cout << "equipment range gotten" << endl; }
+		return range; 
+	};
+	equipmentType getEqType() { 
+		if (debug) { cout << "equipment type gotten" << endl; }
+		return EquipType; 
+	};
+	string getEffect() { 
+		if (debug) { cout << "equipment effect gotten" << endl; }
+		return effect; 
+	};
+	int getCValue() { 
+		if (debug) { cout << "equipment coin value gotten" << endl; }
+		return coinValue; 
+	};
 
-	void setName(string nameI) { name = nameI; };
-	void setABonus(int autoBonusI) { autoBonus = autoBonusI; };
-	void setIndex(int indexI) { number = indexI; };
-	void setRange(int rangeI) { range = rangeI; };
-	void setEqType(equipmentType equipTypeI) { EquipType = equipTypeI; };
-	void setEffect(string effectI) { effect = effectI; };
-	void setCValue(int CValI) { coinValue = CValI; };
-	void setDebugBool(bool debugI) { debug = debugI; }
+
+	void setName(string nameI) { 
+		if (debug) { cout << "equipment name set" << endl; }
+		name = nameI; 
+	};
+	void setABonus(int autoBonusI) { 
+		if (debug) { cout << "equipment autoresolve bonus set" << endl; }
+		autoBonus = autoBonusI; 
+	};
+	void setIndex(int indexI) { 
+		if (debug) { cout << "equipment index set" << endl; }
+		index = indexI; 
+	};
+	void setRange(int rangeI) { 
+		if (debug) { cout << "equipment range set" << endl; }
+		range = rangeI; 
+	};
+	void setEqType(equipmentType equipTypeI) { 
+		if (debug) { cout << "equipment type set" << endl; }
+		EquipType = equipTypeI; 
+	};
+	void setEffect(string effectI) { 
+		if (debug) { cout << "equipment effect set" << endl; }
+		effect = effectI; 
+	};
+	void setCValue(int CValI) { 
+		if (debug) { cout << "equipment coin value set" << endl; }
+		coinValue = CValI; 
+	};
+
+	bool getDebug() { return debug; }
+	void setDebug(bool debugI) { debug = debugI; }
 };
 

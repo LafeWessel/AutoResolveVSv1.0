@@ -246,17 +246,20 @@ void Battle::battleOutput(vector<vector<int>>& totalCasualties) //Base battle-en
 	//Maybe move this part to calculateCas()?
 	//Determines attacker casualty distribution
 	vector<Unit> attackerUnits = {};
-
+	attackerUnits = attacker.getPlayerUnits();
+	if (debug) { cout << "number of attacker units: " << attackerUnits.size() << endl; }
+	/*
 	for (int i = 0; i < attacker.getNumberOfUnits(); i++)
 	{
 		attackerUnits.push_back(attacker.getUnitAtIndex(i));
 		if (debug) { cout << "attackerUnits[" << i << "] pushed " << attacker.getUnitAtIndex(i).getName() << endl; }
 	}
-
+	*/
 	int assignedSoldierCasualties = 0;
 	int assignedUnitCasualties = 0;
 	int i = 0;
 	int cas = 0;
+	if (debug) { cout << "battle assigning casualties" << endl; }
 	while (assignedSoldierCasualties <= totalCasualties[0][0])
 	{
 		//This makes the iterator skip units that have already lost all their soldiers.

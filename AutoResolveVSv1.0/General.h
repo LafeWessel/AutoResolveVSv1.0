@@ -29,23 +29,77 @@ public:
 	~General();
 	General();
 	General(int rankI, Equipment armorI, Equipment weaponI, Equipment trinketI, Equipment bannerI, Equipment followerI);
-	int getRank() { return rank; };
 
-	int getARBonus() { return AutoResEqBonus; };
-	Equipment getArmor() { return armor; };
-	Equipment getWeapon() { return weapon; };
-	Equipment getTrinket() { return trinket; };
-	Equipment getBanner() { return banner; };
-	Equipment getFollower() { return follower; };
-	bool getDebug() { return debug; }
+	int getRank() { 
+		if (debug) { cout << "general rank gotten" << endl; }
+		return rank;
+	};
+	int getARBonus() { 
+		if (debug) { cout << "general autoResolveBonus gotten" << endl; }
+		return AutoResEqBonus; 
+	};
+	Equipment getArmor() { 
+		if (debug) { cout << "general armor gotten" << endl; }
+		return armor; 
+	};
+	Equipment getWeapon() { 
+		if (debug) { cout << "general weapon gotten" << endl; }
+		return weapon; 
+	};
+	Equipment getTrinket() { 
+		if (debug) { cout << "general trinket gotten" << endl; }
+		return trinket; 
+	};
+	Equipment getBanner() { 
+		if (debug) { cout << "general banner gotten" << endl; }
+		return banner; 
+	};
+	Equipment getFollower() { 
+		if (debug) { cout << "general follower gotten" << endl; }
+		return follower; 
+	};
 
-	void setRank(int rankI) { rank = rankI; };
-	void setAutoBonus(int autoBonusI) { AutoResEqBonus = autoBonusI; };
-	void setArmor(Equipment equipI) { armor = equipI; };
-	void setWeapon(Equipment equipI) { weapon = equipI; };
-	void setTrinket(Equipment equipI) { trinket = equipI; };
-	void setBanner(Equipment equipI) { banner = equipI; };
-	void setFollower(Equipment equipI) { follower = equipI; };
-	void setDebugBool(bool debugI) { debug = debugI; }
+	void setRank(int rankI) { 
+		if (debug) { cout << "general rank set" << endl; }
+		rank = rankI; 
+	};
+	void setAutoBonus(int autoBonusI) {
+		if (debug) { cout << "general autoresolve bonus set" << endl; }
+		AutoResEqBonus = autoBonusI; 
+	};
+	void setArmor(Equipment equipI) { 
+		if (debug) { cout << "general armor set" << endl; }
+		armor = equipI;
+		armor.setDebug(debug);
+	};
+	void setWeapon(Equipment equipI) { 
+		if (debug) { cout << "general weapon set" << endl; }
+		weapon = equipI; 
+		weapon.setDebug(debug);
+	};
+	void setTrinket(Equipment equipI) { 
+		if (debug) { cout << "general trinket set" << endl; }
+		trinket = equipI;
+		trinket.setDebug(debug);
+	};
+	void setBanner(Equipment equipI) { 
+		if (debug) { cout << "general banner set" << endl; }
+		banner = equipI; 
+		banner.setDebug(debug);
+	};
+	void setFollower(Equipment equipI) { 
+		if (debug) { cout << "general follower set" << endl; }
+		follower = equipI;
+		follower.setDebug(debug);
+	};
 
+	bool getDebug() { return debug; };
+	void setDebug(bool debugI) {
+		debug = debugI;
+		armor.setDebug(debug);
+		weapon.setDebug(debug);
+		trinket.setDebug(debug);
+		banner.setDebug(debug);
+		follower.setDebug(debug);
+	};
 };

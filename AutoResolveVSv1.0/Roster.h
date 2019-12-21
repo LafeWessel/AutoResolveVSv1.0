@@ -58,7 +58,12 @@ public:
 	vector<Unit> getUnitsOfType(unitType& type);
 
 	bool getDebug() { return debug; };
-	void setDebug(bool debugI) { debug = debugI; };
+	void setDebug(bool debugI) { 
+		debug = debugI; 
+		for (int i = 0; i < factionUnits.size(); i++) {
+			factionUnits[i].setDebug(debug);
+		}
+	};
 
 	void buildRoster();
 };

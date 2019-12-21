@@ -104,6 +104,7 @@ ostream& operator<<(ostream& os, unitType& type) //output formation for outcome 
 
 CSVDataReader::CSVDataReader()
 {
+	debug = false;
 }
 
 CSVDataReader::CSVDataReader(bool debugI)
@@ -152,6 +153,7 @@ vector<Equipment> CSVDataReader::readEquipment()
 		throw invalid_argument("Equipment file not found.");
 	}
 	CSVRow row;
+	row.setDebug(debug);
 	string theEquipType;
 	string theName;
 	string theEffect;
@@ -226,6 +228,7 @@ vector<Unit> CSVDataReader::readUnits(faction& fact)
 	}
 	vector<Unit> readUnits{};
 	CSVRow row;
+	row.setDebug(debug);
 	string Name;
 	string ARBonus;
 	string SoldiersPerU;

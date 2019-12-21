@@ -41,8 +41,6 @@ public:
 		return empty;
 	};
 
-
-
 	//Subtracts 1 from the array so that it doesn't run off the end of the array of equipment
 	Equipment findArmor();
 	Equipment findWeapon();
@@ -52,15 +50,6 @@ public:
 	Equipment findFollower();
 
 	Equipment findTreasure(int bonus); //Used at the end of battles to determine loot results
-	
-	/*
-	Equipment getArmorAtIndex(int index) { return armor[(double)index - 1]; };
-	Equipment getWeaponAtIndex(int index) { return weapon[(double)index - 1]; };
-	Equipment getTrinketAtIndex(int index) { return trinket[(double)index - 1]; };
-	Equipment getBannerAtIndex(int index) { return banner[(double)index - 1]; };
-	Equipment getFollowerAtIndex(int index) { return follower[(double)index - 1]; };
-	Equipment getDragonAtIndex(int index) { return dragon[(double)index - 1]; };
-	*/
 
 	vector<Equipment> getArmorVector() {
 		if (debug) { cout << "armor vector gotten" << endl; }
@@ -90,30 +79,68 @@ public:
 	void setArmorVector(vector<Equipment> equipVectorI) { 
 		armor = equipVectorI; 
 		if (debug) { cout << "armor vector set" << endl; }
+		for (int i = 0; i < armor.size(); i++) {
+			armor[i].setDebug(debug);
+		}
 	};
 	void setWeaponVector(vector<Equipment> equipVectorI) {
 		weapon = equipVectorI;
 		if (debug) { cout << "weapon vector set" << endl; }
+		for (int i = 0; i < weapon.size(); i++) {
+			weapon[i].setDebug(debug);
+		}
 	};
 	void setTrinketVector(vector<Equipment> equipVectorI) {
 		trinket = equipVectorI;
 		if (debug) { cout << "trinket vector set" << endl; }
+		for (int i = 0; i < trinket.size(); i++) {
+			trinket[i].setDebug(debug);
+		}
 	};
 	void setBannerVector(vector<Equipment> equipVectorI) {
 		banner = equipVectorI;
 		if (debug) { cout << "banner vector set" << endl; }
+		for (int i = 0; i < banner.size(); i++) {
+			banner[i].setDebug(debug);
+		}
 	};
 	void setFollowerVector(vector<Equipment> equipVectorI) {
 		follower = equipVectorI;
 		if (debug) { cout << "follower vector set" << endl; }
+		for (int i = 0; i < follower.size(); i++) {
+			follower[i].setDebug(debug);
+		}
 	};
 	void setDragonVector(vector<Equipment> equipVectorI) {
 		dragon = equipVectorI;
 		if (debug) { cout << "dragon vector set" << endl; }
+		for (int i = 0; i < dragon.size(); i++) {
+			dragon[i].setDebug(debug);
+		}
 	};
 
 	bool getDebug() { return debug; }
-	void setDebug(bool debugI) { debug = debugI; }
+	void setDebug(bool debugI) { 
+		debug = debugI; 
+		for (int i = 0; i < armor.size(); i++) {
+			armor[i].setDebug(debug);
+		}
+		for (int i = 0; i < weapon.size(); i++) {
+			weapon[i].setDebug(debug);
+		}
+		for (int i = 0; i < banner.size(); i++) {
+			banner[i].setDebug(debug);
+		}
+		for (int i = 0; i < follower.size(); i++) {
+			follower[i].setDebug(debug);
+		}
+		for (int i = 0; i < trinket.size(); i++) {
+			trinket[i].setDebug(debug);
+		}		
+		for (int i = 0; i < dragon.size(); i++) {
+			dragon[i].setDebug(debug);
+		}
+	}
 
 	void initializeTreasure(); //This grabs all the data from the file containing the equipment
 };

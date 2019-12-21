@@ -14,7 +14,7 @@
 class CSVDataReader
 {
 private:
-	bool debug = false;
+	bool debug;
 
 public:
 	CSVDataReader();
@@ -23,5 +23,7 @@ public:
 	
 	vector<Equipment> readEquipment();
 	vector<Unit> readUnits(faction& fact);
+
+	void setDebug(bool debugI) { debug = debugI; };
 };
 

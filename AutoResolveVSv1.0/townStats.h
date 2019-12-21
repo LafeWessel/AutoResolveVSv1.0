@@ -25,14 +25,31 @@ public:
 	townStats();
 	townStats(int levelI);
 
-	int getSupplies() { return supplies; };
-	defenses getDefenses() { return townDefense; };
-	int getLevel() { return level; };
+	int getSupplies() { 
+		if (debug) { cout << "town stats supplies gotten" << endl; }
+		return supplies; 
+	};
+	defenses getDefenses() { 
+		if (debug) { cout << "town stats defenses gotten" << endl; }
+		return townDefense; 
+	};
+	int getLevel() { 
+		if (debug) { cout << "town stats level gotten" << endl; }
+		return level; };
+
+	void setSupplies(int suppliesI) { 
+		if (debug) { cout << "town stats supplies set" << endl; }
+		supplies = suppliesI;
+	};
+	void setLevel(int levelI) { 
+		if (debug) { cout << "town stats level set" << endl; }
+		level = levelI; 
+	};
+	void setDefenses(defenses defenseI) { 
+		if (debug) { cout << "town stats defenses set" << endl; }
+		townDefense = defenseI; 
+	};
+
 	bool getDebug() { return debug; }
-
-	void setSupplies(int suppliesI) { supplies = suppliesI; };
-	void setLevel(int levelI) { level = levelI; };
-	void setDefenses(defenses defenseI) { townDefense = defenseI; };
-	void setDebugBool(bool debugI) { debug = debugI; }
-
+	void setDebug(bool debugI) { debug = debugI; }
 };

@@ -7,7 +7,7 @@ Monster::~Monster()
 
 Monster::Monster() //void initializer
 {
-	treasure = Treasure();
+	treasure = &Treasure();
 	type = monsterType::Empty;
 	coinReward = 0;
 	autoResValue = 0;
@@ -17,7 +17,7 @@ Monster::Monster() //void initializer
 Monster::Monster(monsterType typeI, Treasure& treasureI) //initializer
 {
 	type = typeI;
-	treasure = treasureI;
+	treasure = &treasureI;
 	setValuesFromMonsterType();
 	debug = false;
 }
@@ -31,93 +31,93 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 	case(monsterType::Minotaur):
 		if (debug)
 		{
-			Equipment reward = treasure.findWeapon();
+			Equipment reward = treasure->findWeapon();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
 		}
 		else
 		{
-			rewards.push_back(treasure.findWeapon());
+			rewards.push_back(treasure->findWeapon());
 		}
 		break;
 	case(monsterType::Hobgoblin):
 		if (debug)
 		{
-			Equipment reward = treasure.findWeapon();
+			Equipment reward = treasure->findWeapon();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
-			reward = treasure.findArmor();
+			reward = treasure->findArmor();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
 		}
 		else
 		{
-			rewards.push_back(treasure.findWeapon());
-			rewards.push_back(treasure.findArmor());
+			rewards.push_back(treasure->findWeapon());
+			rewards.push_back(treasure->findArmor());
 		}
 		break;
 	case(monsterType::Troll):
 		if (debug)
 		{
-			Equipment reward = treasure.findWeapon();
+			Equipment reward = treasure->findWeapon();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
-			reward = treasure.findTrinket();
+			reward = treasure->findTrinket();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
 		}
 		else
 		{
-			rewards.push_back(treasure.findWeapon());
-			rewards.push_back(treasure.findTrinket());
+			rewards.push_back(treasure->findWeapon());
+			rewards.push_back(treasure->findTrinket());
 		}
 		break;
 	case(monsterType::Giant):
 		if (debug)
 		{
-			Equipment reward = treasure.findWeapon();
+			Equipment reward = treasure->findWeapon();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
-			reward = treasure.findTrinket();
+			reward = treasure->findTrinket();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
-			reward = treasure.findArmor();
+			reward = treasure->findArmor();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
 		}
 		else
 		{
-			rewards.push_back(treasure.findWeapon());
-			rewards.push_back(treasure.findTrinket());
-			rewards.push_back(treasure.findArmor());
+			rewards.push_back(treasure->findWeapon());
+			rewards.push_back(treasure->findTrinket());
+			rewards.push_back(treasure->findArmor());
 		}
 		break;
 	case(monsterType::Demon):
 		if (debug)
 		{
-			Equipment reward = treasure.findBanner();
+			Equipment reward = treasure->findBanner();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
-			reward = treasure.findArmor();
+			reward = treasure->findArmor();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
 		}
 		else
 		{
-			rewards.push_back(treasure.findArmor());
-			rewards.push_back(treasure.findBanner());
+			rewards.push_back(treasure->findArmor());
+			rewards.push_back(treasure->findBanner());
 		}
 		break;
 	case(monsterType::Dragon):
 		if (debug)
 		{
-			Equipment reward = treasure.findDragonEq();
+			Equipment reward = treasure->findDragonEq();
 			rewards.push_back(reward);
 			cout << "rewards pushed: " << reward.getName() << endl;
 		}
 		else
 		{
-			rewards.push_back(treasure.findDragonEq());
+			rewards.push_back(treasure->findDragonEq());
 		}
 		break;
 	default:
@@ -128,10 +128,12 @@ vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gai
 
 void Monster::setValuesFromMonsterType()
 {
+	if (debug) { cout << "setValuesFromMonsterType called" << endl; }
 	//These set the coin rewards; they are based on values I made elsewhere
 	if ((int)type < 5)
 	{
 		coinReward = ((int)type + 1) * 100;
+		
 	}
 	else if ((int)type < 6)
 	{
@@ -141,6 +143,8 @@ void Monster::setValuesFromMonsterType()
 	{
 		coinReward = ((int)type + 1) * 200;
 	}
+	if (debug) { cout << "coinReward set to: " << coinReward << endl; }
 
 	autoResValue = ((int)type * 10) + 10;
+	if (debug) { cout << "autoResolve Value set to: " << autoResValue << endl; }
 }

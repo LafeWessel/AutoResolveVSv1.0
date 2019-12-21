@@ -36,20 +36,47 @@ public:
 	Battle();
 	Battle(Player attackerI, Player defenderI);
 
-	Player getAttacker() { return attacker; };
-	Player getDefender() { return defender; };
-	outcome getOutcome() { return result; };
-	int getEnding() { return (int)result; };
+	Player getAttacker() { 
+		if (debug) { cout << "battle attacker gotten" << endl; }
+		return attacker; 
+	};
+	Player getDefender() { 
+		if (debug) { cout << "battle defender gotten" << endl; }
+		return defender; 
+	};
+	outcome getOutcome() { 
+		if (debug) { cout << "battle outcome gotten" << endl; }
+		return result; 
+	};
+	int getEnding() { //returns outcome as an int
+		//TODO-remove and just use getOutcome and cast to and int
+		if (debug) { cout << "battle ending gotten" << endl; }
+		return (int)result; 
+	};
+
+	void setAttacker(Player attackerI) { 
+		if (debug) { cout << "battle attacker set" << endl; }
+		attacker = attackerI;
+		attacker.setDebug(debug);
+	};
+	void setDefender(Player defenderI) { 
+		if (debug) { cout << "battle defender set" << endl; }
+		defender = defenderI; 
+		defender.setDebug(debug);
+	};
+	void setOutcome(outcome resultI) { 
+		if (debug) { cout << "battle outcome set" << endl; }
+		result = resultI; 
+	};
+
 	bool getOutputBool() { return output; };
 	bool getDebugBool() { return debug; };
-
-	void setAttacker(Player attackerI) { attacker = attackerI; };
-	void setDefender(Player defenderI) { defender = defenderI; };
-	void setOutcome(outcome resultI) { result = resultI; };
 	void setOutput(bool outputI) { output = outputI; };
 	void setDebug(bool debugI) { 
 		debug = debugI; 
-		treasure->setDebug(debugI); 
+		treasure->setDebug(debug);
+		attacker.setDebug(debug);
+		defender.setDebug(debug);
 	};
 	void setTreasure(Treasure& treasureI) {
 		treasure = &treasureI;
