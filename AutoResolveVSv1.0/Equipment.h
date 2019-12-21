@@ -32,31 +32,31 @@ public:
 	Equipment();
 
 	string getName() { 
-		if (debug) { cout << "equipment name gotten" << endl; }
+		if (debug) { cout << "equipment name gotten: " << name << endl; }
 		return name; 
 	};
 	int getABonus() { 
-		if (debug) { cout << "equipment autoresolve bonus gotten" << endl; }
+		if (debug) { cout << "equipment autoresolve bonus gotten: " << autoBonus << endl; }
 		return autoBonus; 
 	};
 	int getIndex() { 
-		if (debug) { cout << "equipment index gotten" << endl; }
+		if (debug) { cout << "equipment index gotten: " << index << endl; }
 		return index; 
 	};
 	int getRange() { 
-		if (debug) { cout << "equipment range gotten" << endl; }
+		if (debug) { cout << "equipment range gotten: " << range << endl; }
 		return range; 
 	};
 	equipmentType getEqType() { 
-		if (debug) { cout << "equipment type gotten" << endl; }
+		if (debug) { cout << "equipment type gotten: " << (int)EquipType << endl; }
 		return EquipType; 
 	};
 	string getEffect() { 
-		if (debug) { cout << "equipment effect gotten" << endl; }
+		if (debug) { cout << "equipment effect gotten: " << effect << endl; }
 		return effect; 
 	};
 	int getCValue() { 
-		if (debug) { cout << "equipment coin value gotten" << endl; }
+		if (debug) { cout << "equipment coin value gotten: " << coinValue << endl; }
 		return coinValue; 
 	};
 
@@ -90,7 +90,10 @@ public:
 		coinValue = CValI; 
 	};
 
-	bool getDebug() { return debug; }
-	void setDebug(bool debugI) { debug = debugI; }
+	bool getDebug() { return debug; };
+	void setDebug(bool debugI) {
+		if (debugI) { cout << "equipment setDebug called" << endl; }
+		debug = debugI;
+	};
 };
 

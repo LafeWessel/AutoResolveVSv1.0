@@ -19,7 +19,6 @@ using namespace std;
 class MonsterBattle //This is the only type of battle that does NOT inherit from the Battle class
 {
 private:
-	Treasure treasure;
 	Player attacker;
 	Monster monster;
 	outcome result;
@@ -31,24 +30,30 @@ public:
 	MonsterBattle();
 	MonsterBattle(Player attackerI, Monster monsterI);
 
+	string outputGenStateMonster(int state);
+	outcome determineOutcomeMonster(float endingTotal);
+	int calculateBattleRandomsMonster(int randomRolls, int randomRange);
+	int randomNumberMonster(int range);
+
 	void monsterOutput(vector<int>& totalCasualties);
 	void monsterCasualties(vector<int>& attackerCasVec); //Calculates the casualties, needs only a 1D vector since there is only 1 Player
 	void calculateMonster(); //Calculates the outcome and calls Casualty and output functions
-
-	int getEnding() { 
-		if (debug) { cout << "monster battle ending gotten" << endl; }
+	/*
+	int getOutcome() { 
+		if (debug) { cout << "monster battle ending gotten: " << (int)result << endl; }
 			return (int)result;
 	};
+	*/
 	Player getPlayer() { 
-		if (debug) { cout << "monster battle player gotten" << endl; }
+		if (debug) { cout << "monster battle player gotten: " << (int)attacker.getPlayerType() << endl; }
 		return attacker; 
 	};
 	Monster getMonster() { 
-		if (debug) { cout << "monster battle monster gotten" << endl; }
+		if (debug) { cout << "monster battle monster gotten: " << (int)monster.getMonsterType() << endl; }
 		return monster; 
 	};
 	outcome getOutcome() { 
-		if (debug) { cout << "monster battle outcome gotten" << endl; }
+		if (debug) { cout << "monster battle outcome gotten: " << (int)result << endl; }
 		return result; 
 	};
 
@@ -70,7 +75,8 @@ public:
 	bool getOutput() { return output; };
 	bool getDebug() { return debug; };
 	void setOutput(bool outputI) { output = outputI; };
-	void setDebug(bool debugI) {	
+	void setDebug(bool debugI) {
+		if (debugI) { cout << "monster battle setDebug called" << endl; }
 		debug = debugI;
 		attacker.setDebug(debug);
 		monster.setDebug(debug);

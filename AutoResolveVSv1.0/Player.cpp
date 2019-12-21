@@ -3,6 +3,7 @@
 Player::~Player()
 {
 }
+
 Player::Player() //void initializer
 {
 	Melee = 0;
@@ -10,7 +11,7 @@ Player::Player() //void initializer
 	Ranged = 0;
 	general = General();
 	AdvCombatDeck = false;
-	Fact = faction::rebel;
+	fact = faction::rebel;
 	debug = false;
 	Reinforcements = 0;
 	player = playerType::attacker;
@@ -26,7 +27,7 @@ Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCo
 	Ranged += (ReinforceI * 4);
 	general = generalI;
 	AdvCombatDeck = AdvCombatDeckI;
-	Fact = FactI;
+	fact = FactI;
 	debug = false;
 	Reinforcements = ReinforceI;
 	player = type;
@@ -34,8 +35,9 @@ Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCo
 
 void Player::setPlayerUnits(vector<Unit> unitsI)
 {
-	if (debug) { cout << "player player unit vector set" << endl; }
+	
 	playerUnits = unitsI;
+	if (debug) { cout << "player player unit vector set, size: " << playerUnits.size() << endl; }
 	if (debug) { cout << "player calling setupUnitAutoresolveBonuses" << endl; }
 	setupUnitAutoresolveBonuses();
 	return;
@@ -83,11 +85,15 @@ void Player::setupUnitAutoresolveBonuses()
 			cerr << "selected unit has no unitType." << endl;
 		}
 	}
+	if (debug) { cout << "Melee total: " << Melee << endl; }
+	if (debug) { cout << "Cavalry total: " << Cavalry << endl; }
+	if (debug) { cout << "Ranged total: " << Ranged << endl; }
+
 	Melee += (4 * Reinforcements);
-	if (debug) { cout << "Melee with reinforecements " << Melee << endl; }
+	if (debug) { cout << "Melee with reinforcements " << Melee << endl; }
 	Cavalry += (4 * Reinforcements);
-	if (debug) { cout << "Cavalry with reinforecements " << Cavalry << endl; }
+	if (debug) { cout << "Cavalry with reinforcements " << Cavalry << endl; }
 	Ranged += (4 * Reinforcements);
-	if (debug) { cout << "Ranged with reinforecements " << Ranged << endl; }
+	if (debug) { cout << "Ranged with reinforcements " << Ranged << endl; }
 	return;
 }

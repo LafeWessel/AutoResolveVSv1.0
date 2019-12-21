@@ -32,19 +32,19 @@ public:
 	void calculateSiege();
 
 	int getRams() { 
-		if (debug) { cout << "siege rams gotten" << endl; }
+		if (debug) { cout << "siege rams gotten: " << rams << endl; }
 		return rams; 
 	};
 	int getCatapults() {
-		if (debug) { cout << "siege catapults gotten" << endl; }
+		if (debug) { cout << "siege catapults gotten: " << catapults << endl; }
 		return catapults;
 	};
 	int getSiegeTowers() {
-		if (debug) { cout << "siege towers gotten" << endl; }
+		if (debug) { cout << "siege towers gotten: " << siegeTowers << endl; }
 		return siegeTowers; 
 	};
 	townStats getTownLevel() {
-		if (debug) { cout << "siege town stats gotten" << endl; }
+		if (debug) { cout << "siege town stats gotten: " << townLevel.getLevel() << endl; }
 		return townLevel; 
 	};
 

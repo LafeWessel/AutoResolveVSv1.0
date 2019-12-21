@@ -2,11 +2,12 @@
 
 
 
-int randomNumberMonster(int range) //Returns a random number between 1 and the given range
+int MonsterBattle::randomNumberMonster(int range) //Returns a random number between 1 and the given range
 {
+	if (debug) { cout << "monsterBattle randomNumberMonster called" << endl; }
 	typedef std::chrono::high_resolution_clock myclock;
 	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
-
+	if (debug) { cout << "monsterBattle random ranged passed in: " << range << endl; }
 	int random = 0;
 	if (range == 0)
 	{
@@ -14,22 +15,28 @@ int randomNumberMonster(int range) //Returns a random number between 1 and the g
 	}
 	uniform_int_distribution<int> dRange(1, abs(range));
 	random = dRange(generator);
+	if (debug) { cout << "monsterBattle randomNumber random returning: " << random << endl; }
 	return random;
 }
 
 //usually 10 times between 1 and 10 (10,10) for battles
-int calculateBattleRandomsMonster(int randomRolls, int randomRange) //Is used to calculate X number of times between 1 and Y
+int MonsterBattle::calculateBattleRandomsMonster(int randomRolls, int randomRange) //Is used to calculate X number of times between 1 and Y
 {
+	if (debug) { cout << "monsterBattle battleRandoms called" << endl; }
 	int totalRand = 0;
 	for (int i = 0; i < randomRolls; i++)
 	{
-		totalRand += randomNumberMonster(randomRange);
+		int newRand = randomNumberMonster(randomRange);
+		totalRand += newRand;
+		if (debug) { cout << "monsterBattle newRand: " << newRand << " total: " << totalRand << endl; }
 	}
+	if (debug) { cout << "monsterBattle battleRandoms returning: " << totalRand << endl; }
 	return totalRand;
 }
 
-outcome determineOutcomeMonster(float endingTotal) //This determines the kind of outcome that occurs when a given battle result is passed in
+outcome MonsterBattle::determineOutcomeMonster(float endingTotal) //This determines the kind of outcome that occurs when a given battle result is passed in
 {
+	if (debug) { cout << "monsterBattle determineOutcome called" << endl; }
 	//All results are in relation to the attacker.
 	//Victory
 	if (endingTotal > 2)
@@ -71,8 +78,9 @@ outcome determineOutcomeMonster(float endingTotal) //This determines the kind of
 }
 
 //Gives the given state of a general at the end of a battle, range 0-2 for each state
-string outputGenStateMonster(int state)
+string MonsterBattle::outputGenStateMonster(int state)
 {
+	if (debug) { cout << "monsterBattle outputGenState called" << endl; }
 	switch (state)
 	{
 	case(0):

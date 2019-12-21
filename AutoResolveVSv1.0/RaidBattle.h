@@ -28,7 +28,7 @@ public:
 	void calculateRaid();
 
 	townStats getTownLevel() { 
-		if (debug) { cout << "raid town stats gotten" << endl; }
+		if (debug) { cout << "raid town stats gotten: " << townLevel.getLevel() << endl; }
 		return townLevel; 	
 	};
 

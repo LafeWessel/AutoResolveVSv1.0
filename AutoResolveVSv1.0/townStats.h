@@ -15,7 +15,6 @@ using namespace std;
 class townStats //Is used in raid and siege battles to keep data on the town
 {
 private:
-	int level; //TODO-see if this even needs to be used or is just redundant with int cast of townDefense
 	int supplies; //These are used more in Raid battles and can be used during campaigns
 	defenses townDefense;
 	bool debug;
@@ -24,19 +23,19 @@ public:
 	~townStats();
 	townStats();
 	townStats(int levelI);
-	void updateStats();
+	void updateStats(int level);
 
 	int getSupplies() { 
-		if (debug) { cout << "town stats supplies gotten" << endl; }
+		if (debug) { cout << "town stats supplies gotten: " << supplies << endl; }
 		return supplies; 
 	};
 	defenses getDefenses() { 
-		if (debug) { cout << "town stats defenses gotten" << endl; }
+		if (debug) { cout << "town stats defenses gotten: " << (int)townDefense << endl; }
 		return townDefense; 
 	};
 	int getLevel() { 
-		if (debug) { cout << "town stats level gotten" << endl; }
-		return level; };
+		if (debug) { cout << "town stats level gotten: " << (int)townDefense << endl; }
+		return (int)townDefense; };
 
 	void setSupplies(int suppliesI) { 
 		if (debug) { cout << "town stats supplies set to: " << suppliesI << endl; }
@@ -44,8 +43,7 @@ public:
 	};
 	void setLevel(int levelI) { 
 		if (debug) { cout << "town stats level set to: " << levelI << endl; }
-		level = levelI; 
-		updateStats();
+		updateStats(levelI);
 	};
 	/*
 	void setDefenses(defenses defenseI) { 

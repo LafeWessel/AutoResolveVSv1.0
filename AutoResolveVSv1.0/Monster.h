@@ -17,7 +17,7 @@ using namespace std;
 class Monster //is used in monster battles
 {
 private:
-	Treasure *treasure; //maybe make into a pointer?
+	Treasure *treasure;
 	monsterType type;
 	int coinReward;
 	int autoResValue; //*10 + 10
@@ -29,15 +29,15 @@ public:
 	Monster(monsterType typeI, Treasure& treasureI);
 
 	int getCoinReward() { 
-		if (debug) { cout << "monster coin reward gotten" << endl; }
+		if (debug) { cout << "monster coin reward gotten: " << coinReward << endl; }
 		return coinReward; 
 	};
 	int getARValue() { 
-		if (debug) { cout << "monster autoresolve value gotten" << endl; }
+		if (debug) { cout << "monster autoresolve value gotten: " << autoResValue << endl; }
 		return autoResValue; 
 	};
 	monsterType getMonsterType() { 
-		if (debug) { cout << "monster monster type gotten" << endl; }
+		if (debug) { cout << "monster monster type gotten: " << (int)type << endl; }
 		return type; 
 	};
 
@@ -55,9 +55,14 @@ public:
 		if (debug) { cout << "calling setValuesFromMonsterType" << endl; }
 		setValuesFromMonsterType();
 	};
+	void setTreasure(Treasure& treasureI) {
+		treasure = &treasureI;
+		treasure->setDebug(treasureI.getDebug());
+	};
 
 	bool getDebug() { return debug; }
 	void setDebug(bool debugI) {
+		if (debugI) { cout << "monster setDebug called" << endl; }
 		debug = debugI;
 		treasure->setDebug(debug);
 	};

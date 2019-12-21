@@ -80,19 +80,7 @@ TODO Section:
 
 High Priority:
 
-TODO-ensure that all classes set the debug values for their component classes
-
-TODO-ensure that Unit debug is set
-
-TODO-add print statements to whenever a value is grabbed from a class
-
-TODO-implement 'helper' functions that will print data from classes
-
-TODO-unit totalling will not work, always equals 0 before rands and reinforcements
-
-TODO-battle randoms generate very low numbers
-
-TODO-Casualty assignment does not seem to work
+TODO-implement 'helper' functions that will print raw data from classes
 
 TODO-COMMENT EVERYTHING
 
@@ -100,16 +88,14 @@ TODO-implement playerType enum class; currently in place, but does nothing
 
 Low Priority:
 
-TODO-Make sure pass-by-reference is used correctly
-
 TODO-Find new ways to output at the end of a battle that capture more data
 
-TODO-Create a recursive auto-balancing feature to determine what is an equal distribution of power -> AI
+TODO-Create an auto-balancing feature to determine what is an equal distribution of power -> AI
 
 TODO-Learn and implement Qt GUI
 
 ***Possibly Fixed***
-TODO-Find error related to when a follower is looked for from treasureResults(), probably finds something null
+-Find error related to when a follower is looked for from treasureResults(), probably finds something null
 
 */
 
@@ -222,11 +208,17 @@ void predictionOutput(vector<int> rawResults)
 }
 
 //Creates and fills all the classes needed for a battle. Is called by the battleTest functions
-void testSetup(Battle battle, bool debug, Treasure& treasure)
+void testSetup(Battle& battle, bool debug, Treasure& treasure)
 {
 	if (debug) { cout << "test setup called" << endl; }
 
-	General attackerGen{ 10,treasure.findArmor(),treasure.findWeapon(),treasure.findTrinket(),treasure.findFollower(),treasure.findFollower() };
+	General attackerGen{};
+	attackerGen.setArmor(treasure.findArmor());
+	attackerGen.setBanner(treasure.findBanner());
+	attackerGen.setFollower(treasure.findFollower());
+	attackerGen.setTrinket(treasure.findTrinket());
+	attackerGen.setWeapon(treasure.findWeapon());
+	attackerGen.setRank(10);
 	attackerGen.setDebug(debug);
 	if (debug) { cout << "General initialized" << endl; }
 
@@ -239,19 +231,21 @@ void testSetup(Battle battle, bool debug, Treasure& treasure)
 	beladimirRoster.buildRoster();
 	if (debug) { cout << "Roster built" << endl; }
 
-	int size = beladimirRoster.getNumberOfUnits();
+	int size = beladimirRoster.getNumberOfUnits()-1;
 	if (debug) { cout << "size of beladimir roster: " << size << endl; }
 	vector<Unit> units{};
 	Unit read{};
 	int randomIndex;
 	for (int i = 0; i < 20; i++)
 	{
-		randomIndex = randomNumberInt(size - 1);
+		randomIndex = randomNumberInt(size);
 		if (debug) { cout << "randomIndex generated: " << randomIndex << endl; }
 		read = beladimirRoster.getUnitAtIndex(randomIndex);
+		read.setDebug(debug);
 		if (debug) { cout << "Unit grabbed: " << read.getName() << endl; }
 		units.push_back(read);
 	}
+	if (debug) { cout << "unit vector size: " << units.size() << endl; }
 	Player attacker{};
 	attacker.setDebug(debug);
 	attacker.setFaction(attFac);
@@ -281,8 +275,8 @@ void battleTest(int tests, NormalBattle battle, bool debug, Treasure& treasure)
 		if (debug) { cout << "Testing once, calling calculate normal" << endl; }
 		battle.calculateNormal();
 		if (debug) { cout << "calculateNormal finished" << endl; }
-		resultsRaw.push_back((int)battle.getEnding());
-		if (debug) { cout << "ResultsRaw pushed: " << battle.getEnding() << endl; }
+		resultsRaw.push_back((int)battle.getOutcome());
+		if (debug) { cout << "ResultsRaw pushed: " << (int)battle.getOutcome() << endl; }
 		cout << "Normal Battle results:" << endl;
 		if (debug) { cout << "Attacker units in vector: " << battle.getAttacker().getPlayerUnits().size() << endl; }
 		if (debug) { cout << "Defender units in vector: " << battle.getDefender().getPlayerUnits().size() << endl; }
@@ -296,8 +290,8 @@ void battleTest(int tests, NormalBattle battle, bool debug, Treasure& treasure)
 			norm.setOutput(debug);
 			norm.setDebug(debug);
 			norm.calculateNormal();
-			resultsRaw.push_back((int)norm.getEnding());
-			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			resultsRaw.push_back((int)norm.getOutcome());
+			if (debug) { cout << "ResultsRaw pushed: " << (int)norm.getOutcome() << endl; }
 			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Normal Battle results:" << endl;
@@ -327,8 +321,8 @@ void battleTest(int tests, SiegeBattle battle, bool debug, Treasure& treasure)
 		if (debug) { cout << "Testing once, calling calculate siege" << endl; }
 		battle.calculateSiege();
 		if (debug) { cout << "calculateSiege finished" << endl; }
-		resultsRaw.push_back((int)battle.getEnding());
-		if (debug) { cout << "ResultsRaw pushed: " << battle.getEnding() << endl; }
+		resultsRaw.push_back((int)battle.getOutcome());
+		if (debug) { cout << "ResultsRaw pushed: " << (int)battle.getOutcome() << endl; }
 		cout << "Siege Battle results:" << endl;
 		if (debug) { cout << "Attacker units in vector: " << battle.getAttacker().getPlayerUnits().size() << endl; }
 		if (debug) { cout << "Defender units in vector: " << battle.getDefender().getPlayerUnits().size() << endl; }
@@ -343,8 +337,8 @@ void battleTest(int tests, SiegeBattle battle, bool debug, Treasure& treasure)
 			norm.setOutput(debug);
 			norm.setDebug(debug);
 			norm.calculateSiege();
-			resultsRaw.push_back((int)norm.getEnding());
-			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			resultsRaw.push_back((int)norm.getOutcome());
+			if (debug) { cout << "ResultsRaw pushed: " << (int)norm.getOutcome() << endl; }
 			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Siege Battle results:" << endl;
@@ -367,8 +361,8 @@ void battleTest(int tests, RaidBattle battle, bool debug, Treasure& treasure)
 		if (debug) { cout << "Testing once, calling calculate raid" << endl; }
 		battle.calculateRaid();
 		if (debug) { cout << "calculateSiege finished" << endl; }
-		resultsRaw.push_back((int)battle.getEnding());
-		if (debug) { cout << "ResultsRaw pushed: " << battle.getEnding() << endl; }
+		resultsRaw.push_back((int)battle.getOutcome());
+		if (debug) { cout << "ResultsRaw pushed: " << (int)battle.getOutcome() << endl; }
 		cout << "raid Battle results:" << endl;
 		if (debug) { cout << "Attacker units in vector: " << battle.getAttacker().getPlayerUnits().size() << endl; }
 		if (debug) { cout << "Defender units in vector: " << battle.getDefender().getPlayerUnits().size() << endl; }
@@ -383,8 +377,8 @@ void battleTest(int tests, RaidBattle battle, bool debug, Treasure& treasure)
 			norm.setOutput(debug);
 			norm.setDebug(debug);
 			norm.calculateRaid();
-			resultsRaw.push_back((int)norm.getEnding());
-			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			resultsRaw.push_back((int)norm.getOutcome());
+			if (debug) { cout << "ResultsRaw pushed: " << (int)norm.getOutcome() << endl; }
 			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Raid Battle results:" << endl;
@@ -408,8 +402,8 @@ void battleTest(int tests, NavalBattle battle, bool debug, Treasure& treasure)
 		if (debug) { cout << "Testing once, calling calculate naval" << endl; }
 		battle.calculateNaval();
 		if (debug) { cout << "calculateNaval finished" << endl; }
-		resultsRaw.push_back((int)battle.getEnding());
-		if (debug) { cout << "ResultsRaw pushed: " << battle.getEnding() << endl; }
+		resultsRaw.push_back((int)battle.getOutcome());
+		if (debug) { cout << "ResultsRaw pushed: " << (int)battle.getOutcome() << endl; }
 		cout << "Naval Battle results:" << endl;
 		if (debug) { cout << "Attacker units in vector: " << battle.getAttacker().getPlayerUnits().size() << endl; }
 		if (debug) { cout << "Defender units in vector: " << battle.getDefender().getPlayerUnits().size() << endl; }
@@ -424,8 +418,8 @@ void battleTest(int tests, NavalBattle battle, bool debug, Treasure& treasure)
 			norm.setOutput(debug);
 			norm.setDebug(debug);
 			norm.calculateNaval();
-			resultsRaw.push_back((int)norm.getEnding());
-			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			resultsRaw.push_back((int)norm.getOutcome());
+			if (debug) { cout << "ResultsRaw pushed: " << (int)norm.getOutcome() << endl; }
 			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Naval Battle results:" << endl;
@@ -482,8 +476,8 @@ void battleTest(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
 		if (debug) { cout << "Testing once, calling calculate monster" << endl; }
 		battle.calculateMonster();
 		if (debug) { cout << "calculateMonster finished" << endl; }
-		resultsRaw.push_back((int)battle.getEnding());
-		if (debug) { cout << "ResultsRaw pushed: " << battle.getEnding() << endl; }
+		resultsRaw.push_back((int)battle.getOutcome());
+		if (debug) { cout << "ResultsRaw pushed: " << (int)battle.getOutcome() << endl; }
 		cout << "Monster Battle results:" << endl;
 		if (debug) { cout << "Attacker units in vector: " << battle.getPlayer().getPlayerUnits().size() << endl; }
 		predictionOutput(resultsRaw);
@@ -497,8 +491,8 @@ void battleTest(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
 			norm.setOutput(debug);
 			norm.setDebug(debug);
 			norm.calculateMonster();
-			resultsRaw.push_back((int)norm.getEnding());
-			if (debug) { cout << "ResultsRaw pushed: " << norm.getEnding() << endl; }
+			resultsRaw.push_back((int)norm.getOutcome());
+			if (debug) { cout << "ResultsRaw pushed: " << (int)norm.getOutcome() << endl; }
 			if (debug) { cout << endl << endl << endl << endl; }
 		}
 		cout << "Monster Battle results:" << endl;
@@ -531,7 +525,11 @@ int main()
 	treasure.initializeTreasure();
 
 	if (debug) { cout << "Program started" << endl; }
+
 	int tests = 1;
+	cout << "How many tests:" << endl;
+	cin >> tests;
+	cin.get();
 	if (debug) { cout << "Tests set to: " << tests << endl; }
 
 	NormalBattle normal{};
@@ -540,7 +538,7 @@ int main()
 	if (debug) { cout << "Normal battle initialized void" << endl; }
 	battleTest(tests, normal, debug, treasure);
 	if (debug) { cout << "Tested Normal battle" << endl; }
-	cin.get();
+	if (debug) { cin.get(); }
 
 	SiegeBattle siege{};
 	siege.setTreasure(treasure);
@@ -548,7 +546,7 @@ int main()
 	if (debug) { cout << "Siege battle initialized void" << endl; }
 	battleTest(tests, siege, debug, treasure);
 	if (debug) { cout << "Tested Siege battle" << endl; }
-	cin.get();
+	if (debug) { cin.get(); }
 
 	RaidBattle raid{};
 	raid.setTreasure(treasure);
@@ -556,7 +554,7 @@ int main()
 	if (debug) { cout << "Raid battle initialized void" << endl; }
 	battleTest(tests, raid, debug, treasure);
 	if (debug) { cout << "Tested Raid battle" << endl; }
-	cin.get();
+	if (debug) { cin.get(); }
 
 	NavalBattle naval{};
 	naval.setTreasure(treasure);
@@ -564,20 +562,16 @@ int main()
 	if (debug) { cout << "Naval battle initialized void" << endl; }
 	battleTest(tests, naval, debug, treasure);
 	if (debug) { cout << "Tested Naval battle" << endl; }
-	cin.get();
+	if (debug) { cin.get(); }
 
 	MonsterBattle monster{};
-	monster.setDebug(debug);
 	if (debug) { cout << "Monster battle initialized void" << endl; }
+	monster.getMonster().setTreasure(treasure);
+	monster.setDebug(debug);
+	if (debug) { cout << "Monster battle treasure set" << endl; }
 	battleTest(tests, monster, debug, treasure);
 	if (debug) { cout << "Tested Monster battle" << endl; }
-	cin.get();
-
-
-
-
-
-
+	if (debug) { cin.get(); }
 
 	if (debug) { cout << "Program finished" << endl; }
 	cin.get();

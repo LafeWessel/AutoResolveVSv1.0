@@ -30,27 +30,27 @@ public:
 	Unit(string nameI, int autoResBonusI, int soldiersPerUnitI, int currentSoldiersI, faction factI, unitType typeI);
 
 	string& getName() { 
-		if (debug) { cout << "unit name gotten" << endl; }
+		if (debug) { cout << "unit name gotten: " << name << endl; }
 		return name;
 	};
 	int getARBonus() { 
-		if (debug) { cout << "unit autoresolve bonus gotten" << endl; }
+		if (debug) { cout << "unit autoresolve bonus gotten: " << autoResBonus << endl; }
 		return autoResBonus * (currentSoldiers/soldiersPerUnit); 
 	};
 	int getSoldiersPerUnit() { 
-		if (debug) { cout << "unit number of soldiers per unit gotten" << endl; }
+		if (debug) { cout << "unit number of soldiers per unit gotten: " << soldiersPerUnit << endl; }
 		return soldiersPerUnit;
 	};
 	int getCurrentSoldiers() {
-		if (debug) { cout << "unit current soldiers gotten" << endl; }
+		if (debug) { cout << "unit current soldiers gotten: " << currentSoldiers << endl; }
 		return currentSoldiers;
 	};
 	faction getFaction() {
-		if (debug) { cout << "unit faction gotten" << endl; }
+		if (debug) { cout << "unit faction gotten: " << (int)fact << endl; }
 		return fact; 
 	};
 	unitType getUnitType() {
-		if (debug) { cout << "unit type gotten" << endl; }
+		if (debug) { cout << "unit type gotten: " << (int)type << endl; }
 		return type;
 	};
 

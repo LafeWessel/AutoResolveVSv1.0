@@ -29,21 +29,21 @@ public:
 	Roster();
 	Roster(vector<Unit> unitsI, faction factI);
 
-	vector<Unit> getUnitsOfType(unitType& type);
+	vector<Unit> getUnitsOfType(unitType type);
 	vector<Unit> getUnits() { 
-		if (debug) { cout << "roster unit vector gotten" << endl; }
+		if (debug) { cout << "roster unit vector gotten, size: " << factionUnits.size() << endl; }
 		return factionUnits; 
 	};
 	faction getFaction() { 
-		if (debug) { cout << "roster faction gotten" << endl; }
+		if (debug) { cout << "roster faction gotten: " << (int)fact << endl; }
 		return fact; 
 	};
 	int getNumberOfUnits() { 
-		if (debug) { cout << "roster number of units gotten" << endl; }
+		if (debug) { cout << "roster number of units gotten: " << factionUnits.size() << endl; }
 		return factionUnits.size(); 
 	};
 	Unit getUnitAtIndex(int index) { 
-		if (debug) { cout << "roster unit at index returned" << endl; }
+		if (debug) { cout << "roster unit at index gotten, name: " << factionUnits[index].getName() << endl; }
 		return factionUnits[index]; 
 	};
 

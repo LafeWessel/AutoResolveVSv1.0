@@ -4,8 +4,9 @@ typedef std::chrono::high_resolution_clock myclock;
 std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
 
 //Gives the given state of a general at the end of a battle, range 0-2 for each state
-string outputGenState(int state)
+string Battle::outputGenState(int state)
 {
+	if (debug) { cout << "battle outputGenState called" << endl; }
 	switch (state)
 	{
 	case(0):
@@ -84,8 +85,10 @@ ostream& operator<<(ostream& os, outcome& end) //Output formation for outcome cl
 	}
 }
 
-int randomNumberBattle(int range) //Returns a random number between 1 and the given range
+int Battle::randomNumberBattle(int range) //Returns a random number between 1 and the given range
 {
+	if (debug) { cout << "randomNumberBattle Called" << endl; }
+	if (debug) { cout << "range passed in: " << range << endl; }
 	int random = 0;
 	if (range == 0)
 	{
@@ -93,6 +96,7 @@ int randomNumberBattle(int range) //Returns a random number between 1 and the gi
 	}
 	uniform_int_distribution<int> dRange(1, abs(range));
 	random = dRange(generator);
+	if (debug) { cout << "random returning: " << random << endl; }
 	return random;
 }
 
@@ -136,25 +140,32 @@ ostream& operator<<(ostream& os, Equipment& eqpt) //output operator for Equipmen
 }
 
 //usually 10 times between 1 and 10 (10,10) for battles
-int calculateBattleRandoms(int randomRolls, int randomRange) //Is used to calculate X number of times between 1 and Y
+int Battle::calculateBattleRandoms(int randomRolls, int randomRange) //Is used to calculate X number of times between 1 and Y
 {
+	if (debug) { cout << "battle calculateBattleRandoms called" << endl; }
 	int totalRand = 0;
 	for (int i = 0; i < randomRolls; i++)
 	{
-		totalRand += randomNumberBattle(randomRange);
+		int newRand = randomNumberBattle(randomRange);
+		if (debug) { cout << newRand << " added to total random = " << totalRand << endl; }
+		totalRand += newRand;
 	}
+	if (debug) { cout << "battle calculateBattleRandoms returning: " << totalRand << endl; }
 	return totalRand;
 }
 
 //Same as randomNumber, but includes 0 in the range. Specifically meant for casualty calculation and arrays
-int randomNumberCas(int range)
+int Battle::randomNumberCas(int range)
 {
+	if (debug) { cout << "battle randomNumberCas called" << endl; }
 	if (range == 0)
 	{
 		return 0;
 	}
 	uniform_int_distribution<int> dRange(0, abs(range));
-	return dRange(generator);
+	int random = dRange(generator);
+	if (debug) { cout << "battle randomNumberCas returning: " << random << endl; }
+	return random;
 }
 
 Battle::~Battle()
@@ -449,9 +460,11 @@ float Battle::battleCalculate() //contains the base calculations needed for batt
 	if (debug) { cout << "attacker sum with mel-cav RPS:" << attTotal << " Battle::battleCalculate" << endl; }
 	attTotal += ((double)attacker.getRanged() - (double)defender.getMelee()) * 1.5;
 	if (debug) { cout << "attacker sum with ran-mel RPS:" << attTotal << " Battle::battleCalculate" << endl; }
+	
+	float finalTotal = attTotal - defTotal;
 
-	if (debug) { cout << "Battle::battleCalculate finished, returned: " << attTotal - defTotal << endl; }
-	return (attTotal - defTotal);
+	if (debug) { cout << "Battle::battleCalculate finished, returned: " << finalTotal << endl; }
+	return finalTotal;
 }
 
 void Battle::CalculateCas(vector<vector<int>>& totalCasualties) //calculates the casualties from a battle and returns in a specific format

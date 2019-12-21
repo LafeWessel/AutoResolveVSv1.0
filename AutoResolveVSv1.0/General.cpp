@@ -24,6 +24,12 @@ General::General(int rankI, Equipment armorI, Equipment weaponI, Equipment trink
 	trinket = trinketI;
 	banner = bannerI;
 	follower = followerI;
-	AutoResEqBonus = armorI.getABonus() + weaponI.getABonus() + trinketI.getABonus() + bannerI.getABonus();
 	debug = false;
+	updateARBonus();
+}
+
+void General::updateARBonus()
+{
+	if (debug) { cout << "general updateARBonus called" << endl; }
+	AutoResEqBonus = armor.getABonus() + weapon.getABonus() + trinket.getABonus() + banner.getABonus();
 }

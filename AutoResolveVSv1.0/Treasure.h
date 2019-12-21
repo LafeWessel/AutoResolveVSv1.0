@@ -41,6 +41,8 @@ public:
 		return empty;
 	};
 
+	int randomNumberTreasure(int range);
+
 	//Subtracts 1 from the array so that it doesn't run off the end of the array of equipment
 	Equipment findArmor();
 	Equipment findWeapon();
@@ -52,27 +54,27 @@ public:
 	Equipment findTreasure(int bonus); //Used at the end of battles to determine loot results
 
 	vector<Equipment> getArmorVector() {
-		if (debug) { cout << "armor vector gotten" << endl; }
+		if (debug) { cout << "armor vector gotten, size: " << armor.size() << endl; }
 		return armor;
 	};
 	vector<Equipment> getWeaponVector() { 
-		if (debug) { cout << "weapon vector gotten" << endl; }
+		if (debug) { cout << "weapon vector gotten, size: " << weapon.size() << endl; }
 		return weapon;
 	};
 	vector<Equipment> getTrinketVector() {
-		if (debug) { cout << "trinket vector gotten" << endl; }
+		if (debug) { cout << "trinket vector gotten, size: " << trinket.size() << endl; }
 		return trinket; 
 	};
 	vector<Equipment> getBannerVector() {
-		if (debug) { cout << "banner vector gotten" << endl; }
+		if (debug) { cout << "banner vector gotten, size: " << banner.size() << endl; }
 		return banner;
 	};
 	vector<Equipment> getFollowerVector() {
-		if (debug) { cout << "follower vector gotten" << endl; }
+		if (debug) { cout << "follower vector gotten, size: " << follower.size() << endl; }
 		return follower;
 	};
 	vector<Equipment> getDragonVector() {
-		if (debug) { cout << "dragon vector gotten" << endl; }
+		if (debug) { cout << "dragon vector gotten, size: " << dragon.size() << endl; }
 		return dragon;
 	};
 
@@ -121,25 +123,40 @@ public:
 
 	bool getDebug() { return debug; }
 	void setDebug(bool debugI) { 
+		int totalDebug = 0;
+		if (debugI) { cout << "treasure setDebug called" << endl; }
 		debug = debugI; 
 		for (int i = 0; i < armor.size(); i++) {
+			if (debugI) { cout << "Debug set for " << armor[i].getName() << ", #" << i << endl; }
 			armor[i].setDebug(debug);
+			totalDebug++;
 		}
 		for (int i = 0; i < weapon.size(); i++) {
+			if (debugI) { cout << "Debug set for " << weapon[i].getName() << ", #" << i << endl; }
 			weapon[i].setDebug(debug);
+			totalDebug++;
 		}
 		for (int i = 0; i < banner.size(); i++) {
+			if (debugI) { cout << "Debug set for " << banner[i].getName() << ", #" << i << endl; }
 			banner[i].setDebug(debug);
+			totalDebug++;
 		}
 		for (int i = 0; i < follower.size(); i++) {
+			if (debugI) { cout << "Debug set for " << follower[i].getName() << ", #" << i << endl; }
 			follower[i].setDebug(debug);
+			totalDebug++;
 		}
 		for (int i = 0; i < trinket.size(); i++) {
+			if (debugI) { cout << "Debug set for " << trinket[i].getName() << ", #" << i << endl; }
 			trinket[i].setDebug(debug);
+			totalDebug++;
 		}		
 		for (int i = 0; i < dragon.size(); i++) {
+			if (debugI) { cout << "Debug set for " << dragon[i].getName() << ", #" << i << endl; }
 			dragon[i].setDebug(debug);
+			totalDebug++;
 		}
+		if (debug) { cout << "treasure setDebug finished, total: " << totalDebug << endl; }
 	}
 
 	void initializeTreasure(); //This grabs all the data from the file containing the equipment

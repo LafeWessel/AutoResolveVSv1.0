@@ -36,24 +36,30 @@ public:
 	Battle();
 	Battle(Player attackerI, Player defenderI);
 
+	int randomNumberBattle(int range);
+	int calculateBattleRandoms(int randomRolls, int randomRange);
+	int randomNumberCas(int range);
+	string outputGenState(int state);
+
 	Player getAttacker() { 
-		if (debug) { cout << "battle attacker gotten" << endl; }
+		if (debug) { cout << "battle attacker gotten: " << (int)attacker.getPlayerType() << endl; }
 		return attacker; 
 	};
 	Player getDefender() { 
-		if (debug) { cout << "battle defender gotten" << endl; }
+		if (debug) { cout << "battle defender gotten: " << (int)defender.getPlayerType() << endl; }
 		return defender; 
 	};
 	outcome getOutcome() { 
-		if (debug) { cout << "battle outcome gotten" << endl; }
+		if (debug) { cout << "battle outcome gotten: " << (int)result << endl; }
 		return result; 
 	};
-	int getEnding() { //returns outcome as an int
+	/*
+	int getOutcome() { //returns outcome as an int
 		//TODO-remove and just use getOutcome and cast to and int
 		if (debug) { cout << "battle ending gotten" << endl; }
 		return (int)result; 
 	};
-
+	*/
 	void setAttacker(Player attackerI) { 
 		if (debug) { cout << "battle attacker set to: " << (int)attackerI.getPlayerType() << endl; }
 		attacker = attackerI;
@@ -73,6 +79,7 @@ public:
 	bool getDebugBool() { return debug; };
 	void setOutput(bool outputI) { output = outputI; };
 	void setDebug(bool debugI) { 
+		if (debugI) { cout << "battle setDebug called" << endl; }
 		debug = debugI; 
 		treasure->setDebug(debug);
 		attacker.setDebug(debug);

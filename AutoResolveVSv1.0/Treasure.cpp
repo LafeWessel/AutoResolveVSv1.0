@@ -1,10 +1,8 @@
 #include "Treasure.h"
 
 
-int randomNumberTreasure(int range) //Returns a random number between 0 and the given range-1
+int Treasure::randomNumberTreasure(int range) //Returns a random number between 0 and the given range-1
 {
-	bool debug = true;
-
 	if (debug) { cout << range << " passed into random" << endl; }
 	typedef std::chrono::high_resolution_clock myclock;
 	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());

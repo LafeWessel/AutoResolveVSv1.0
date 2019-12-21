@@ -27,11 +27,11 @@ public:
 	void calculateNaval();
 
 	int getAttackerShips() { 
-		if (debug) { cout << "naval attacker ships gotten" << endl; }
+		if (debug) { cout << "naval attacker ships gotten: " << attackerShips << endl; }
 		return attackerShips; 
 	};
 	int getDefenderShips() {
-		if (debug) { cout << "naval defender ships gotten" << endl; }
+		if (debug) { cout << "naval defender ships gotten: " << defenderShips << endl; }
 		return defenderShips; 
 	};
 

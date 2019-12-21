@@ -235,6 +235,7 @@ vector<Unit> CSVDataReader::readUnits(faction& fact)
 	faction Faction;
 	unitType UnitType;
 	Unit unitRead{};
+	unitRead.setDebug(debug);
 	if (debug) { cout << "Beginning to read from file." << endl; }
 
 	//Reads the equipment file and puts equipment in the correct vectors then initializes the treasure

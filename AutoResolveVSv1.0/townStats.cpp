@@ -5,7 +5,6 @@ townStats::~townStats()
 }
 townStats::townStats() //void initializer
 {
-	level = 0;
 	supplies = 0;
 	townDefense = defenses::None;
 	debug = false;
@@ -13,14 +12,14 @@ townStats::townStats() //void initializer
 
 townStats::townStats(int levelI) //initializer
 {
-	level = levelI;
+	townDefense = defenses::None;
 	debug = false;
-	updateStats();
+	updateStats(levelI);
 }
 
-void townStats::updateStats()
+void townStats::updateStats(int level)
 {
-	supplies = 4 + (level * 4); //this takes the town level and determines the number of supplies it has
+	supplies = 4 + (level); //this takes the town level and determines the number of supplies it has
 	switch (level) //this takes the town level and determines the defenses
 	{
 	case(1):

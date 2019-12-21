@@ -17,7 +17,7 @@ Roster::Roster(vector<Unit> unitsI, faction factI) //initializer
 	debug = false;
 }
 
-vector<Unit> Roster::getUnitsOfType(unitType& type) //gets all of the units of a specific type
+vector<Unit> Roster::getUnitsOfType(unitType type) //gets all of the units of a specific type
 {
 	if (debug) { cout << "Roster::getUnitsOfType called for unitType: " << (int)type << endl; }
 	vector<Unit> unitsI = {};
@@ -38,6 +38,7 @@ void Roster::buildRoster() //Reads units in from the 'units' file and adds them 
 	if (debug) { cout << "roster build roster called" << endl; }
 	CSVDataReader reader(debug);
 	factionUnits = reader.readUnits(fact);
+	if (debug) { cout << "units vector size: " << factionUnits.size() << endl; }
 	if (factionUnits.size() < 1) { throw invalid_argument("factionUnits not initialized with any elements"); }
 	return;
 }
