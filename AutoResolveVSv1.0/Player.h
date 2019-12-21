@@ -86,6 +86,16 @@ public:
 		if (debug) { cout << "player player type gotten: " << (int)player << endl; }
 		return player; 
 	};
+	int getTotalSoldiers() {
+		if (debug) { cout << "player getTotalSoldiers called" << endl; }
+		int totalSoldiers = 0;
+		for (int i = 0; i < playerUnits.size(); i++)
+		{
+			totalSoldiers += playerUnits[i].getCurrentSoldiers();
+		}
+		if (debug) { cout << "player total soldiers returning: " << totalSoldiers << endl; }
+		return totalSoldiers;
+	}
 
 	void setReinforcements(int ReinforceI);
 	void setPlayerUnits(vector<Unit> unitsI);

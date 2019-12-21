@@ -53,13 +53,7 @@ public:
 		if (debug) { cout << "battle outcome gotten: " << (int)result << endl; }
 		return result; 
 	};
-	/*
-	int getOutcome() { //returns outcome as an int
-		//TODO-remove and just use getOutcome and cast to and int
-		if (debug) { cout << "battle ending gotten" << endl; }
-		return (int)result; 
-	};
-	*/
+
 	void setAttacker(Player attackerI) { 
 		if (debug) { cout << "battle attacker set to: " << (int)attackerI.getPlayerType() << endl; }
 		attacker = attackerI;

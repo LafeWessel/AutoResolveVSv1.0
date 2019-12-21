@@ -478,14 +478,8 @@ void Battle::CalculateCas(vector<vector<int>>& totalCasualties) //calculates the
 	int attSoldierTotal = 0;
 	int defSoldierTotal = 0;
 	//Totals the amount of soldiers in the armies
-	for (int i = 0; i < attacker.getPlayerUnits().size(); i++) //TODO redo how this gets the total soldiers; make it be a class fn and not have to loop here
-	{
-		attSoldierTotal += attacker.getPlayerUnits()[i].getCurrentSoldiers();
-	}
-	for (int i = 0; i < defender.getPlayerUnits().size(); i++)
-	{
-		defSoldierTotal += defender.getPlayerUnits()[i].getCurrentSoldiers();
-	}
+	attSoldierTotal = attacker.getTotalSoldiers();
+	defSoldierTotal = defender.getTotalSoldiers();
 
 	if (debug) { cout << "attacker soldier total: " << attSoldierTotal << " Battle::CalculateCas" << endl; }
 	if (debug) { cout << "defender soldier total: " << defSoldierTotal << " Battle::CalculateCas" << endl; }

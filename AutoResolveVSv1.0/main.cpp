@@ -88,8 +88,6 @@ TODO-implement playerType enum class; currently in place, but does nothing
 
 Low Priority:
 
-TODO-Find new ways to output at the end of a battle that capture more data
-
 TODO-Create an auto-balancing feature to determine what is an equal distribution of power -> AI
 
 TODO-Learn and implement Qt GUI
