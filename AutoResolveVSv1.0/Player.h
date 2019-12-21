@@ -89,32 +89,32 @@ public:
 	void setReinforcements(int ReinforceI);
 	void setPlayerUnits(vector<Unit> unitsI);
 	void setMelee(int meleeI) { 
-		if (debug) { cout << "player melee autoresolve bonus set" << endl; }
+		if (debug) { cout << "player melee autoresolve bonus set to: " << meleeI << endl; }
 		Melee = meleeI; 
 	};
 	void setCavalry(int cavalryI) { 
-		if (debug) { cout << "player cavalry autoresolve bonus set" << endl; }
+		if (debug) { cout << "player cavalry autoresolve bonus set to: " << cavalryI << endl; }
 		Cavalry = cavalryI; 
 	};
 	void setRanged(int rangedI) { 
-		if (debug) { cout << "player ranged autoresolve bonus set" << endl; }
+		if (debug) { cout << "player ranged autoresolve bonus set to: " << rangedI << endl; }
 		Ranged = rangedI; 
 	};
 	void setGeneral(General generalI) { 
-		if (debug) { cout << "player general set" << endl; }
+		if (debug) { cout << "player general set to (rank): " << generalI.getRank() << endl; }
 		general = generalI;
 		general.setDebug(debug);
 	};
 	void setAdvCombatDeck(bool advComDeckI) { 
-		if (debug) { cout << "player advanced combat deck set" << endl; }
+		if (debug) { cout << "player advanced combat deck set to: " << advComDeckI << endl; }
 		AdvCombatDeck = advComDeckI; 
 	};
 	void setFaction(faction factionI) { 
-		if (debug) { cout << "player faction set" << endl; }
+		if (debug) { cout << "player faction set to: " << (int)factionI << endl; }
 		Fact = factionI; 
 	};
 	void setUnitAtIndex(int index, Unit unitI) { 
-		if (debug) { cout << "player unit at index set" << endl; }
+		if (debug) { cout << "player unit at index: " << index << " set to: " << unitI.getName() << endl; }
 		if (index >= 0 && index < playerUnits.size()) {
 			unitI.setDebug(debug);
 			playerUnits[index] = unitI;
@@ -124,7 +124,7 @@ public:
 		}
 		 };
 	void setPlayerType(playerType playerI) { 
-		if (debug) { cout << "player player type set" << endl; }
+		if (debug) { cout << "player player type set to: " << (int)playerI << endl; }
 		player = playerI;
 	};
 	

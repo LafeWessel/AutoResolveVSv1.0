@@ -78,42 +78,42 @@ public:
 
 	void setArmorVector(vector<Equipment> equipVectorI) { 
 		armor = equipVectorI; 
-		if (debug) { cout << "armor vector set" << endl; }
+		if (debug) { cout << "armor vector set, size: " << armor.size() << endl; }
 		for (int i = 0; i < armor.size(); i++) {
 			armor[i].setDebug(debug);
 		}
 	};
 	void setWeaponVector(vector<Equipment> equipVectorI) {
 		weapon = equipVectorI;
-		if (debug) { cout << "weapon vector set" << endl; }
+		if (debug) { cout << "weapon vector set, size: " << weapon.size() << endl; }
 		for (int i = 0; i < weapon.size(); i++) {
 			weapon[i].setDebug(debug);
 		}
 	};
 	void setTrinketVector(vector<Equipment> equipVectorI) {
 		trinket = equipVectorI;
-		if (debug) { cout << "trinket vector set" << endl; }
+		if (debug) { cout << "trinket vector set, size: " << trinket.size() << endl; }
 		for (int i = 0; i < trinket.size(); i++) {
 			trinket[i].setDebug(debug);
 		}
 	};
 	void setBannerVector(vector<Equipment> equipVectorI) {
 		banner = equipVectorI;
-		if (debug) { cout << "banner vector set" << endl; }
+		if (debug) { cout << "banner vector set, size: " << banner.size() << endl; }
 		for (int i = 0; i < banner.size(); i++) {
 			banner[i].setDebug(debug);
 		}
 	};
 	void setFollowerVector(vector<Equipment> equipVectorI) {
 		follower = equipVectorI;
-		if (debug) { cout << "follower vector set" << endl; }
+		if (debug) { cout << "follower vector set, size: " << follower.size() << endl; }
 		for (int i = 0; i < follower.size(); i++) {
 			follower[i].setDebug(debug);
 		}
 	};
 	void setDragonVector(vector<Equipment> equipVectorI) {
 		dragon = equipVectorI;
-		if (debug) { cout << "dragon vector set" << endl; }
+		if (debug) { cout << "dragon vector set, size: " << dragon.size() << endl; }
 		for (int i = 0; i < dragon.size(); i++) {
 			dragon[i].setDebug(debug);
 		}

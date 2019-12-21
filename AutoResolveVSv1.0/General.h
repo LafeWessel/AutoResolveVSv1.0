@@ -60,35 +60,35 @@ public:
 	};
 
 	void setRank(int rankI) { 
-		if (debug) { cout << "general rank set" << endl; }
+		if (debug) { cout << "general rank set to: " << rankI << endl; }
 		rank = rankI; 
 	};
 	void setAutoBonus(int autoBonusI) {
-		if (debug) { cout << "general autoresolve bonus set" << endl; }
+		if (debug) { cout << "general autoresolve bonus set to: " << autoBonusI << endl; }
 		AutoResEqBonus = autoBonusI; 
 	};
 	void setArmor(Equipment equipI) { 
-		if (debug) { cout << "general armor set" << endl; }
+		if (debug) { cout << "general armor set to: " << equipI.getName() << endl; }
 		armor = equipI;
 		armor.setDebug(debug);
 	};
 	void setWeapon(Equipment equipI) { 
-		if (debug) { cout << "general weapon set" << endl; }
+		if (debug) { cout << "general weapon set to: " << equipI.getName() << endl; }
 		weapon = equipI; 
 		weapon.setDebug(debug);
 	};
 	void setTrinket(Equipment equipI) { 
-		if (debug) { cout << "general trinket set" << endl; }
+		if (debug) { cout << "general trinket set to: " << equipI.getName() << endl; }
 		trinket = equipI;
 		trinket.setDebug(debug);
 	};
 	void setBanner(Equipment equipI) { 
-		if (debug) { cout << "general banner set" << endl; }
+		if (debug) { cout << "general banner set to: " << equipI.getName() << endl; }
 		banner = equipI; 
 		banner.setDebug(debug);
 	};
 	void setFollower(Equipment equipI) { 
-		if (debug) { cout << "general follower set" << endl; }
+		if (debug) { cout << "general follower set to: " << equipI.getName() << endl; }
 		follower = equipI;
 		follower.setDebug(debug);
 	};

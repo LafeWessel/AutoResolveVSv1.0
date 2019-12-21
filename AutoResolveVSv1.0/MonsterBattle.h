@@ -53,17 +53,17 @@ public:
 	};
 
 	void setPlayer(Player playerI) { 
-		if (debug) { cout << "monster battle player set" << endl; }
+		if (debug) { cout << "monster battle player set to: " << (int)playerI.getPlayerType() << endl; }
 		attacker = playerI;
 		attacker.setDebug(debug);
 	};
 	void setMonster(Monster monsterI) { 
-		if (debug) { cout << "monster battle monster set" << endl; }
+		if (debug) { cout << "monster battle monster set to: " << (int)monsterI.getMonsterType() << endl; }
 		monster = monsterI;
 		monster.setDebug(debug);
 	};
 	void setOutcome(outcome resultI) { 
-		if (debug) { cout << "monster battle outcome set" << endl; }
+		if (debug) { cout << "monster battle outcome set to: " << (int)resultI << endl; }
 		result = resultI;
 	};
 

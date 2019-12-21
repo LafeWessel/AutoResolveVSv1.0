@@ -50,19 +50,19 @@ public:
 
 
 	void setRams(int ramsI) {
-		if (debug) { cout << "siege rams set" << endl; }
+		if (debug) { cout << "siege rams set to: " << ramsI << endl; }
 		rams = ramsI; 
 	};
 	void setCatapults(int catapultsI) {
-		if (debug) { cout << "siege catapults set" << endl; }
+		if (debug) { cout << "siege catapults set to: " << catapultsI << endl; }
 		catapults = catapultsI; 
 	};
 	void setSiegeTowers(int siegeTowersI) { 
-		if (debug) { cout << "siege towers set" << endl; }
+		if (debug) { cout << "siege towers set to: " << siegeTowersI << endl; }
 		siegeTowers = siegeTowersI; 
 	};
 	void setTownLevel(int townLevelI) {
-		if (debug) { cout << "siege town level set" << endl; }
+		if (debug) { cout << "siege town level set to: " << townLevelI << endl; }
 		townLevel = townLevelI;
 		townLevel.setDebug(debug);
 	};

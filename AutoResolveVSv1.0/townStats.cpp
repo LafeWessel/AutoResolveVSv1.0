@@ -14,7 +14,13 @@ townStats::townStats() //void initializer
 townStats::townStats(int levelI) //initializer
 {
 	level = levelI;
-	supplies = 4 + (levelI * 4); //this takes the town level and determines the number of supplies it has
+	debug = false;
+	updateStats();
+}
+
+void townStats::updateStats()
+{
+	supplies = 4 + (level * 4); //this takes the town level and determines the number of supplies it has
 	switch (level) //this takes the town level and determines the defenses
 	{
 	case(1):
@@ -33,7 +39,7 @@ townStats::townStats(int levelI) //initializer
 		townDefense = defenses::Stone_Wall_W_Moat;
 		break;
 	default:
+		cerr << "invalid level entered, townStats::upadateStats()" << endl;
 		townDefense = defenses::None;
 	}
-	debug = false;
 }

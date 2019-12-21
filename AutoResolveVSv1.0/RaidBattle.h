@@ -33,8 +33,8 @@ public:
 	};
 
 	void setTownLevel(int townLevelI) { 
-		if (debug) { cout << "town level set" << endl; }
-		townLevel = townLevelI; 
+		if (debug) { cout << "town level set to: " << townLevelI << endl; }
+		townLevel = townLevelI; //TODO-figure out how this line does not throw an error
 		townLevel.setDebug(debug);
 	};
 

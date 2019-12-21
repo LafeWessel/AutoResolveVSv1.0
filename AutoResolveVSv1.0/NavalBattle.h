@@ -36,11 +36,11 @@ public:
 	};
 
 	void setAttackerShips(int attShipsI) { 
-		if (debug) { cout << "naval attacker ships set" << endl; }
+		if (debug) { cout << "naval attacker ships set to: " << attShipsI << endl; }
 		attackerShips = attShipsI; 
 	};
 	void setDefenderShips(int defShipsI) { 
-		if (debug) { cout << "naval defender ships set" << endl; }
+		if (debug) { cout << "naval defender ships set to: " << defShipsI << endl; }
 		defenderShips = defShipsI; 
 	};
 };

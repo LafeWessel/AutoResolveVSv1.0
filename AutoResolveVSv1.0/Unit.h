@@ -55,27 +55,27 @@ public:
 	};
 
 	void setName(string nameI) { 
-		if (debug) { cout << "unit name set" << endl; }
+		if (debug) { cout << "unit name set to: "<< nameI << endl; }
 		name = nameI;
 	};
 	void setARBonus(int ARBonusI) { 
-		if (debug) { cout << "unit autoresolve bonus set" << endl; }
+		if (debug) { cout << "unit autoresolve bonus set to: " << ARBonusI << endl; }
 		autoResBonus = ARBonusI;
 	};
 	void setCurrentSoldiers(int currentSoldiersI) {
-		if (debug) { cout << "unit current soldiers set" << endl; }
+		if (debug) { cout << "unit current soldiers set to: " << currentSoldiersI << endl; }
 		currentSoldiers = currentSoldiersI;
 	};
 	void setSoldiersPerUnit(int soldiersPerUI) { 
-		if (debug) { cout << "unit soldiers per unit set" << endl; }
+		if (debug) { cout << "unit soldiers per unit set to: " << soldiersPerUI << endl; }
 		soldiersPerUnit = soldiersPerUI;
 	};
 	void setFaction(faction factI) { 
-		if (debug) { cout << "unit faction set" << endl; }
+		if (debug) { cout << "unit faction set to: " << (int)factI << endl; }
 		fact = factI;
 	};
 	void setUnitType(unitType typeI) {
-		if (debug) { cout << "unit type set" << endl; }
+		if (debug) { cout << "unit type set to: " << (int)typeI << endl; }
 		type = typeI; 
 	};
 

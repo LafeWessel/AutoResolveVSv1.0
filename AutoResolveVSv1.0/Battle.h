@@ -55,17 +55,17 @@ public:
 	};
 
 	void setAttacker(Player attackerI) { 
-		if (debug) { cout << "battle attacker set" << endl; }
+		if (debug) { cout << "battle attacker set to: " << (int)attackerI.getPlayerType() << endl; }
 		attacker = attackerI;
 		attacker.setDebug(debug);
 	};
 	void setDefender(Player defenderI) { 
-		if (debug) { cout << "battle defender set" << endl; }
+		if (debug) { cout << "battle defender set to: " << (int)defenderI.getPlayerType() << endl; }
 		defender = defenderI; 
 		defender.setDebug(debug);
 	};
 	void setOutcome(outcome resultI) { 
-		if (debug) { cout << "battle outcome set" << endl; }
+		if (debug) { cout << "battle outcome set to: " << (int)resultI << endl; }
 		result = resultI; 
 	};
 

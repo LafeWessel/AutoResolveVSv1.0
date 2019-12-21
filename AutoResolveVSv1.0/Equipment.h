@@ -62,31 +62,31 @@ public:
 
 
 	void setName(string nameI) { 
-		if (debug) { cout << "equipment name set" << endl; }
+		if (debug) { cout << "equipment name set to: " << nameI << endl; }
 		name = nameI; 
 	};
 	void setABonus(int autoBonusI) { 
-		if (debug) { cout << "equipment autoresolve bonus set" << endl; }
+		if (debug) { cout << "equipment autoresolve bonus set to: " << autoBonusI << endl; }
 		autoBonus = autoBonusI; 
 	};
 	void setIndex(int indexI) { 
-		if (debug) { cout << "equipment index set" << endl; }
+		if (debug) { cout << "equipment index set to: " << indexI << endl; }
 		index = indexI; 
 	};
 	void setRange(int rangeI) { 
-		if (debug) { cout << "equipment range set" << endl; }
+		if (debug) { cout << "equipment range set to: " << rangeI << endl; }
 		range = rangeI; 
 	};
 	void setEqType(equipmentType equipTypeI) { 
-		if (debug) { cout << "equipment type set" << endl; }
+		if (debug) { cout << "equipment type set to: " << (int)equipTypeI << endl; }
 		EquipType = equipTypeI; 
 	};
 	void setEffect(string effectI) { 
-		if (debug) { cout << "equipment effect set" << endl; }
+		if (debug) { cout << "equipment effect set to: " << effectI << endl; }
 		effect = effectI; 
 	};
 	void setCValue(int CValI) { 
-		if (debug) { cout << "equipment coin value set" << endl; }
+		if (debug) { cout << "equipment coin value set to: " << CValI << endl; }
 		coinValue = CValI; 
 	};
 
