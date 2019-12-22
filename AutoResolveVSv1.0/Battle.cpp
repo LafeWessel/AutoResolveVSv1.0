@@ -543,7 +543,16 @@ void Battle::CalculateCas(vector<vector<int>>& totalCasualties) //calculates the
 	return;
 }
 
-
+void Battle::printData()
+{
+	cout << "Battle printData called" << endl
+		<< "Battle attacker: " << endl;
+	attacker.printData();
+	cout << "Battle defender: " << endl;
+	defender.printData();
+	cout << "Battle result: " << (int)result << endl;
+	if (treasure) { cout << "Battle Treasure pointer != NULL" << endl; }
+}
 
 
 

@@ -21,9 +21,9 @@ vector<Unit> Roster::getUnitsOfType(unitType type) //gets all of the units of a 
 {
 	if (debug) { cout << "Roster::getUnitsOfType called for unitType: " << (int)type << endl; }
 	vector<Unit> unitsI = {};
-	for (int i = 0; i < factionUnits.size(); i++)
+	for (int i = 0; i < factionUnits.size(); i++) 
 	{
-		if (factionUnits[i].getUnitType() == type)
+		if (factionUnits[i].getUnitType() == type) 
 		{
 			unitsI.push_back(factionUnits[i]);
 			if (debug) { cout << "unitsI pushed back: " << factionUnits[i].getName() << endl; }
@@ -43,3 +43,13 @@ void Roster::buildRoster() //Reads units in from the 'units' file and adds them 
 	return;
 }
 
+void Roster::printData()
+{
+	cout << "Roster printData called" << endl
+		<< "Roster Faction: " << (int)fact << endl;
+	for (int i = 0; i < factionUnits.size(); i++) 
+	{
+		cout << "Roster factionUnits vector at " << i << ":" << endl;
+		factionUnits[i].printData();
+	}
+}

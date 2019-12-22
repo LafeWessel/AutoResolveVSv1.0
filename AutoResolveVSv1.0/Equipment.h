@@ -33,67 +33,54 @@ public:
 
 	string getName() { 
 		if (debug) { cout << "equipment name gotten: " << name << endl; }
-		return name; 
-	};
+		return name; };
 	int getABonus() { 
 		if (debug) { cout << "equipment autoresolve bonus gotten: " << autoBonus << endl; }
-		return autoBonus; 
-	};
+		return autoBonus; };
 	int getIndex() { 
 		if (debug) { cout << "equipment index gotten: " << index << endl; }
-		return index; 
-	};
+		return index; };
 	int getRange() { 
 		if (debug) { cout << "equipment range gotten: " << range << endl; }
-		return range; 
-	};
+		return range; };
 	equipmentType getEqType() { 
 		if (debug) { cout << "equipment type gotten: " << (int)EquipType << endl; }
-		return EquipType; 
-	};
+		return EquipType; };
 	string getEffect() { 
 		if (debug) { cout << "equipment effect gotten: " << effect << endl; }
-		return effect; 
-	};
+		return effect; };
 	int getCValue() { 
 		if (debug) { cout << "equipment coin value gotten: " << coinValue << endl; }
-		return coinValue; 
-	};
+		return coinValue; };
 
 
 	void setName(string nameI) { 
 		if (debug) { cout << "equipment name set to: " << nameI << endl; }
-		name = nameI; 
-	};
+		name = nameI; };
 	void setABonus(int autoBonusI) { 
 		if (debug) { cout << "equipment autoresolve bonus set to: " << autoBonusI << endl; }
-		autoBonus = autoBonusI; 
-	};
+		autoBonus = autoBonusI; };
 	void setIndex(int indexI) { 
 		if (debug) { cout << "equipment index set to: " << indexI << endl; }
-		index = indexI; 
-	};
+		index = indexI; };
 	void setRange(int rangeI) { 
 		if (debug) { cout << "equipment range set to: " << rangeI << endl; }
-		range = rangeI; 
-	};
+		range = rangeI; };
 	void setEqType(equipmentType equipTypeI) { 
 		if (debug) { cout << "equipment type set to: " << (int)equipTypeI << endl; }
-		EquipType = equipTypeI; 
-	};
+		EquipType = equipTypeI; };
 	void setEffect(string effectI) { 
 		if (debug) { cout << "equipment effect set to: " << effectI << endl; }
-		effect = effectI; 
-	};
+		effect = effectI; };
 	void setCValue(int CValI) { 
 		if (debug) { cout << "equipment coin value set to: " << CValI << endl; }
-		coinValue = CValI; 
-	};
+		coinValue = CValI; };
 
 	bool getDebug() { return debug; };
 	void setDebug(bool debugI) {
 		if (debugI) { cout << "equipment setDebug called" << endl; }
 		debug = debugI;
 	};
+	void printData();
 };
 

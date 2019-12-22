@@ -29,14 +29,12 @@ public:
 
 	townStats getTownLevel() { 
 		if (debug) { cout << "raid town stats gotten: " << townLevel.getLevel() << endl; }
-		return townLevel; 	
-	};
+		return townLevel; 	};
 
 	void setTownLevel(int townLevelI) { 
 		if (debug) { cout << "town level set to: " << townLevelI << endl; }
 		townLevel.setLevel(townLevelI);
-		townLevel.setDebug(debug);
-	};
+		townLevel.setDebug(debug);};
 
 	void setDebug(bool debugI) {
 		debug = debugI;
@@ -45,5 +43,6 @@ public:
 		attacker.setDebug(debug);
 		defender.setDebug(debug);
 	}
+	void printDataRaid();
 };
 

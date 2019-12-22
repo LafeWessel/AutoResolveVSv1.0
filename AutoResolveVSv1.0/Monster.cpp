@@ -148,3 +148,12 @@ void Monster::setValuesFromMonsterType()
 	autoResValue = ((int)type * 10) + 10;
 	if (debug) { cout << "autoResolve Value set to: " << autoResValue << endl; }
 }
+
+void Monster::printData()
+{
+	cout << "Monster printData called" << endl
+		<< "Monster monsterType: " << (int)type << endl
+		<< "Monster coin reward: " << coinReward << endl
+		<< "Monster autoresolve value: " << autoResValue << endl;
+	if (treasure) { cout << "Monster treasure pointer != null" << endl; }
+}

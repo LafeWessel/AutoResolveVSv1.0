@@ -46,31 +46,25 @@ public:
 	*/
 	Player getPlayer() { 
 		if (debug) { cout << "monster battle player gotten: " << (int)attacker.getPlayerType() << endl; }
-		return attacker; 
-	};
+		return attacker; };
 	Monster getMonster() { 
 		if (debug) { cout << "monster battle monster gotten: " << (int)monster.getMonsterType() << endl; }
-		return monster; 
-	};
+		return monster; };
 	outcome getOutcome() { 
 		if (debug) { cout << "monster battle outcome gotten: " << (int)result << endl; }
-		return result; 
-	};
+		return result; };
 
 	void setPlayer(Player playerI) { 
 		if (debug) { cout << "monster battle player set to: " << (int)playerI.getPlayerType() << endl; }
 		attacker = playerI;
-		attacker.setDebug(debug);
-	};
+		attacker.setDebug(debug);};
 	void setMonster(Monster monsterI) { 
 		if (debug) { cout << "monster battle monster set to: " << (int)monsterI.getMonsterType() << endl; }
 		monster = monsterI;
-		monster.setDebug(debug);
-	};
+		monster.setDebug(debug);};
 	void setOutcome(outcome resultI) { 
 		if (debug) { cout << "monster battle outcome set to: " << (int)resultI << endl; }
-		result = resultI;
-	};
+		result = resultI;};
 
 	bool getOutput() { return output; };
 	bool getDebug() { return debug; };
@@ -81,5 +75,6 @@ public:
 		attacker.setDebug(debug);
 		monster.setDebug(debug);
 	};
+	void printData();
 };
 

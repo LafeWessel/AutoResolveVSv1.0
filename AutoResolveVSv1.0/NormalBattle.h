@@ -24,5 +24,7 @@ public:
 	void normalOutput(vector<vector<int>> totalCasualties);
 	void calculateNormal();
 	//needs no specific getters and setters
+
+	void printDataNormal();
 };
 

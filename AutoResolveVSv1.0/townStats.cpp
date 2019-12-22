@@ -42,3 +42,10 @@ void townStats::updateStats(int level)
 		townDefense = defenses::None;
 	}
 }
+
+void townStats::printData()
+{
+	cout << "townStats printData called:" << endl
+		<< "townStats Supplies: " << supplies << endl
+		<< "townStats Defenses: " << (int)townDefense << endl;
+}

@@ -27,3 +27,15 @@ Equipment::Equipment(string nameI, int autoBonusI, int numberI, int rangeI, equi
 	coinValue = coinValueI;
 	debug = false;
 }
+
+void Equipment::printData()
+{
+	cout << "Equipment printData called" << endl
+		<< "Equipment name: " << name << endl
+		<< "Equipment autoresolve bonus: " << autoBonus << endl
+		<< "Equipment index: " << index << endl
+		<< "Equipment range: " << range << endl
+		<< "Equipment equipType: " << (int)EquipType << endl
+		<< "Equipment effect: " << effect << endl
+		<< "Equipment coin valueL: " << coinValue << endl;
+}

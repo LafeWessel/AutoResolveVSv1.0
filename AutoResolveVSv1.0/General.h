@@ -33,37 +33,29 @@ public:
 
 	int getRank() { 
 		if (debug) { cout << "general rank gotten: " << rank << endl; }
-		return rank;
-	};
+		return rank;};
 	int getARBonus() { 
 		if (debug) { cout << "general autoResolveBonus gotten: " << AutoResEqBonus << endl; }
-		return AutoResEqBonus; 
-	};
+		return AutoResEqBonus; };
 	Equipment getArmor() { 
 		if (debug) { cout << "general armor gotten: " << armor.getName() << endl; }
-		return armor; 
-	};
+		return armor; };
 	Equipment getWeapon() { 
 		if (debug) { cout << "general weapon gotten: " << weapon.getName() << endl; }
-		return weapon; 
-	};
+		return weapon; };
 	Equipment getTrinket() { 
 		if (debug) { cout << "general trinket gotten: " << trinket.getName() << endl; }
-		return trinket; 
-	};
+		return trinket; };
 	Equipment getBanner() { 
 		if (debug) { cout << "general banner gotten: " << banner.getName() << endl; }
-		return banner; 
-	};
+		return banner; };
 	Equipment getFollower() { 
 		if (debug) { cout << "general follower gotten: " << follower.getName() << endl; }
-		return follower; 
-	};
+		return follower; };
 
 	void setRank(int rankI) { 
 		if (debug) { cout << "general rank set to: " << rankI << endl; }
-		rank = rankI; 
-	};
+		rank = rankI; };
 	/*
 	void setAutoBonus(int autoBonusI) {
 		if (debug) { cout << "general autoresolve bonus set to: " << autoBonusI << endl; }
@@ -74,32 +66,27 @@ public:
 		if (debug) { cout << "general armor set to: " << equipI.getName() << endl; }
 		armor = equipI;
 		armor.setDebug(debug);
-		updateARBonus();
-	};
+		updateARBonus();};
 	void setWeapon(Equipment equipI) { 
 		if (debug) { cout << "general weapon set to: " << equipI.getName() << endl; }
 		weapon = equipI; 
 		weapon.setDebug(debug);
-		updateARBonus();
-	};
+		updateARBonus();};
 	void setTrinket(Equipment equipI) { 
 		if (debug) { cout << "general trinket set to: " << equipI.getName() << endl; }
 		trinket = equipI;
 		trinket.setDebug(debug);
-		updateARBonus();
-	};
+		updateARBonus();};
 	void setBanner(Equipment equipI) { 
 		if (debug) { cout << "general banner set to: " << equipI.getName() << endl; }
 		banner = equipI; 
 		banner.setDebug(debug);
-		updateARBonus();
-	};
+		updateARBonus();};
 	void setFollower(Equipment equipI) { 
 		if (debug) { cout << "general follower set to: " << equipI.getName() << endl; }
 		follower = equipI;
 		follower.setDebug(debug);
-		updateARBonus();
-	};
+		updateARBonus();};
 
 	bool getDebug() { return debug; };
 	void setDebug(bool debugI) {
@@ -111,4 +98,5 @@ public:
 		banner.setDebug(debug);
 		follower.setDebug(debug);
 	};
+	void printData();
 };

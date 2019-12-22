@@ -86,6 +86,8 @@ TODO-COMMENT EVERYTHING
 
 TODO-implement playerType enum class; currently in place, but does nothing
 
+TODO-remove large commented sections
+
 Low Priority:
 
 TODO-Create an auto-balancing feature to determine what is an equal distribution of power -> AI
@@ -572,9 +574,7 @@ int main()
 	if (debug) { cin.get(); }
 
 	if (debug) { cout << "Program finished" << endl; }
-	cin.get();
+	cin.get();//This keeps the console window open
 
-	//This keeps the console window open
-	
 	return 0;
 }

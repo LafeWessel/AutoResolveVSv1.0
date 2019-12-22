@@ -25,3 +25,14 @@ Unit::Unit(string nameI, int autoResBonusI, int soldiersPerUnitI, int currentSol
 	type = typeI;
 	debug = false;
 }
+
+void Unit::printData()
+{
+	cout << "Unit printData called" << endl
+		<< "Unit name: " << name << endl
+		<< "Unit autoresolve bonus: " << autoResBonus << endl
+		<< "Unit soldiersPerUnit: " << soldiersPerUnit << endl
+		<< "Unit currentSoldiers: " << currentSoldiers << endl
+		<< "Unit faction: " << (int)fact << endl
+		<< "Unit unitType: " << (int)type << endl;
+}

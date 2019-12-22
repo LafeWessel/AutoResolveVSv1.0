@@ -33,39 +33,31 @@ public:
 
 	int getRams() { 
 		if (debug) { cout << "siege rams gotten: " << rams << endl; }
-		return rams; 
-	};
+		return rams; };
 	int getCatapults() {
 		if (debug) { cout << "siege catapults gotten: " << catapults << endl; }
-		return catapults;
-	};
+		return catapults;};
 	int getSiegeTowers() {
 		if (debug) { cout << "siege towers gotten: " << siegeTowers << endl; }
-		return siegeTowers; 
-	};
+		return siegeTowers; };
 	townStats getTownLevel() {
 		if (debug) { cout << "siege town stats gotten: " << townLevel.getLevel() << endl; }
-		return townLevel; 
-	};
+		return townLevel; };
 
 
 	void setRams(int ramsI) {
 		if (debug) { cout << "siege rams set to: " << ramsI << endl; }
-		rams = ramsI; 
-	};
+		rams = ramsI; };
 	void setCatapults(int catapultsI) {
 		if (debug) { cout << "siege catapults set to: " << catapultsI << endl; }
-		catapults = catapultsI; 
-	};
+		catapults = catapultsI; };
 	void setSiegeTowers(int siegeTowersI) { 
 		if (debug) { cout << "siege towers set to: " << siegeTowersI << endl; }
-		siegeTowers = siegeTowersI; 
-	};
+		siegeTowers = siegeTowersI; };
 	void setTownLevel(int townLevelI) {
 		if (debug) { cout << "siege town level set to: " << townLevelI << endl; }
 		townLevel = townLevelI;
-		townLevel.setDebug(debug);
-	};
+		townLevel.setDebug(debug);};
 
 	void setDebug(bool debugI) { 
 		debug = debugI;
@@ -74,5 +66,6 @@ public:
 		attacker.setDebug(debug);
 		defender.setDebug(debug);
 	}
+	void printDataSiege();
 };
 

@@ -41,32 +41,25 @@ public:
 
 	vector<Unit> getPlayerUnits() { 
 		if (debug) { cout << "player unit vector gotten, size: " << playerUnits.size() << endl; }
-		return playerUnits; 
-	};
+		return playerUnits; };
 	int getMelee() { 
 		if (debug) { cout << "player melee autoresolve bonus gotten: " << Melee << endl; }
-		return Melee; 
-	};
+		return Melee; };
 	int getCavalry() { 
 		if (debug) { cout << "player cavalry autoresolve bonus gotten: " << Cavalry << endl; }
-		return Cavalry; 
-	};
+		return Cavalry; };
 	int getRanged() { 
 		if (debug) { cout << "player ranged autoresolve bonus gotten: " << Ranged << endl; }
-		return Ranged; 
-	};
+		return Ranged; };
 	General getGeneral() { 
 		if (debug) { cout << "player general gotten, rank: " << general.getRank() << endl; }
-		return general; 
-	};
+		return general; };
 	bool getAdvComDeck() { 
 		if (debug) { cout << "player advanced combat deck gotten: " << AdvCombatDeck << endl; }
-		return AdvCombatDeck; 
-	};
+		return AdvCombatDeck; };
 	faction getFaction() {
 		if (debug) { cout << "player faction gotten: " << (int)fact << endl; }
-		return fact; 
-	};
+		return fact; };
 	Unit getUnitAtIndex(int index) { 
 		if (debug) { cout << "player getting unit at index: "; }
 		if (index >= 0 && index < playerUnits.size()){
@@ -80,17 +73,14 @@ public:
 	};
 	int getNumberOfUnits() { 
 		if (debug) { cout << "player number of units gotten: " << playerUnits.size() << endl; }
-		return playerUnits.size(); 
-	};
+		return playerUnits.size(); };
 	playerType getPlayerType() {
 		if (debug) { cout << "player player type gotten: " << (int)player << endl; }
-		return player; 
-	};
+		return player; };
 	int getTotalSoldiers() {
 		if (debug) { cout << "player getTotalSoldiers called" << endl; }
 		int totalSoldiers = 0;
-		for (int i = 0; i < playerUnits.size(); i++)
-		{
+		for (int i = 0; i < playerUnits.size(); i++) {
 			totalSoldiers += playerUnits[i].getCurrentSoldiers();
 		}
 		if (debug) { cout << "player total soldiers returning: " << totalSoldiers << endl; }
@@ -116,16 +106,13 @@ public:
 	void setGeneral(General generalI) { 
 		if (debug) { cout << "player general set to (rank): " << generalI.getRank() << endl; }
 		general = generalI;
-		general.setDebug(debug);
-	};
+		general.setDebug(debug);};
 	void setAdvCombatDeck(bool advComDeckI) { 
 		if (debug) { cout << "player advanced combat deck set to: " << advComDeckI << endl; }
-		AdvCombatDeck = advComDeckI; 
-	};
+		AdvCombatDeck = advComDeckI; };
 	void setFaction(faction factionI) { 
 		if (debug) { cout << "player faction set to: " << (int)factionI << endl; }
-		fact = factionI; 
-	};
+		fact = factionI; };
 	/*
 	void setUnitAtIndex(int index, Unit unitI) { 
 		if (debug) { cout << "player unit at index: " << index << " set to: " << unitI.getName() << endl; }
@@ -140,8 +127,7 @@ public:
 	*/
 	void setPlayerType(playerType playerI) { 
 		if (debug) { cout << "player player type set to: " << (int)playerI << endl; }
-		player = playerI;
-	};
+		player = playerI;};
 	
 	bool getDebug() { return debug; }
 	void setDebug(bool debugI) {
@@ -152,4 +138,5 @@ public:
 			playerUnits[i].setDebug(debug);
 		}
 	}
+	void printData();
 };

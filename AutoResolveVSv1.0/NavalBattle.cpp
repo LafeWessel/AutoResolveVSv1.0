@@ -103,4 +103,11 @@ void NavalBattle::calculateNaval() //combines base Battle calculation with the e
 	return;
 }
 
+void NavalBattle::printDataNaval()
+{
+	cout << "NavalBattle printData called" << endl
+		<< "NavalBattle attacker ships: " << attackerShips << endl
+		<< "NavalBattle defender ships: " << defenderShips << endl;
+	printData();
+}
 

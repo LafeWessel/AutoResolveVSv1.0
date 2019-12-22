@@ -97,3 +97,22 @@ void Player::setupUnitAutoresolveBonuses()
 	if (debug) { cout << "Ranged with reinforcements " << Ranged << endl; }
 	return;
 }
+
+void Player::printData()
+{
+	cout << "Player printData called" << endl
+		<< "Player Melee autoresolve bonus: " << Melee << endl
+		<< "Player Cavalry autoresolve bonus: " << Cavalry << endl
+		<< "Player Ranged autoresolve bonus: " << Ranged << endl
+		<< "Player faction: " << (int)fact << endl
+		<< "Player playerType: " << (int)player << endl
+		<< "Player reinforcements: " << Reinforcements << endl
+		<< "Player advanced combat deck: " << AdvCombatDeck << endl
+		<< "Player general: " << endl;
+	general.printData();
+	for(int i = 0; i < playerUnits.size(); i++)
+	{
+		cout << "Player playerUnits at " << i << ":" << endl;
+		playerUnits[i].printData();
+	}
+}

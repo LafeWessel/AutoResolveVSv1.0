@@ -43,31 +43,25 @@ public:
 
 	Player getAttacker() { 
 		if (debug) { cout << "battle attacker gotten: " << (int)attacker.getPlayerType() << endl; }
-		return attacker; 
-	};
+		return attacker; };
 	Player getDefender() { 
 		if (debug) { cout << "battle defender gotten: " << (int)defender.getPlayerType() << endl; }
-		return defender; 
-	};
+		return defender; };
 	outcome getOutcome() { 
 		if (debug) { cout << "battle outcome gotten: " << (int)result << endl; }
-		return result; 
-	};
+		return result; };
 
 	void setAttacker(Player attackerI) { 
 		if (debug) { cout << "battle attacker set to: " << (int)attackerI.getPlayerType() << endl; }
 		attacker = attackerI;
-		attacker.setDebug(debug);
-	};
+		attacker.setDebug(debug);};
 	void setDefender(Player defenderI) { 
 		if (debug) { cout << "battle defender set to: " << (int)defenderI.getPlayerType() << endl; }
 		defender = defenderI; 
-		defender.setDebug(debug);
-	};
+		defender.setDebug(debug);};
 	void setOutcome(outcome resultI) { 
 		if (debug) { cout << "battle outcome set to: " << (int)resultI << endl; }
-		result = resultI; 
-	};
+		result = resultI; };
 
 	bool getOutputBool() { return output; };
 	bool getDebugBool() { return debug; };
@@ -83,6 +77,7 @@ public:
 		treasure = &treasureI;
 		treasure->setDebug(treasureI.getDebug());
 	};
+	void printData();
 
 	void treasureResults(); //Determines whether or not loot is found at the end of a battle.
 	void CalculateCas(vector<vector<int>>& totalCasualties); //Determines the amount of casualties at the end of a battle

@@ -28,20 +28,18 @@ public:
 
 	int getAttackerShips() { 
 		if (debug) { cout << "naval attacker ships gotten: " << attackerShips << endl; }
-		return attackerShips; 
-	};
+		return attackerShips; };
 	int getDefenderShips() {
 		if (debug) { cout << "naval defender ships gotten: " << defenderShips << endl; }
-		return defenderShips; 
-	};
+		return defenderShips; };
 
 	void setAttackerShips(int attShipsI) { 
 		if (debug) { cout << "naval attacker ships set to: " << attShipsI << endl; }
-		attackerShips = attShipsI; 
-	};
+		attackerShips = attShipsI; };
 	void setDefenderShips(int defShipsI) { 
 		if (debug) { cout << "naval defender ships set to: " << defShipsI << endl; }
-		defenderShips = defShipsI; 
-	};
+		defenderShips = defShipsI; };
+
+	void printDataNaval();
 };
 

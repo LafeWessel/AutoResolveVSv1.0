@@ -113,3 +113,14 @@ void SiegeBattle::SiegeOutput(vector<vector<int>> totalCasualties) //uses base B
 	if (debug) { cout << "SiegeBattle::SiegeOutput finished" << endl; }
 	return;
 }
+
+void SiegeBattle::printDataSiege()
+{
+	cout << "SiegeBattle printData called" << endl
+		<< "SiegeBattle rams: " << rams << endl
+		<< "SiegeBattle catapults: " << catapults << endl
+		<< "SeigeBattle siege towers: " << siegeTowers << endl
+		<< "SiegeBattle townLevel(townStats): " << endl;
+	townLevel.printData();
+	printData();
+}

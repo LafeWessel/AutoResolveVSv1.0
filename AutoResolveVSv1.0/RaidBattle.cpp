@@ -95,3 +95,11 @@ void RaidBattle::raidOutput(vector<vector<int>> totalCasualties, int suppGained)
 	if (debug) { cout << "RaidBattle::raidOutput finished" << endl; }
 	return;
 }
+
+void RaidBattle::printDataRaid()
+{
+	cout << "RaidBattle printData called" << endl
+		<< "RaidBattle townLevel(townStats): " << endl;
+	townLevel.printData();
+	printData();
+}

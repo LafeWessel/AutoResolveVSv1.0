@@ -33,3 +33,20 @@ void General::updateARBonus()
 	if (debug) { cout << "general updateARBonus called" << endl; }
 	AutoResEqBonus = armor.getABonus() + weapon.getABonus() + trinket.getABonus() + banner.getABonus();
 }
+
+void General::printData()
+{
+	cout << "General printData called" << endl
+		<< "General rank: " << rank << endl
+		<< "General autoresolve equipment bonus: " << AutoResEqBonus << endl;
+	cout << "General armor: " << endl;
+	armor.printData();
+	cout << "General weapon: " << endl;
+	weapon.printData();
+	cout << "General trinket: " << endl;
+	trinket.printData();
+	cout << "General banner: " << endl;
+	banner.printData();
+	cout << "General follower: " << endl;
+	follower.printData();
+}

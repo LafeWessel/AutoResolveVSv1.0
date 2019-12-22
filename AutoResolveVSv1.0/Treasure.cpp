@@ -199,3 +199,46 @@ void Treasure::sortEquipment(vector<Equipment>& toSort)
 			<< "Dragon size: " << dragon.size() << endl;
 	}
 }
+
+void Treasure::setDebug(bool debugI) {
+	int totalDebug = 0;
+	if (debugI) { cout << "treasure setDebug called" << endl; }
+	debug = debugI;
+	setEquipmentVectorDebug(armor);
+	setEquipmentVectorDebug(weapon);
+	setEquipmentVectorDebug(banner);
+	setEquipmentVectorDebug(trinket);
+	setEquipmentVectorDebug(dragon);
+	setEquipmentVectorDebug(follower);
+	if (debug) { cout << "treasure setDebug finished, total: " << totalDebug << endl; }
+}
+
+void Treasure::setEquipmentVectorDebug(vector<Equipment>& equipVector)
+{
+	if (debug) { cout << "treasure setEquipmentVectorDebug called" << endl; }
+	for (int i = 0; i < equipVector.size(); i++) {
+		if (debug) { cout << "Debug set for " << equipVector[i].getName() << ", #" << i << endl; }
+		equipVector[i].setDebug(debug);
+	}
+}
+
+void Treasure::printEquipmentVector(vector<Equipment>& equipVector, string name)
+{
+	for (int i = 0; i < equipVector.size(); i++)
+	{
+		cout << "Treasure " << name << " vector at " << i << ":" << endl;
+		equipVector[i].printData();
+	}
+}
+
+void Treasure::printData()
+{
+	cout << "Treasure printData called" << endl;
+	printEquipmentVector(armor, "armor");
+	printEquipmentVector(weapon, "weapon");
+	printEquipmentVector(banner, "banner");
+	printEquipmentVector(trinket, "trinket");
+	printEquipmentVector(follower, "follower");
+	printEquipmentVector(dragon, "dragon");
+}
+

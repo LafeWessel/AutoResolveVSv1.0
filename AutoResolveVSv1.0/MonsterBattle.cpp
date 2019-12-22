@@ -212,3 +212,13 @@ void MonsterBattle::calculateMonster()
 	if (debug) { cout << "MonsterBattle::calculateMonster finished" << endl; }
 	return;
 }
+
+void MonsterBattle::printData()
+{
+	cout << "MonsterBattle printData called" << endl
+		<< "MonsterBattle attacker: " << endl;
+	attacker.printData();
+	cout << "MonsterBattle monster: " << endl;
+	monster.printData();
+	cout << "MonsterBattle result: " << (int)result << endl;
+}

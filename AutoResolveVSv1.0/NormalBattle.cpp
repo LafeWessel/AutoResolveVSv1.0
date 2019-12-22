@@ -85,3 +85,9 @@ void NormalBattle::normalOutput(vector<vector<int>> totalCasualties) //Uses base
 	if (debug) { cout << "NormalBattle::normalOutput finished" << endl; }
 	return;
 }
+
+void NormalBattle::printDataNormal()
+{
+	cout << "NormalBattle printData called" << endl;
+	printData();
+}
