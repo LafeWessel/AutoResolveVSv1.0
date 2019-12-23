@@ -52,26 +52,7 @@ public:
 	Equipment findFollower();
 
 	Equipment findTreasure(int bonus); //Used at the end of battles to determine loot results
-	/*
-	vector<Equipment> getArmorVector() {
-		if (debug) { cout << "armor vector gotten, size: " << armor.size() << endl; }
-		return armor;};
-	vector<Equipment> getWeaponVector() { 
-		if (debug) { cout << "weapon vector gotten, size: " << weapon.size() << endl; }
-		return weapon;};
-	vector<Equipment> getTrinketVector() {
-		if (debug) { cout << "trinket vector gotten, size: " << trinket.size() << endl; }
-		return trinket; };
-	vector<Equipment> getBannerVector() {
-		if (debug) { cout << "banner vector gotten, size: " << banner.size() << endl; }
-		return banner;};
-	vector<Equipment> getFollowerVector() {
-		if (debug) { cout << "follower vector gotten, size: " << follower.size() << endl; }
-		return follower;};
-	vector<Equipment> getDragonVector() {
-		if (debug) { cout << "dragon vector gotten, size: " << dragon.size() << endl; }
-		return dragon;};
-	*/
+
 	void setArmorVector(vector<Equipment> equipVectorI) { 
 		armor = equipVectorI; 
 		if (debug) { cout << "armor vector set, size: " << armor.size() << endl; }

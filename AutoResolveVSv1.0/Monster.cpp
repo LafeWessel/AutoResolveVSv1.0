@@ -21,7 +21,7 @@ Monster::Monster(monsterType typeI, Treasure& treasureI) //initializer
 	setValuesFromMonsterType();
 	debug = false;
 }
-
+//TODO-refactor this function
 vector<Equipment> Monster::getEquipRewards() //This figures out the treasure gained for killing a monster, based on info elsewhere
 {
 	if (debug) { cout << "getEquipRewards called" << endl; }

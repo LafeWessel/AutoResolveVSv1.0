@@ -41,12 +41,7 @@ public:
 	void setLevel(int levelI) { 
 		if (debug) { cout << "town stats level set to: " << levelI << endl; }
 		updateStats(levelI);};
-	/*
-	void setDefenses(defenses defenseI) { 
-		if (debug) { cout << "town stats defenses set to: " << (int)defenseI << endl; }
-		townDefense = defenseI; 
-	};
-	*/
+
 	bool getDebug() { return debug; }
 	void setDebug(bool debugI) { debug = debugI; }
 	void printData();

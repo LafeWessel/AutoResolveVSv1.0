@@ -186,12 +186,6 @@ vector<Equipment> CSVDataReader::readEquipment()
 		readEquip.push_back(inputEquip);
 	}
 
-	//if (armor.size() <1) { throw invalid_argument("Armor vector has no elements"); }
-	//if (weapon.size() <1) { throw invalid_argument("Weapon vector has no elements"); }
-	//if (trinket.size() <1) { throw invalid_argument("Trinket vector has no elements"); }
-	//if (banner.size() <1) { throw invalid_argument("Banner vector has no elements"); }
-	//if (follower.size() <1) { throw invalid_argument("Follower vector has no elements"); }
-	//if (dragon.size() <1) { throw invalid_argument("Dragon vector has no elements"); }
 	return readEquip;
 }
 

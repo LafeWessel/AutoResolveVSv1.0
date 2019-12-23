@@ -38,17 +38,11 @@ public:
 		if (debug) { cout << "monster monster type gotten: " << (int)type << endl; }
 		return type; };
 
-	void setCoinReward(int coinRewardI) { 
-		if (debug) { cout << "monster coin reward set to: " << coinRewardI << endl; }
-		coinReward = coinRewardI; };
-	void setAutoResValue(int autoResValI) { 
-		if (debug) { cout << "monster autoresolve value set to: " << autoResValI << endl; }
-		autoResValue = autoResValI; };
 	void setMonsterType(monsterType monTypeI) { 
 		if (debug) { cout << "monster monster type set to: " << (int)monTypeI << endl; }
 		type = monTypeI; 
 		if (debug) { cout << "calling setValuesFromMonsterType" << endl; }
-		setValuesFromMonsterType();};
+		setValuesFromMonsterType();}; 
 	void setTreasure(Treasure& treasureI) {
 		treasure = &treasureI;
 		treasure->setDebug(treasureI.getDebug());};

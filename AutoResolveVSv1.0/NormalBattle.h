@@ -1,16 +1,6 @@
 #pragma once
 #include "Battle.h"
-//#include <algorithm>
-//#include <cmath>
 
-//#include <array>
-//#include <vector>
-//#include <string>
-
-//#include <fstream>
-//#include <iostream>
-//#include <sstream>
-//#include <stdexcept>
 using namespace std;
 class NormalBattle : public Battle
 {
@@ -23,7 +13,8 @@ public:
 
 	void normalOutput(vector<vector<int>> totalCasualties);
 	void calculateNormal();
-	//needs no specific getters and setters
+	//needs no specific getters and setters,
+	//everything needed inherited from Battle
 
 	void printDataNormal();
 };

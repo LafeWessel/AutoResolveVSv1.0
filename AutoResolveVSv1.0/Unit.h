@@ -29,7 +29,7 @@ public:
 	Unit();
 	Unit(string nameI, int autoResBonusI, int soldiersPerUnitI, int currentSoldiersI, faction factI, unitType typeI);
 
-	string& getName() { 
+	string getName() { 
 		if (debug) { cout << "unit name gotten: " << name << endl; }
 		return name;};
 	int getARBonus() { 

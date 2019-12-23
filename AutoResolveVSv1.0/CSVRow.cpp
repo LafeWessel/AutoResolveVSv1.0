@@ -11,7 +11,7 @@ CSVRow::CSVRow()
 
 void CSVRow::readNextRow(istream& str)
 {
-	if (debug) { cout << "readNextRow called" << endl; }
+	//if (debug) { cout << "readNextRow called" << endl; }
 	string line;
 	getline(str, line);
 	stringstream lineStream(line);
@@ -32,13 +32,13 @@ void CSVRow::readNextRow(istream& str)
 
 size_t CSVRow::size() const 
 { 
-	if (debug) { cout << "size gotten" << endl; }
+	//if (debug) { cout << "size gotten" << endl; }
 	return m_data.size();
 }
 
 string const& CSVRow::operator[](size_t index) const
 { 
-	if (debug) { cout << "operator[] called" << endl; }
+	//if (debug) { cout << "operator[] called" << endl; }
 	return m_data[index];
 }
 

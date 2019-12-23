@@ -38,12 +38,7 @@ public:
 	void monsterOutput(vector<int>& totalCasualties);
 	void monsterCasualties(vector<int>& attackerCasVec); //Calculates the casualties, needs only a 1D vector since there is only 1 Player
 	void calculateMonster(); //Calculates the outcome and calls Casualty and output functions
-	/*
-	int getOutcome() { 
-		if (debug) { cout << "monster battle ending gotten: " << (int)result << endl; }
-			return (int)result;
-	};
-	*/
+
 	Player getPlayer() { 
 		if (debug) { cout << "monster battle player gotten: " << (int)attacker.getPlayerType() << endl; }
 		return attacker; };

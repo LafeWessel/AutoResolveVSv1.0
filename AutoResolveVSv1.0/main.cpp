@@ -80,13 +80,9 @@ TODO Section:
 
 High Priority:
 
-TODO-implement 'helper' functions that will print raw data from classes
-
 TODO-COMMENT EVERYTHING
 
 TODO-implement playerType enum class; currently in place, but does nothing
-
-TODO-remove large commented sections
 
 Low Priority:
 
@@ -465,6 +461,7 @@ void battleTest(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
 
 	Monster monster = {};
 	monster.setMonsterType(monsterType::Dragon);
+	monster.setTreasure(treasure);
 
 	battle.setPlayer(attacker);
 	battle.setMonster(monster);

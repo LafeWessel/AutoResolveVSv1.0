@@ -56,7 +56,7 @@ public:
 		siegeTowers = siegeTowersI; };
 	void setTownLevel(int townLevelI) {
 		if (debug) { cout << "siege town level set to: " << townLevelI << endl; }
-		townLevel = townLevelI;
+		townLevel.setLevel(townLevelI);
 		townLevel.setDebug(debug);};
 
 	void setDebug(bool debugI) { 

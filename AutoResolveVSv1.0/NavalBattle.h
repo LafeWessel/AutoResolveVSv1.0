@@ -1,16 +1,5 @@
 #pragma once
 #include "Battle.h"
-//#include <algorithm>
-//#include <cmath>
-
-//#include <array>
-//#include <vector>
-//#include <string>
-
-//#include <fstream>
-//#include <iostream>
-//#include <sstream>
-//#include <stdexcept>
 using namespace std;
 class NavalBattle : public Battle
 {

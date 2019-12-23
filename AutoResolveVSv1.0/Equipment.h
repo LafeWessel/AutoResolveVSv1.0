@@ -7,10 +7,8 @@
 #include <vector>
 #include <string>
 
-//#include <fstream>
 #include <iostream>
-//#include <sstream>
-//#include <stdexcept>
+
 using namespace std;
 //This is used for all the equipment that is read in when the a Treasure class has initializeTreasure() is called.
 //Used by generals and at the end of battles
@@ -19,7 +17,7 @@ class Equipment
 private:
 	string name;
 	int autoBonus;
-	int index;
+	int index; //unused, maybe remove? will always be read in from the csv
 	int range;
 	equipmentType EquipType;
 	string effect;
@@ -37,9 +35,6 @@ public:
 	int getABonus() { 
 		if (debug) { cout << "equipment autoresolve bonus gotten: " << autoBonus << endl; }
 		return autoBonus; };
-	int getIndex() { 
-		if (debug) { cout << "equipment index gotten: " << index << endl; }
-		return index; };
 	int getRange() { 
 		if (debug) { cout << "equipment range gotten: " << range << endl; }
 		return range; };
@@ -60,9 +55,6 @@ public:
 	void setABonus(int autoBonusI) { 
 		if (debug) { cout << "equipment autoresolve bonus set to: " << autoBonusI << endl; }
 		autoBonus = autoBonusI; };
-	void setIndex(int indexI) { 
-		if (debug) { cout << "equipment index set to: " << indexI << endl; }
-		index = indexI; };
 	void setRange(int rangeI) { 
 		if (debug) { cout << "equipment range set to: " << rangeI << endl; }
 		range = rangeI; };

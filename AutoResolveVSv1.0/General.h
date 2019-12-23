@@ -56,12 +56,6 @@ public:
 	void setRank(int rankI) { 
 		if (debug) { cout << "general rank set to: " << rankI << endl; }
 		rank = rankI; };
-	/*
-	void setAutoBonus(int autoBonusI) {
-		if (debug) { cout << "general autoresolve bonus set to: " << autoBonusI << endl; }
-		AutoResEqBonus = autoBonusI; 
-	};
-	*/
 	void setArmor(Equipment equipI) { 
 		if (debug) { cout << "general armor set to: " << equipI.getName() << endl; }
 		armor = equipI;

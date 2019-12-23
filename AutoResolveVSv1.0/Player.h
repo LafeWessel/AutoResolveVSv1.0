@@ -89,20 +89,6 @@ public:
 
 	void setReinforcements(int ReinforceI);
 	void setPlayerUnits(vector<Unit> unitsI);
-	/*
-	void setMelee(int meleeI) { 
-		if (debug) { cout << "player melee autoresolve bonus set to: " << meleeI << endl; }
-		Melee = meleeI; 
-	};
-	void setCavalry(int cavalryI) { 
-		if (debug) { cout << "player cavalry autoresolve bonus set to: " << cavalryI << endl; }
-		Cavalry = cavalryI; 
-	};
-	void setRanged(int rangedI) { 
-		if (debug) { cout << "player ranged autoresolve bonus set to: " << rangedI << endl; }
-		Ranged = rangedI; 
-	};
-	*/
 	void setGeneral(General generalI) { 
 		if (debug) { cout << "player general set to (rank): " << generalI.getRank() << endl; }
 		general = generalI;
@@ -113,18 +99,6 @@ public:
 	void setFaction(faction factionI) { 
 		if (debug) { cout << "player faction set to: " << (int)factionI << endl; }
 		fact = factionI; };
-	/*
-	void setUnitAtIndex(int index, Unit unitI) { 
-		if (debug) { cout << "player unit at index: " << index << " set to: " << unitI.getName() << endl; }
-		if (index >= 0 && index < playerUnits.size()) {
-			unitI.setDebug(debug);
-			playerUnits[index] = unitI;
-		}
-		else {
-			cerr << "player invalid set unit vector index selected: " << index<< endl;
-		}
-	};
-	*/
 	void setPlayerType(playerType playerI) { 
 		if (debug) { cout << "player player type set to: " << (int)playerI << endl; }
 		player = playerI;};
