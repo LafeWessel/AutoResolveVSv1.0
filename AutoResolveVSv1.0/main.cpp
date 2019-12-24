@@ -33,7 +33,6 @@
 #include "NormalBattle.h"
 #include "outcome.h"
 #include "Player.h"
-#include "playerType.h"
 #include "RaidBattle.h"
 #include "Roster.h"
 #include "SiegeBattle.h"
@@ -79,10 +78,6 @@ All variables are comma-separated, so there must be no extraneous commas.
 TODO Section:
 
 High Priority:
-
-TODO-COMMENT EVERYTHING
-
-TODO-implement playerType enum class; currently in place, but does nothing
 
 Low Priority:
 
@@ -257,7 +252,7 @@ void testSetup(Battle& battle, bool debug, Treasure& treasure)
 	return;
 }
 
-//These 5 functions below are overloaded. They create a vector of results from creating and calculating battles with basic information
+//These 5 functions create a vector of results from creating and calculating battles with basic information
 //that is then sent to predictionOutput()
 void battleTest(int tests, NormalBattle battle, bool debug, Treasure& treasure)
 {

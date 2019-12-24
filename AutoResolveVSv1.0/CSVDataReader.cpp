@@ -1,7 +1,7 @@
 #include "CSVDataReader.h"
 
 //Used when reading in from the units document
-faction intToFaction(int input)
+faction CSVDataReader::intToFaction(int input)
 {
 	switch (input)
 	{
@@ -44,7 +44,7 @@ ostream& operator<<(ostream& os, faction& fact) //This outputs an integer as its
 	}
 }
 
-equipmentType stringToEquipType(string& nameI) //converts a string to an equipmentType
+equipmentType CSVDataReader::stringToEquipType(string nameI) //converts a string to an equipmentType
 {
 	vector<string> names = { "Null","Armor","Weapon","Trinket","Banner","Dragon","Follower" };
 	vector<equipmentType> types = { equipmentType::null,equipmentType::armor,equipmentType::weapon,
@@ -63,7 +63,7 @@ equipmentType stringToEquipType(string& nameI) //converts a string to an equipme
 }
 
 //Used when reading in from the units document
-unitType intToUnitType(int input)
+unitType CSVDataReader::intToUnitType(int input)
 {
 	switch (input)
 	{

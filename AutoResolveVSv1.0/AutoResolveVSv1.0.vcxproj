@@ -131,7 +131,6 @@
     <ClCompile Include="NormalBattle.cpp" />
     <ClCompile Include="outcome.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="playerType.cpp" />
     <ClCompile Include="RaidBattle.cpp" />
     <ClCompile Include="Roster.cpp" />
     <ClCompile Include="SiegeBattle.cpp" />
@@ -158,10 +157,8 @@
     <ClInclude Include="monsterType.h" />
     <ClInclude Include="NavalBattle.h" />
     <ClInclude Include="NormalBattle.h" />
-    <ClInclude Include="operators.h" />
     <ClInclude Include="outcome.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="playerType.h" />
     <ClInclude Include="RaidBattle.h" />
     <ClInclude Include="Roster.h" />
     <ClInclude Include="SiegeBattle.h" />

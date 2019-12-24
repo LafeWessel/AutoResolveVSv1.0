@@ -14,11 +14,10 @@ Player::Player() //void initializer
 	fact = faction::rebel;
 	debug = false;
 	Reinforcements = 0;
-	player = playerType::attacker;
 }
 
 //initializer
-Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI, playerType type)
+Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI)
 {
 	setupUnitAutoresolveBonuses();
 	//automatically adds reinforcements onto the total melee, cavalry and ranged soldiers the class has
@@ -30,7 +29,6 @@ Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCo
 	fact = FactI;
 	debug = false;
 	Reinforcements = ReinforceI;
-	player = type;
 }
 
 void Player::setPlayerUnits(vector<Unit> unitsI)
@@ -105,7 +103,6 @@ void Player::printData()
 		<< "Player Cavalry autoresolve bonus: " << Cavalry << endl
 		<< "Player Ranged autoresolve bonus: " << Ranged << endl
 		<< "Player faction: " << (int)fact << endl
-		<< "Player playerType: " << (int)player << endl
 		<< "Player reinforcements: " << Reinforcements << endl
 		<< "Player advanced combat deck: " << AdvCombatDeck << endl
 		<< "Player general: " << endl;

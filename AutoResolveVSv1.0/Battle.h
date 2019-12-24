@@ -40,21 +40,17 @@ public:
 	string outputGenState(int state);
 
 	Player getAttacker() { 
-		if (debug) { cout << "battle attacker gotten: " << (int)attacker.getPlayerType() << endl; }
 		return attacker; };
 	Player getDefender() { 
-		if (debug) { cout << "battle defender gotten: " << (int)defender.getPlayerType() << endl; }
 		return defender; };
 	outcome getOutcome() { 
 		if (debug) { cout << "battle outcome gotten: " << (int)result << endl; }
 		return result; };
 
 	void setAttacker(Player attackerI) { 
-		if (debug) { cout << "battle attacker set to: " << (int)attackerI.getPlayerType() << endl; }
 		attacker = attackerI;
 		attacker.setDebug(debug);};
 	void setDefender(Player defenderI) { 
-		if (debug) { cout << "battle defender set to: " << (int)defenderI.getPlayerType() << endl; }
 		defender = defenderI; 
 		defender.setDebug(debug);};
 	void setOutcome(outcome resultI) { 

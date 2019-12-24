@@ -24,6 +24,10 @@ public:
 	vector<Equipment> readEquipment();
 	vector<Unit> readUnits(faction& fact);
 
+	unitType intToUnitType(int input);
+	equipmentType stringToEquipType(string nameI);
+	faction intToFaction(int input);
+
 	void setDebug(bool debugI) { debug = debugI; };
 };
 

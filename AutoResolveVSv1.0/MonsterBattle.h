@@ -40,7 +40,6 @@ public:
 	void calculateMonster(); //Calculates the outcome and calls Casualty and output functions
 
 	Player getPlayer() { 
-		if (debug) { cout << "monster battle player gotten: " << (int)attacker.getPlayerType() << endl; }
 		return attacker; };
 	Monster getMonster() { 
 		if (debug) { cout << "monster battle monster gotten: " << (int)monster.getMonsterType() << endl; }
@@ -50,7 +49,6 @@ public:
 		return result; };
 
 	void setPlayer(Player playerI) { 
-		if (debug) { cout << "monster battle player set to: " << (int)playerI.getPlayerType() << endl; }
 		attacker = playerI;
 		attacker.setDebug(debug);};
 	void setMonster(Monster monsterI) { 

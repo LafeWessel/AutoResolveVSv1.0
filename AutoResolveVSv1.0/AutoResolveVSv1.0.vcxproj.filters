@@ -18,9 +18,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="playerType.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="monsterType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -93,9 +90,6 @@
     <Text Include="..\Debug\units.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="playerType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="monsterType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -154,9 +148,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NormalBattle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="operators.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CSVDataReader.h">

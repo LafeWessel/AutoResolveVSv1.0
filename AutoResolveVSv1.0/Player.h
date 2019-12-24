@@ -2,7 +2,6 @@
 #include "faction.h"
 #include "General.h"
 #include "Player.h"
-#include "playerType.h"
 #include "Roster.h"
 #include "Unit.h"
 #include <algorithm>
@@ -30,14 +29,13 @@ private:
 	faction fact;
 	bool debug;
 	int Reinforcements;
-	playerType player;
 
 	void setupUnitAutoresolveBonuses();
 
 public:
 	~Player();
 	Player();
-	Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI, playerType type);
+	Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI);
 
 	vector<Unit> getPlayerUnits() { 
 		if (debug) { cout << "player unit vector gotten, size: " << playerUnits.size() << endl; }
@@ -74,9 +72,6 @@ public:
 	int getNumberOfUnits() { 
 		if (debug) { cout << "player number of units gotten: " << playerUnits.size() << endl; }
 		return playerUnits.size(); };
-	playerType getPlayerType() {
-		if (debug) { cout << "player player type gotten: " << (int)player << endl; }
-		return player; };
 	int getTotalSoldiers() {
 		if (debug) { cout << "player getTotalSoldiers called" << endl; }
 		int totalSoldiers = 0;
@@ -99,9 +94,6 @@ public:
 	void setFaction(faction factionI) { 
 		if (debug) { cout << "player faction set to: " << (int)factionI << endl; }
 		fact = factionI; };
-	void setPlayerType(playerType playerI) { 
-		if (debug) { cout << "player player type set to: " << (int)playerI << endl; }
-		player = playerI;};
 	
 	bool getDebug() { return debug; }
 	void setDebug(bool debugI) {
