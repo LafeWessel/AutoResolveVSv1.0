@@ -62,7 +62,7 @@ The 'Corpse Thief' Follower equipment has 1 as it's autoresolve bonus to help ca
 
 
 Order of Variables in Units file:
-1. Faction: 1,2,3 or 4, follows the enum class defined below (int)
+1. Faction: 1,2,3, or 4, follows the enum class defined below (int)
 2. Name (string)
 3. Type: Melee(1), Cavalry(2) or Ranged(3) (int)
 4. Autoresolve Bonus (int)
@@ -71,7 +71,7 @@ All variables are comma-separated, so there must be no extraneous commas.
 *
 *
 *Equipment and Units files must be put in the same directory as the .exe that is generated when the project is built.
-*This seems to a bit temperamental, so I have them copied into 5 separate areas of the program to ensure it works
+*This seems to be a bit temperamental, so I have them copied into 5 separate areas of the program to ensure it works
 */
 
 /*
@@ -189,7 +189,7 @@ void predictionOutput(vector<int> rawResults)
 	cout << "Percent Loss: " << loss * 100 << endl;
 	if (loss == 0)
 	{
-		cout << "Win - loss ratio: " << victory / .01 << endl;
+		cout << "Win - loss ratio: " << victory * 100 << endl;
 	}
 	else
 	{

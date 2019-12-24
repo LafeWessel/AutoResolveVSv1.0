@@ -11,10 +11,8 @@
 #include <vector>
 #include <string>
 
-//#include <fstream>
 #include <iostream>
-//#include <sstream>
-//#include <stdexcept>
+
 using namespace std;
 class Player //This is used in every kind of battle.
 {
