@@ -116,6 +116,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="BattleData.cpp" />
+    <ClCompile Include="battleType.cpp" />
     <ClCompile Include="CSVDataReader.cpp" />
     <ClCompile Include="CSVRow.cpp" />
     <ClCompile Include="defenses.cpp" />
@@ -145,6 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
+    <ClInclude Include="BattleData.h" />
+    <ClInclude Include="battleType.h" />
     <ClInclude Include="CSVDataReader.h" />
     <ClInclude Include="CSVRow.h" />
     <ClInclude Include="defenses.h" />

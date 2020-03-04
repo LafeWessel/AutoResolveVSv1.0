@@ -3,6 +3,7 @@
 #include "outcome.h"
 #include "Player.h"
 #include "Treasure.h"
+#include "battleType.h"
 
 #include <algorithm>
 #include <cmath>
@@ -24,6 +25,7 @@ private:
 	outcome result;
 	bool output;
 	bool debug;
+	battleType type = battleType::Monster;
 
 public:
 	~MonsterBattle();
@@ -47,6 +49,8 @@ public:
 	outcome getOutcome() { 
 		if (debug) { cout << "monster battle outcome gotten: " << (int)result << endl; }
 		return result; };
+	battleType getType() {
+		return type; };
 
 	void setPlayer(Player playerI) { 
 		attacker = playerI;

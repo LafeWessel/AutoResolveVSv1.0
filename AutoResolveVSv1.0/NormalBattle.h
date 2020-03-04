@@ -5,7 +5,7 @@ using namespace std;
 class NormalBattle : public Battle
 {
 private:
-
+	battleType type = battleType::Normal;
 public:
 	~NormalBattle();
 	NormalBattle();

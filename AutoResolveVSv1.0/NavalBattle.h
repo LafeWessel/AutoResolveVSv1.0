@@ -6,6 +6,7 @@ class NavalBattle : public Battle
 private:
 	int attackerShips;
 	int defenderShips;
+	battleType type = battleType::Naval;
 
 public:
 	~NavalBattle();

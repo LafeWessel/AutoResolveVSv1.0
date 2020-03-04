@@ -21,6 +21,7 @@ private:
 	int catapults;
 	int siegeTowers;
 	townStats townLevel;
+	battleType type = battleType::Siege;
 
 public:
 

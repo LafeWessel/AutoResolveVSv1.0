@@ -78,7 +78,7 @@ All variables are comma-separated, so there must be no extraneous commas.
 TODO Section:
 
 High Priority:
-	TODO-Make a way for the tests to use randomized values
+	TODO-Make a way for the tests to use solely randomized values
 	TODO-Make a way for all the data in a battle, including results, cas, etc. to be captured in an array/vector
 	TODO-Make sure that casualties are actually assigned for MonsterBattle
 Low Priority:

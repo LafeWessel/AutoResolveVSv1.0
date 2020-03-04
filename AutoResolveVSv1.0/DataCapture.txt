@@ -1,0 +1,74 @@
+Columns in Read out from 4 regular battle types:
+
+Battle Type - battleType(int)
+Battle Randoms Attacker Total - int
+Battle Randoms Defender Total - int
+Ending Total - double
+Outcome - outcome(int)
+Attacker Won - bool(int)
+Supplies - int
+Attacker:
+	General Rank - int
+	General Total Autoresolve Equipment Bonus - int
+	General Armor Bonus - int
+	General Weapon Bonus - int
+	General Follower Bonus - int
+	General Banner Bonus - int
+	General Trinket Bonus - int
+	Advanced Combat Deck - int 
+	Total Beginning Autoresolve Unit Bonus - int
+	Total Beginning Melee Bonus - int
+	Total Beginning Ranged Bonus - int
+	Total Beginning Cavalry Bonus - int
+	Total Beginning Soldiers - int
+	Total Ending Autoresolve Unit Bonus - int
+	Total Ending Melee Bonus - int
+	Total Ending Ranged Bonus - int
+	Total Ending Cavalry Bonus - int
+	Total Ending Soldiers - int
+	Amount of Each Unit(38 types) - int
+	Total Units - int 
+	Total Reinforcements - int
+	Total Upgrades Received - int
+	Total Unit Casualties - int
+	Total Soldier Casualties - int
+	End General State - int
+	Treasure Received - bool(int)	
+	Faction - faction(int)
+	
+	Ships - int
+	Rams - int
+	Siege Towers - int
+	Catapults - int
+
+Defender:
+	General Rank - int
+	General Total Autoresolve Equipment Bonus - int
+	General Armor Bonus - int
+	General Weapon Bonus - int
+	General Follower Bonus - int
+	General Banner Bonus - int
+	General Trinket Bonus - int
+	Advanced Combat Deck - int 
+	Total Beginning Autoresolve Unit Bonus - int
+	Total Beginning Melee Bonus - int
+	Total Beginning Ranged Bonus - int
+	Total Beginning Cavalry Bonus - int
+	Total Beginning Soldiers - int
+	Total Ending Autoresolve Unit Bonus - int
+	Total Ending Melee Bonus - int
+	Total Ending Ranged Bonus - int
+	Total Ending Cavalry Bonus - int
+	Total Ending Soldiers - int
+	Amount of Each Unit(38 types) - int
+	Total Units - int 
+	Total Reinforcements - int
+	Total Upgrades Received - int
+	Total Unit Casualties - int
+	Total Soldier Casualties - int
+	End General State - int
+	Treasure Received - bool(int)	
+	Faction - faction(int)
+	
+	Ships - int
+	TownStat Autoresolve Bonus - int
