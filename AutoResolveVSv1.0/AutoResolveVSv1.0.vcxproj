@@ -144,6 +144,7 @@
   <ItemGroup>
     <Text Include="..\Debug\equipment.txt" />
     <Text Include="..\Debug\units.txt" />
+    <Text Include="DataCapture.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />

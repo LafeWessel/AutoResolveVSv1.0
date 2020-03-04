@@ -1,4 +1,4 @@
-#pragma once
+[#pragma once
 #include "defenses.h"
 #include <algorithm>
 #include <cmath>
