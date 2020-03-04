@@ -42,6 +42,8 @@ public:
 	void setSiegeTowers(int siege);
 	void setCatapults(int cat);
 	void setTownStats(townStats& ts);
+	void setAttackerEnd(Player& p);
+	void setDefenderEnd(Player& p);
 
 };
 

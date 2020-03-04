@@ -14,13 +14,14 @@ void BattleData::setBattleType(battleType type) {
 }
 
 void BattleData::setAttacker(Player& p) {
-
+	data[7] = p.getGeneral().getRank();
+	data[8] = p.getGeneral().getARBonus();
 	data[9] = p.getGeneral().getArmor().getABonus();
 	data[10] = p.getGeneral().getWeapon().getABonus();
 	data[11] = p.getGeneral().getFollower().getABonus();
 	data[12] = p.getGeneral().getBanner().getABonus();
 	data[13] = p.getGeneral().getTrinket().getABonus();
-
+	data[14] = p.getAdvComDeck();
 }
 
 void BattleData::setDefender(Player& p) {
@@ -118,4 +119,12 @@ void BattleData::setCatapults(int cat) {
 
 void BattleData::setTownStats(townStats& ts) {
 	data[140] = ts.getLevel();
+}
+
+void BattleData::setAttackerEnd(Player& p) {
+
+}
+
+void BattleData::setDefenderEnd(Player& p) {
+
 }

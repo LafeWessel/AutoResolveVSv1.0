@@ -1,7 +1,8 @@
-[#pragma once
+#pragma once
 #include "defenses.h"
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 
 //#include <array>
 //#include <vector>
