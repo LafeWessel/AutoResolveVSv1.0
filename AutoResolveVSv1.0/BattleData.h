@@ -8,6 +8,8 @@
 #include "NormalBattle.h"
 #include "SiegeBattle.h"
 #include "MonsterBattle.h"
+#include "Roster.h"
+#include "Unit.h"
 
 
 class BattleData
@@ -16,6 +18,10 @@ class BattleData
 private:
 	
 	vector<int> data;
+
+	vector<string> getUnitNames();
+	void setAttackerUnitTotals(vector<Unit> u);
+	void setDefenderUnitTotals(vector<Unit> u);
 
 public:
 	BattleData();
@@ -44,6 +50,7 @@ public:
 	void setTownStats(townStats& ts);
 	void setAttackerEnd(Player& p);
 	void setDefenderEnd(Player& p);
+
 
 };
 

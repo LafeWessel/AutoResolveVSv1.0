@@ -9,7 +9,7 @@ Columns in Read out from 4 regular battle types:
 6	Supplies - int
 Attacker:
 7	General Rank - int
-8	General Total Autoresolve Equipment Bonus - int
+8	General Total Autoresolve Bonus - int
 9	General Armor Bonus - int
 10	General Weapon Bonus - int
 11	General Follower Bonus - int
@@ -43,7 +43,7 @@ Attacker:
 
 Defender:
 75	General Rank - int
-76	General Total Autoresolve Equipment Bonus - int
+76	General Total Autoresolve Bonus - int
 77	General Armor Bonus - int
 78	General Weapon Bonus - int
 79	General Follower Bonus - int

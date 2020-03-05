@@ -47,6 +47,9 @@ public:
 	int getRanged() { 
 		if (debug) { cout << "player ranged autoresolve bonus gotten: " << Ranged << endl; }
 		return Ranged; };
+	int getReinforcements() {
+		if (debug) { cout << "player reinforcements gotten: " << Reinforcements << endl; }
+		return Reinforcements; };
 	General getGeneral() { 
 		if (debug) { cout << "player general gotten, rank: " << general.getRank() << endl; }
 		return general; };
