@@ -33,6 +33,7 @@ private:
 public:
 	~Treasure();
 	Treasure();
+	Treasure(bool debugI);
 	Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI, 
 		vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI, bool debugI);
 	//The last item in the follower array is the empty/null equipment
@@ -98,7 +99,6 @@ public:
 
 	bool getDebug() { return debug; }
 	void setDebug(bool debugI);
-	void setEquipmentVectorDebug(vector<Equipment>& equipVector);
 	void printEquipmentVector(vector<Equipment>& equipVector, string name);
 	void printData();
 

@@ -27,6 +27,7 @@ private:
 public:
 	~Unit();
 	Unit();
+	Unit(bool debugI);
 	Unit(string nameI, int autoResBonusI, int soldiersPerUnitI, int currentSoldiersI, faction factI, unitType typeI);
 
 	string getName() { 

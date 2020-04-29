@@ -23,6 +23,7 @@ private:
 public:
 	~townStats();
 	townStats();
+	townStats(bool debugI);
 	townStats(int levelI);
 	void updateStats(int level);
 

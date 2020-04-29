@@ -27,6 +27,7 @@ private:
 public:
 	~Roster();
 	Roster();
+	Roster(bool debugI);
 	Roster(vector<Unit> unitsI, faction factI);
 
 	vector<Unit> getUnitsOfType(unitType type);

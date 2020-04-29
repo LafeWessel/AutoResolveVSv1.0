@@ -26,8 +26,10 @@ private:
 
 public:
 	~Equipment();
-	Equipment(string nameI, int autoBonusI, int numberI, int rangeI, equipmentType EquipTypeI, string effectI, int coinValueI);
 	Equipment();
+	Equipment(bool debugI);
+	Equipment(string nameI, int autoBonusI, int numberI, int rangeI, equipmentType EquipTypeI, string effectI, int coinValueI);
+	
 
 	string getName() { 
 		if (debug) { cout << "equipment name gotten: " << name << endl; }

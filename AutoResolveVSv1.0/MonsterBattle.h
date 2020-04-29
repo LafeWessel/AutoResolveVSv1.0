@@ -30,6 +30,7 @@ private:
 public:
 	~MonsterBattle();
 	MonsterBattle();
+	MonsterBattle(bool debugI);
 	MonsterBattle(Player attackerI, Monster monsterI);
 
 	string outputGenStateMonster(int state);

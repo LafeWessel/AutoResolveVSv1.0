@@ -10,6 +10,13 @@ Roster::Roster() //void initializer
 	debug = false;
 }
 
+Roster::Roster(bool debugI)
+{
+	factionUnits = {};
+	fact = faction::rebel;
+	this->setDebug(debugI);
+}
+
 Roster::Roster(vector<Unit> unitsI, faction factI) //initializer
 {
 	factionUnits = unitsI;

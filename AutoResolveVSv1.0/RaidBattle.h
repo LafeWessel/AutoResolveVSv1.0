@@ -23,6 +23,7 @@ private:
 public:
 	~RaidBattle();
 	RaidBattle();
+	RaidBattle(bool debugI);
 	RaidBattle(Player attackerI, Player defenderI, townStats townLevelI);
 
 	void raidOutput(vector<vector<int>> totalCasualties, int suppGained);

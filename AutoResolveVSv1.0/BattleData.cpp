@@ -3,10 +3,16 @@
 BattleData::BattleData()
 {
 	//Makes sure the data array is the correct size/length
-	int nItems = 141;
-	for (int i = 0; i < nItems; i++) {
-		data.push_back(0);
-	}
+	data.resize(141);
+	fill(data.begin(), data.end(), 0);
+}
+
+BattleData::BattleData(bool debugI)
+{
+	//Makes sure the data array is the correct size/length
+	data.resize(141);
+	fill(data.begin(), data.end(), 0);
+	debug = debugI;
 }
 
 void BattleData::setBattleType(battleType type) {
@@ -49,6 +55,7 @@ void BattleData::setDefender(Player& p) {
 	data[131] = p.getNumberOfUnits();
 	data[132] = p.getReinforcements();
 	setDefenderUnitTotals(p.getPlayerUnits());
+
 }
 
 void BattleData::setAttackerRandoms(int rand) {
@@ -158,6 +165,32 @@ void BattleData::setDefenderEnd(Player& p) {
 	data[90] = p.getRanged();
 	data[91] = p.getCavalry();
 	data[92] = p.getTotalSoldiers();
+}
+
+void BattleData::printData()
+{
+	for (int i = 0; i < data.size(); i++)
+	{
+		cout << "i: " << i << " = " << data[i] << endl;
+	}
+}
+
+void BattleData::writeToFile(string fileName)
+{
+	fstream file;
+	file.open(fileName);
+	if (file) {
+		if (debug) { cout << "File successfully opened" << endl; }
+		for (int i = 0; i < data.size()-1; i++)
+		{
+			file << data[i] << ",";
+			if (debug) { cout << data[i] << " written to file" << endl; }
+		}
+		file << data[data.size() - 1] << endl;
+	}
+	else {
+		cerr << "Unable to open file!" << endl;
+	}
 }
 
 

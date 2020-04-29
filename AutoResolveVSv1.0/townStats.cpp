@@ -10,6 +10,13 @@ townStats::townStats() //void initializer
 	debug = false;
 }
 
+townStats::townStats(bool debugI)
+{
+	supplies = 0;
+	townDefense = defenses::None;
+	this->setDebug(debugI);
+}
+
 townStats::townStats(int levelI) //initializer
 {
 	townDefense = defenses::None;

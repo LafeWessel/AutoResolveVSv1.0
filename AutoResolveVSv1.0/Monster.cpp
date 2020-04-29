@@ -14,6 +14,15 @@ Monster::Monster() //void initializer
 	debug = false;
 }
 
+Monster::Monster(bool debugI)
+{
+	treasure = &Treasure();
+	type = monsterType::Empty;
+	coinReward = 0;
+	autoResValue = 0;
+	this->setDebug(debugI);
+}
+
 Monster::Monster(monsterType typeI, Treasure& treasureI) //initializer
 {
 	type = typeI;

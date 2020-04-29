@@ -34,6 +34,7 @@ protected:
 public:
 	~Battle();
 	Battle();
+	Battle(bool debugI);
 	Battle(Player attackerI, Player defenderI);
 
 	int randomNumberBattle(int range);

@@ -45,18 +45,17 @@ NormalBattle::~NormalBattle()
 {
 }
 
-NormalBattle::NormalBattle() //void initializer
+NormalBattle::NormalBattle() : Battle() //void initializer
 {
-	attacker = Player();
-	defender = Player();
-	result = outcome::Draw;
 }
 
-NormalBattle::NormalBattle(Player attackerI, Player defenderI) //initializer
+NormalBattle::NormalBattle(bool debugI) : Battle(debugI)
 {
-	attacker = attackerI;
-	defender = defenderI;
-	result = outcome::Draw;
+}
+
+NormalBattle::NormalBattle(Player attackerI, Player defenderI) : 
+	Battle(attackerI, defenderI) //initializer
+{
 }
 
 void NormalBattle::calculateNormal() //Uses base battle calculations and output

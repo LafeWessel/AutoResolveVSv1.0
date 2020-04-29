@@ -95,6 +95,7 @@
     <Text Include="..\Debug\equipment.txt" />
     <Text Include="..\Debug\units.txt" />
     <Text Include="DataCapture.txt" />
+    <Text Include="BattleData.csv" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monsterType.h">

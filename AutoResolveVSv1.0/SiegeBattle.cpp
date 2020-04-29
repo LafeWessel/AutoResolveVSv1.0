@@ -45,26 +45,29 @@ SiegeBattle::~SiegeBattle()
 {
 }
 
-SiegeBattle::SiegeBattle() //void initializer
+SiegeBattle::SiegeBattle() : Battle()//void initializer
 {
-	attacker = Player();
-	defender = Player();
 	rams = 0;
 	catapults = 0;
 	siegeTowers = 0;
 	townLevel = townStats();
-	result = outcome::Draw;
 }
 
-SiegeBattle::SiegeBattle(Player attackerI, Player defenderI, int ramsI, int catapultsI, int siegeTowersI, townStats townLevelI) // initializer
+SiegeBattle::SiegeBattle(bool debugI) : Battle(debugI)
+{
+	rams = 0;
+	catapults = 0;
+	siegeTowers = 0;
+	townLevel = townStats();
+}
+
+SiegeBattle::SiegeBattle(Player attackerI, Player defenderI, int ramsI, int catapultsI, int siegeTowersI, townStats townLevelI) : 
+	Battle(attackerI, defenderI)// initializer
 {
 	rams = ramsI;
 	catapults = catapultsI;
 	siegeTowers = siegeTowersI;
 	townLevel = townLevelI;
-	attacker = attackerI;
-	defender = defenderI;
-	result = outcome::Draw;
 }
 
 void SiegeBattle::calculateSiege() //combines base Battle calculation with the extras needed for Siege Battles, then calls output

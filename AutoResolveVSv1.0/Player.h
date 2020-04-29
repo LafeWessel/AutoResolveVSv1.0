@@ -33,6 +33,7 @@ private:
 public:
 	~Player();
 	Player();
+	Player(bool debugI);
 	Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI);
 
 	vector<Unit> getPlayerUnits() { 

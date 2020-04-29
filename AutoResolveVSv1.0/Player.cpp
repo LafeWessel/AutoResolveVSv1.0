@@ -16,6 +16,18 @@ Player::Player() //void initializer
 	Reinforcements = 0;
 }
 
+Player::Player(bool debugI)
+{
+	Melee = 0;
+	Cavalry = 0;
+	Ranged = 0;
+	general = General();
+	AdvCombatDeck = false;
+	fact = faction::rebel;
+	Reinforcements = 0;
+	this->setDebug(debugI);
+}
+
 //initializer
 Player::Player(vector<Unit> unitsI, General generalI, int ReinforceI, bool AdvCombatDeckI, faction FactI)
 {

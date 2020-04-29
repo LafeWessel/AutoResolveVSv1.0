@@ -44,20 +44,20 @@ RaidBattle::~RaidBattle()
 {
 }
 
-RaidBattle::RaidBattle() //void initializer
+RaidBattle::RaidBattle() : Battle()//void initializer
 {
-	attacker = Player();
-	defender = Player();
 	townLevel = townStats();
-	result = outcome::Draw;
 }
 
-RaidBattle::RaidBattle(Player attackerI, Player defenderI, townStats townLevelI) // initializer
+RaidBattle::RaidBattle(bool debugI) : Battle(debugI)
 {
-	attacker = attackerI;
-	defender = defenderI;
+	townLevel = townStats();
+}
+
+RaidBattle::RaidBattle(Player attackerI, Player defenderI, townStats townLevelI) : 
+	Battle(attackerI, defenderI)// initializer
+{
 	townLevel = townLevelI;
-	result = outcome::Draw;
 }
 
 void RaidBattle::calculateRaid() //combines base Battle calculation with the extras needed for Raid Battles, then calls output

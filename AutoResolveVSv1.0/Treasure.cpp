@@ -34,6 +34,16 @@ Treasure::Treasure() //void initializer
 	debug = false;
 }
 
+Treasure::Treasure(bool debugI) {
+	armor = {};
+	weapon = {};
+	trinket = {};
+	banner = {};
+	follower = {};
+	dragon = {};
+	this->setDebug(debugI);
+}
+
 //initializer
 Treasure::Treasure(vector<Equipment> armorI, vector<Equipment> weaponI, vector<Equipment> trinketI,
 	vector<Equipment> bannerI, vector<Equipment> followerI, vector<Equipment> dragonI, bool debugI)
@@ -201,25 +211,29 @@ void Treasure::sortEquipment(vector<Equipment>& toSort)
 }
 
 void Treasure::setDebug(bool debugI) {
-	int totalDebug = 0;
 	if (debugI) { cout << "treasure setDebug called" << endl; }
 	debug = debugI;
-	setEquipmentVectorDebug(armor);
-	setEquipmentVectorDebug(weapon);
-	setEquipmentVectorDebug(banner);
-	setEquipmentVectorDebug(trinket);
-	setEquipmentVectorDebug(dragon);
-	setEquipmentVectorDebug(follower);
-	if (debug) { cout << "treasure setDebug finished, total: " << totalDebug << endl; }
-}
 
-void Treasure::setEquipmentVectorDebug(vector<Equipment>& equipVector)
-{
-	if (debug) { cout << "treasure setEquipmentVectorDebug called" << endl; }
-	for (int i = 0; i < equipVector.size(); i++) {
-		if (debug) { cout << "Debug set for " << equipVector[i].getName() << ", #" << i << endl; }
-		equipVector[i].setDebug(debug);
+	for (Equipment e : armor){
+		e.setDebug(debug);
 	}
+	for (Equipment e : weapon) {
+		e.setDebug(debug);
+	}
+	for (Equipment e : trinket) {
+		e.setDebug(debug);
+	}
+	for (Equipment e : banner) {
+		e.setDebug(debug);
+	}
+	for (Equipment e : follower) {
+		e.setDebug(debug);
+	}
+	for (Equipment e : dragon) {
+		e.setDebug(debug);
+	}
+
+	if (debug) { cout << "treasure setDebug finished, total" << endl; }
 }
 
 void Treasure::printEquipmentVector(vector<Equipment>& equipVector, string name)

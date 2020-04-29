@@ -151,6 +151,16 @@ Battle::Battle() //void initializer
 	debug = false;
 }
 
+Battle::Battle(bool debugI)
+{
+	attacker = Player();
+	defender = Player();
+	treasure = &Treasure();
+	result = outcome::Draw;
+	output = true;
+	this->setDebug(debugI);
+}
+
 Battle::Battle(Player attackerI, Player defenderI) // initializer
 {
 	attacker = attackerI;
@@ -236,7 +246,7 @@ Battle::Battle(Player attackerI, Player defenderI) // initializer
 	 {
 		 if (debug) { cout << "Casualties to assign: " << casualties[0] - assignedSoldierCasualties << endl; }
 		 //This makes the iterator skip units that have already lost all their soldiers.
-		 while (playerUnits[i].getCurrentSoldiers() == 0 && i < playerUnits.size())
+		 while ( i < playerUnits.size()-1 && playerUnits[i].getCurrentSoldiers() == 0 )
 		 {
 			 i++;
 		 }

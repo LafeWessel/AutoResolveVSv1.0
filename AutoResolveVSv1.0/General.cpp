@@ -16,6 +16,18 @@ General::General() //void initializer
 	debug = false;
 }
 
+General::General(bool debugI)
+{
+	rank = 1;
+	AutoResEqBonus = 0;
+	armor = Equipment();
+	weapon = Equipment();
+	trinket = Equipment();
+	banner = Equipment();
+	follower = Equipment();
+	this->setDebug(debugI);
+}
+
 General::General(int rankI, Equipment armorI, Equipment weaponI, Equipment trinketI, Equipment bannerI, Equipment followerI) //initializer
 {
 	rank = rankI;

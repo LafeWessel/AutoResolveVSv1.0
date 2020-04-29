@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoResolveVSv1.0", "AutoRe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A177DDBA-705B-43B4-843C-8A0E0CE7714D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoResolveUnitTesting", "AutoResolveUnitTesting\AutoResolveUnitTesting.vcxproj", "{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,6 +25,14 @@ Global
 		{F5E1E268-9E3D-4922-A98E-966E007C3159}.Release|x64.Build.0 = Release|x64
 		{F5E1E268-9E3D-4922-A98E-966E007C3159}.Release|x86.ActiveCfg = Release|Win32
 		{F5E1E268-9E3D-4922-A98E-966E007C3159}.Release|x86.Build.0 = Release|Win32
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Debug|x64.ActiveCfg = Debug|x64
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Debug|x64.Build.0 = Debug|x64
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Debug|x86.ActiveCfg = Debug|Win32
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Debug|x86.Build.0 = Debug|Win32
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Release|x64.ActiveCfg = Release|x64
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Release|x64.Build.0 = Release|x64
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Release|x86.ActiveCfg = Release|Win32
+		{60EAFB5A-92AA-41B8-BF9D-43ABFED3A1C4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

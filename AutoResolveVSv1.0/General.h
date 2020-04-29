@@ -28,6 +28,7 @@ private:
 public:
 	~General();
 	General();
+	General(bool debugI);
 	General(int rankI, Equipment armorI, Equipment weaponI, Equipment trinketI, Equipment bannerI, Equipment followerI);
 	void updateARBonus();
 

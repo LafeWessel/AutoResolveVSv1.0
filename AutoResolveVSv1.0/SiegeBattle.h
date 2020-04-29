@@ -26,6 +26,7 @@ private:
 public:
 
 	SiegeBattle();
+	SiegeBattle(bool debugI);
 	SiegeBattle(Player attackerI, Player defenderI, int ramsI, int catapultsI, int siegeTowersI, townStats townLevelI);
 	~SiegeBattle();
 

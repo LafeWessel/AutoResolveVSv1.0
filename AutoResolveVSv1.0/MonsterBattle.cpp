@@ -111,6 +111,15 @@ MonsterBattle::MonsterBattle() //void initializer
 	debug = false;
 }
 
+MonsterBattle::MonsterBattle(bool debugI) //void initializer
+{
+	attacker = Player();
+	monster = Monster();
+	result = outcome::Draw;
+	output = true;
+	this->setDebug(debugI);
+}
+
 MonsterBattle::MonsterBattle(Player attackerI, Monster monsterI) //initializer
 {
 	attacker = attackerI;

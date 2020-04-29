@@ -1,4 +1,9 @@
 #pragma once
+#include <string>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+
 #include "battleType.h"
 #include "townStats.h"
 #include "outcome.h"
@@ -11,6 +16,8 @@
 #include "Roster.h"
 #include "Unit.h"
 
+using namespace std;
+
 
 class BattleData
 {
@@ -18,6 +25,7 @@ class BattleData
 private:
 	
 	vector<int> data;
+	bool debug;
 
 	vector<string> getUnitNames();
 	void setAttackerUnitTotals(vector<Unit> u);
@@ -25,6 +33,7 @@ private:
 
 public:
 	BattleData();
+	BattleData(bool debugI);
 
 	void setBattleType(battleType type);
 	void setAttacker(Player& p);
@@ -51,6 +60,7 @@ public:
 	void setAttackerEnd(Player& p);
 	void setDefenderEnd(Player& p);
 
-
+	void printData();
+	void writeToFile(string fileName);
 };
 

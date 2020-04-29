@@ -16,6 +16,18 @@ Equipment::Equipment() //void initializer
 	debug = false;
 }
 
+Equipment::Equipment(bool debugI)
+{
+	name = "";
+	autoBonus = 0;
+	index = 0;
+	range = 0;
+	EquipType = equipmentType::null;
+	effect = "";
+	coinValue = 0;
+	this->setDebug(debugI);
+}
+
 Equipment::Equipment(string nameI, int autoBonusI, int numberI, int rangeI, equipmentType EquipTypeI, string effectI, int coinValueI) //initializer
 {
 	name = nameI;

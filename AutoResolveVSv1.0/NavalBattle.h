@@ -11,6 +11,7 @@ private:
 public:
 	~NavalBattle();
 	NavalBattle();
+	NavalBattle(bool debugI);
 	NavalBattle(Player attackerI, Player defenderI, int attShipsI, int defShipsI);
 
 	void navalOutput(vector<vector<int>> totalCasualties);

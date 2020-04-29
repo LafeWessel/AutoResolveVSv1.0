@@ -45,22 +45,23 @@ NavalBattle::~NavalBattle()
 }
 
 
-NavalBattle::NavalBattle() //void initializer
+NavalBattle::NavalBattle() : Battle()//void initializer
 {
-	attacker = Player();
-	defender = Player();
 	attackerShips = 0;
 	defenderShips = 0;
-	result = outcome::Draw;
 }
 
-NavalBattle::NavalBattle(Player attackerI, Player defenderI, int attShipsI, int defShipsI) //initializer
+NavalBattle::NavalBattle(bool debugI) : Battle(debugI)
+{
+	attackerShips = 0;
+	defenderShips = 0;
+}
+
+NavalBattle::NavalBattle(Player attackerI, Player defenderI, int attShipsI, int defShipsI) : 
+	Battle(attackerI, defenderI)//initializer
 {
 	attackerShips = attShipsI;
 	defenderShips = defShipsI;
-	attacker = attackerI;
-	defender = defenderI;
-	result = outcome::Draw;
 }
 
 void NavalBattle::navalOutput(vector<vector<int>> totalCasualties) //uses base Battle output and adds naval outputs

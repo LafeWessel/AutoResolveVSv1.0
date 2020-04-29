@@ -9,6 +9,7 @@ private:
 public:
 	~NormalBattle();
 	NormalBattle();
+	NormalBattle(bool debugI);
 	NormalBattle(Player attackerI, Player defenderI);
 
 	void normalOutput(vector<vector<int>> totalCasualties);

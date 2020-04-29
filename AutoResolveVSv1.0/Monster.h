@@ -26,6 +26,7 @@ private:
 public:
 	~Monster();
 	Monster();
+	Monster(bool debugI);
 	Monster(monsterType typeI, Treasure& treasureI);
 
 	int getCoinReward() { 
