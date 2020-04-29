@@ -149,6 +149,9 @@ Battle::Battle() //void initializer
 	result = outcome::Draw;
 	output = true;
 	debug = false;
+	fileOut = false;
+	fileName = "";
+	data = BattleData();
 }
 
 Battle::Battle(bool debugI)
@@ -159,6 +162,9 @@ Battle::Battle(bool debugI)
 	result = outcome::Draw;
 	output = true;
 	this->setDebug(debugI);
+	fileOut = false;
+	fileName = "";
+	data = BattleData();
 }
 
 Battle::Battle(Player attackerI, Player defenderI) // initializer
@@ -169,7 +175,24 @@ Battle::Battle(Player attackerI, Player defenderI) // initializer
 	result = outcome::Draw;
 	output = true;
 	debug = false;
+	fileOut = false;
+	fileName = "";
+	data = BattleData();
 }
+
+Battle::Battle(Player attackerI, Player defenderI, bool fileOutI, string fileNameI) // initializer
+{
+	attacker = attackerI;
+	defender = defenderI;
+	treasure = &Treasure();
+	result = outcome::Draw;
+	output = true;
+	debug = false;
+	fileOut = fileOutI;
+	fileName = fileNameI;
+	data = BattleData();
+}
+
 
  void Battle::treasureResults()
 {

@@ -64,6 +64,13 @@ NavalBattle::NavalBattle(Player attackerI, Player defenderI, int attShipsI, int 
 	defenderShips = defShipsI;
 }
 
+NavalBattle::NavalBattle(Player attackerI, Player defenderI, int attShipsI, int defShipsI, bool fileOutI, string fileNameI) : 
+	Battle(attackerI, defenderI, fileOutI, fileNameI)
+{
+	attackerShips = attShipsI;
+	defenderShips = defShipsI;
+}
+
 void NavalBattle::navalOutput(vector<vector<int>> totalCasualties) //uses base Battle output and adds naval outputs
 {
 	if (debug) { cout << "Calling battleOutput, NavalBattle::NavalOutput" << endl; }

@@ -324,7 +324,7 @@ void testSetupStd(Battle& battle, bool debug, Treasure& treasure)
 //These 5 functions create a vector of results from creating and calculating battles with basic information
 //that is then sent to predictionOutput()
 //They are used for standard, symmetrical battle testing
-void battleTestStd(int tests, NormalBattle battle, bool debug, Treasure& treasure)
+void battleTestStd(int tests, NormalBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename)
 {
 	if (debug) { cout << "battleTest - normal called; calling testSetup" << endl; }
 	testSetupStd(battle, debug, treasure);
@@ -348,7 +348,7 @@ void battleTestStd(int tests, NormalBattle battle, bool debug, Treasure& treasur
 	return;
 }
 
-void battleTestStd(int tests, SiegeBattle battle, bool debug, Treasure& treasure)
+void battleTestStd(int tests, SiegeBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename)
 {
 	if (debug) { cout << "battleTest - siege called; calling testSetup" << endl; }
 	testSetupStd(battle, debug, treasure);
@@ -381,7 +381,7 @@ void battleTestStd(int tests, SiegeBattle battle, bool debug, Treasure& treasure
 	return;
 }
 
-void battleTestStd(int tests, RaidBattle battle, bool debug, Treasure& treasure)
+void battleTestStd(int tests, RaidBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename)
 {
 	if (debug) { cout << "battleTest - raid called; calling testSetup" << endl; }
 	testSetupStd(battle, debug, treasure);
@@ -408,7 +408,7 @@ void battleTestStd(int tests, RaidBattle battle, bool debug, Treasure& treasure)
 
 }
 
-void battleTestStd(int tests, NavalBattle battle, bool debug, Treasure& treasure)
+void battleTestStd(int tests, NavalBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename)
 {
 	if (debug) { cout << "battleTest - naval called; calling testSetup" << endl; }
 	testSetupStd(battle, debug, treasure);
@@ -434,7 +434,7 @@ void battleTestStd(int tests, NavalBattle battle, bool debug, Treasure& treasure
 	return;
 }
 
-void battleTestStd(int tests, MonsterBattle battle, bool debug, Treasure& treasure)
+void battleTestStd(int tests, MonsterBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename)
 {
 	if (debug) { cout << "battleTest - monster called" << endl; }
 	Equipment equip{};
@@ -495,7 +495,7 @@ void battleTestStd(int tests, MonsterBattle battle, bool debug, Treasure& treasu
 }
 
 //Runs n battle tests with standard, symmetrical values
-void standardTests(int tests, bool debug) {
+void standardTests(int tests, bool debug, bool fileOut, string fileName) {
 
 	Treasure treasure{};
 	treasure.setDebug(debug);
@@ -505,7 +505,7 @@ void standardTests(int tests, bool debug) {
 	normal.setTreasure(treasure);
 	normal.setDebug(debug);
 	if (debug) { cout << "Normal battle initialized void" << endl; }
-	battleTestStd(tests, normal, debug, treasure);
+	battleTestStd(tests, normal, debug, treasure, fileOut, fileName);
 	if (debug) { cout << "Tested Normal battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -513,7 +513,7 @@ void standardTests(int tests, bool debug) {
 	siege.setTreasure(treasure);
 	siege.setDebug(debug);
 	if (debug) { cout << "Siege battle initialized void" << endl; }
-	battleTestStd(tests, siege, debug, treasure);
+	battleTestStd(tests, siege, debug, treasure, fileOut, fileName);
 	if (debug) { cout << "Tested Siege battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -521,7 +521,7 @@ void standardTests(int tests, bool debug) {
 	raid.setTreasure(treasure);
 	raid.setDebug(debug);
 	if (debug) { cout << "Raid battle initialized void" << endl; }
-	battleTestStd(tests, raid, debug, treasure);
+	battleTestStd(tests, raid, debug, treasure, fileOut, fileName);
 	if (debug) { cout << "Tested Raid battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -529,7 +529,7 @@ void standardTests(int tests, bool debug) {
 	naval.setTreasure(treasure);
 	naval.setDebug(debug);
 	if (debug) { cout << "Naval battle initialized void" << endl; }
-	battleTestStd(tests, naval, debug, treasure);
+	battleTestStd(tests, naval, debug, treasure, fileOut, fileName);
 	if (debug) { cout << "Tested Naval battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -538,7 +538,7 @@ void standardTests(int tests, bool debug) {
 	if (debug) { cout << "Monster battle initialized void" << endl; }
 	monster.setDebug(debug);
 	if (debug) { cout << "Monster battle treasure set" << endl; }
-	battleTestStd(tests, monster, debug, treasure);
+	battleTestStd(tests, monster, debug, treasure, fileOut, fileName);
 	if (debug) { cout << "Tested Monster battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -666,7 +666,7 @@ void testSetupRand(MonsterBattle& battle, bool debug, Treasure& treasure) {
 //These 5 functions create a vector of results from creating and calculating battles with randomized information
 //that is sent to PredictionOutput()
 //They are used for asymmetrical, randomized battle testing
-void battleTestRand(int tests, NormalBattle battle, bool debug, Treasure& treasure) {
+void battleTestRand(int tests, NormalBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename) {
 	if (debug) { cout << "Normal battleTestRand called" << endl; }
 
 	vector<int> resultsRaw{};
@@ -690,7 +690,7 @@ void battleTestRand(int tests, NormalBattle battle, bool debug, Treasure& treasu
 	return;
 }
 
-void battleTestRand(int tests, SiegeBattle battle, bool debug, Treasure& treasure) {
+void battleTestRand(int tests, SiegeBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename) {
 	if (debug) { cout << "Siege battleTestRand called" << endl; }
 
 
@@ -728,7 +728,7 @@ void battleTestRand(int tests, SiegeBattle battle, bool debug, Treasure& treasur
 	return;
 }
 
-void battleTestRand(int tests, RaidBattle battle, bool debug, Treasure& treasure) {
+void battleTestRand(int tests, RaidBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename) {
 	if (debug) { cout << "Raid battleTestRand called" << endl; }
 	vector<int> resultsRaw{};
 
@@ -752,7 +752,7 @@ void battleTestRand(int tests, RaidBattle battle, bool debug, Treasure& treasure
 	return;
 }
 
-void battleTestRand(int tests, NavalBattle battle, bool debug, Treasure& treasure) {
+void battleTestRand(int tests, NavalBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename) {
 	if (debug) { cout << "Naval battleTestRand called" << endl; }
 	vector<int> resultsRaw{};
 
@@ -778,7 +778,7 @@ void battleTestRand(int tests, NavalBattle battle, bool debug, Treasure& treasur
 	return;
 }
 
-void battleTestRand(int tests, MonsterBattle battle, bool debug, Treasure& treasure) {
+void battleTestRand(int tests, MonsterBattle battle, bool debug, Treasure& treasure, bool fileOut, string filename) {
 	if (debug) { cout << "Monster battleTestRand called" << endl; }
 	vector<int> resultsRaw{};
 
@@ -802,7 +802,7 @@ void battleTestRand(int tests, MonsterBattle battle, bool debug, Treasure& treas
 }
 
 //Runs numerous battle tests with asymmetric, randomized values
-void randomizedTests(int tests, bool debug) {
+void randomizedTests(int tests, bool debug, bool fileOut, string fileName) {
 	
 	Treasure treasure{};
 	treasure.setDebug(debug);
@@ -812,7 +812,7 @@ void randomizedTests(int tests, bool debug) {
 	normal.setTreasure(treasure);
 	normal.setDebug(debug);
 	if (debug) { cout << "Normal battle initialized void" << endl; }
-	battleTestRand(tests, normal, debug, treasure);
+	battleTestRand(tests, normal, debug, treasure, fileOut, fileName);
 	if (debug) { cout << "Tested Normal battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -820,7 +820,7 @@ void randomizedTests(int tests, bool debug) {
 	siege.setTreasure(treasure);
 	siege.setDebug(debug);
 	if (debug) { cout << "Siege battle initialized void" << endl; }
-	battleTestRand(tests, siege, debug, treasure);
+	battleTestRand(tests, siege, debug, treasure,  fileOut,  fileName);
 	if (debug) { cout << "Tested Siege battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -828,7 +828,7 @@ void randomizedTests(int tests, bool debug) {
 	raid.setTreasure(treasure);
 	raid.setDebug(debug);
 	if (debug) { cout << "Raid battle initialized void" << endl; }
-	battleTestRand(tests, raid, debug, treasure);
+	battleTestRand(tests, raid, debug, treasure,  fileOut,  fileName);
 	if (debug) { cout << "Tested Raid battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -836,7 +836,7 @@ void randomizedTests(int tests, bool debug) {
 	naval.setTreasure(treasure);
 	naval.setDebug(debug);
 	if (debug) { cout << "Naval battle initialized void" << endl; }
-	battleTestRand(tests, naval, debug, treasure);
+	battleTestRand(tests, naval, debug, treasure,  fileOut,  fileName);
 	if (debug) { cout << "Tested Naval battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -844,7 +844,7 @@ void randomizedTests(int tests, bool debug) {
 	if (debug) { cout << "Monster battle initialized void" << endl; }
 	monster.setDebug(debug);
 	if (debug) { cout << "Monster battle treasure set" << endl; }
-	battleTestRand(tests, monster, debug, treasure);
+	battleTestRand(tests, monster, debug, treasure,  fileOut,  fileName);
 	if (debug) { cout << "Tested Monster battle, press Enter to continue" << endl; }
 	if (debug) { cin.get(); }
 
@@ -872,22 +872,38 @@ int main()
 	   	 
 	while(cont) {
 		bool debug = false;
+		bool fileOut = false;
 		char toDebug = 'a';//Placeholder character
 
+		//Check to see if user wants to debug application
 		while (toDebug != 'y' && toDebug != 'n')
 		{
 			cout << "Would you like to debug? (y/n)" << endl;
 			cin >> toDebug;
 			cin.get();
-		//	cout << toDebug <<  endl;
 		}
 		if (toDebug == 'y')
 		{
 			debug = true;
 		}
 
+		//Check to see if user wants to send results to BattleData.csv
+		toDebug = 'a';
+		while (toDebug != 'y' && toDebug != 'n')
+		{
+			cout << "Would you like to output results to a file? (y/n)" << endl;
+			cin >> toDebug;
+			cin.get();
+		}
+		if (toDebug == 'y')
+		{
+			fileOut = true;
+		}
+
+
 		if (debug) { cout << "Program started" << endl; }
 
+		//Get the number of tests the user would like to perform
 		int tests = 1;
 		cout << "How many tests:" << endl;
 		cin >> tests;
@@ -895,6 +911,7 @@ int main()
 		tests = abs(tests);
 		if (debug) { cout << "Tests set to: " << tests << endl; }
 	
+		//Check to see if user wants to use randomized values
 		char randomTest = 'a';
 		while (randomTest != 'y' && randomTest != 'n')
 		{
@@ -905,15 +922,16 @@ int main()
 		}
 		
 		if (randomTest == 'y') {
-			randomizedTests(tests, debug);
+			randomizedTests(tests, debug, fileOut, fileName);
 		}
 		else {
-			standardTests(tests, debug);
+			standardTests(tests, debug, fileOut, fileName);
 		}
 
 		if (debug) { cout << "Program finished, press Enter to continue" << endl; }
 		cin.get();//This keeps the console window open
 		
+		//Check to see if the user would like to perform more tests
 		char toCont = 'a';
 		while (toCont != 'y' && toCont != 'n')
 		{

@@ -60,6 +60,12 @@ RaidBattle::RaidBattle(Player attackerI, Player defenderI, townStats townLevelI)
 	townLevel = townLevelI;
 }
 
+RaidBattle::RaidBattle(Player attackerI, Player defenderI, townStats townLevelI, bool fileOutI, string fileNameI) : 
+	Battle(attackerI, defenderI, fileOutI, fileNameI)
+{
+	townLevel = townLevelI;
+}
+
 void RaidBattle::calculateRaid() //combines base Battle calculation with the extras needed for Raid Battles, then calls output
 {
 	float overallTot = battleCalculate();

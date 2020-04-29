@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Treasure.h"
 #include "battleType.h"
+#include "BattleData.h"
 #include <algorithm>
 #include <cmath>
 
@@ -14,14 +15,14 @@
 
 #include <iostream>
 
-using namespace std;
+//using namespace std;
 
 
 
 class Battle // siege, raid, normal and naval battles inherit from this class
 {
 
-protected:
+public:
 	Treasure *treasure;
 	Player attacker;
 	Player defender;
@@ -29,13 +30,16 @@ protected:
 	bool output;
 	bool debug;
 	battleType type;
-
+	bool fileOut;
+	string fileName;
+	BattleData data;
 
 public:
 	~Battle();
 	Battle();
 	Battle(bool debugI);
 	Battle(Player attackerI, Player defenderI);
+	Battle(Player attackerI, Player defenderI, bool fileOutI, string fileNameI);
 
 	int randomNumberBattle(int range);
 	int calculateBattleRandoms(int randomRolls, int randomRange);
@@ -64,7 +68,9 @@ public:
 
 	bool getOutputBool() { return output; };
 	bool getDebugBool() { return debug; };
+	bool getFileOutBool() { return fileOut; }
 	void setOutput(bool outputI) { output = outputI; };
+	void setFileOut(bool fileOutI) { fileOut = fileOutI; };
 	void setDebug(bool debugI) { 
 		if (debugI) { cout << "battle setDebug called" << endl; }
 		debug = debugI; 

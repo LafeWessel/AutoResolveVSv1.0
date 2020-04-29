@@ -70,6 +70,15 @@ SiegeBattle::SiegeBattle(Player attackerI, Player defenderI, int ramsI, int cata
 	townLevel = townLevelI;
 }
 
+SiegeBattle::SiegeBattle(Player attackerI, Player defenderI, int ramsI, int catapultsI, int siegeTowersI, townStats townLevelI, bool fileOutI, string fileNameI) : 
+	Battle(attackerI, defenderI, fileOutI, fileNameI)
+{
+	rams = ramsI;
+	catapults = catapultsI;
+	siegeTowers = siegeTowersI;
+	townLevel = townLevelI;
+}
+
 void SiegeBattle::calculateSiege() //combines base Battle calculation with the extras needed for Siege Battles, then calls output
 {
 	float overallTot = battleCalculate();

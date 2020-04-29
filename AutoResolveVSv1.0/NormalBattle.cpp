@@ -58,6 +58,11 @@ NormalBattle::NormalBattle(Player attackerI, Player defenderI) :
 {
 }
 
+NormalBattle::NormalBattle(Player attackerI, Player defenderI, bool fileOutI, string fileNameI) : 
+	Battle(attackerI, defenderI, fileOutI, fileNameI)
+{
+}
+
 void NormalBattle::calculateNormal() //Uses base battle calculations and output
 {
 	if (debug) { cout << "Calling battleCalculate, NormalBattle::calculateNormal" << endl; }

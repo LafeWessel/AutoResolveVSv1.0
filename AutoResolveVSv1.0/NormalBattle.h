@@ -11,6 +11,7 @@ public:
 	NormalBattle();
 	NormalBattle(bool debugI);
 	NormalBattle(Player attackerI, Player defenderI);
+	NormalBattle(Player attackerI, Player defenderI, bool fileOutI, string fileNameI);
 
 	void normalOutput(vector<vector<int>> totalCasualties);
 	void calculateNormal();

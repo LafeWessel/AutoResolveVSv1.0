@@ -1,6 +1,6 @@
 #pragma once
 #include "Battle.h"
-using namespace std;
+//using namespace std;
 class NavalBattle : public Battle
 {
 private:
@@ -13,6 +13,7 @@ public:
 	NavalBattle();
 	NavalBattle(bool debugI);
 	NavalBattle(Player attackerI, Player defenderI, int attShipsI, int defShipsI);
+	NavalBattle(Player attackerI, Player defenderI, int attShipsI, int defShipsI, bool fileOutI, string fileNameI);
 
 	void navalOutput(vector<vector<int>> totalCasualties);
 	void calculateNaval();

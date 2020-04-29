@@ -7,12 +7,7 @@
 #include "battleType.h"
 #include "townStats.h"
 #include "outcome.h"
-#include "Battle.h"
-#include "RaidBattle.h"
-#include "NavalBattle.h"
-#include "NormalBattle.h"
-#include "SiegeBattle.h"
-#include "MonsterBattle.h"
+#include "Player.h"
 #include "Roster.h"
 #include "Unit.h"
 

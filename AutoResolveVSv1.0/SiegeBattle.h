@@ -28,6 +28,7 @@ public:
 	SiegeBattle();
 	SiegeBattle(bool debugI);
 	SiegeBattle(Player attackerI, Player defenderI, int ramsI, int catapultsI, int siegeTowersI, townStats townLevelI);
+	SiegeBattle(Player attackerI, Player defenderI, int ramsI, int catapultsI, int siegeTowersI, townStats townLevelI, bool fileOutI, string fileNameI);
 	~SiegeBattle();
 
 	void SiegeOutput(vector<vector<int>> totalCasualties);

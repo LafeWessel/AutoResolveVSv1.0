@@ -5,6 +5,7 @@ BattleData::BattleData()
 	//Makes sure the data array is the correct size/length
 	data.resize(141);
 	fill(data.begin(), data.end(), 0);
+	debug = false;
 }
 
 BattleData::BattleData(bool debugI)
@@ -226,6 +227,7 @@ vector<string> BattleData::getUnitNames() { //Returns a vector of the names of a
 	return names;
 }
 
+//Sets the total number of each kind of unit in the output array for the attacker
 void BattleData::setAttackerUnitTotals(vector<Unit> u) {
 	vector<string> names = getUnitNames();
 	vector<int> totalUnits(names.size());
@@ -247,6 +249,7 @@ void BattleData::setAttackerUnitTotals(vector<Unit> u) {
 
 }
 
+//Sets the total number of each kind of unit in the output array for the defender
 void BattleData::setDefenderUnitTotals(vector<Unit> u) {
 	vector<string> names = getUnitNames();
 	vector<int> totalUnits(names.size());

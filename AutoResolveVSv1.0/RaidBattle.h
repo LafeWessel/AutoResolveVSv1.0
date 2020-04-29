@@ -25,6 +25,7 @@ public:
 	RaidBattle();
 	RaidBattle(bool debugI);
 	RaidBattle(Player attackerI, Player defenderI, townStats townLevelI);
+	RaidBattle(Player attackerI, Player defenderI, townStats townLevelI, bool fileOutI, string fileNameI);
 
 	void raidOutput(vector<vector<int>> totalCasualties, int suppGained);
 	void calculateRaid();
