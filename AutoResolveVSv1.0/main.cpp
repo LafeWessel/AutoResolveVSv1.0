@@ -85,7 +85,8 @@ High Priority:
 	TODO-Make sure that casualties are actually assigned for MonsterBattle
 	TODO-Make each battle write to a certain file and each have boolean for whether or not they write to the file
 Low Priority:
-TODO-Implement a Gaussian distribution for random results for BattleRandoms calculations, centering distribution at 5
+TODO-Implement a Gaussian distribution for random results for BattleRandoms calculations, centering distribution at 5 (?)
+TODO-Change win-loss ratio in tests to be % wins
 TODO-add const where appropriate in function signatures
 TODO-Create an auto-balancing feature to determine what is an equal distribution of power -> AI
 	-Can use a model to determine what contributes most to success?
